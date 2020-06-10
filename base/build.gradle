@@ -39,9 +39,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    configurations.all() {
-        resolutionStrategy.force "org.antlr:antlr4-runtime:$antlr"
-        resolutionStrategy.force "org.antlr:antlr4-tool:$antlr"
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin/'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin/'
+        test.java.srcDirs += 'src/test/kotlin/'
     }
 }
 
