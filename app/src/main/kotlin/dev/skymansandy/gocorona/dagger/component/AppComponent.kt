@@ -8,6 +8,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import dev.skymansandy.base.di.AppScope
 import dev.skymansandy.gocorona.GoCoronaApp
 import dev.skymansandy.gocorona.dagger.module.AppModule
+import dev.skymansandy.gocorona.dagger.module.NetworkModule
 import dev.skymansandy.gocorona.dagger.module.UiInjectorModule
 
 @AppScope
@@ -15,6 +16,7 @@ import dev.skymansandy.gocorona.dagger.module.UiInjectorModule
     modules = [
         AndroidSupportInjectionModule::class,
         UiInjectorModule::class,
+        NetworkModule::class,
         AppModule::class]
 )
 interface AppComponent : AndroidInjector<GoCoronaApp> {
