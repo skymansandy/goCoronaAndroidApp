@@ -3,7 +3,6 @@ package dev.skymansandy.gocorona.dagger.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dev.skymansandy.base.di.BaseModule
-import dev.skymansandy.gocorona.presentation.MainActivity
 import dev.skymansandy.gocorona.presentation.home.HomeFragment
 
 @Module(
@@ -13,9 +12,6 @@ import dev.skymansandy.gocorona.presentation.home.HomeFragment
     ]
 )
 abstract class UiInjectorModule {
-
-    @ContributesAndroidInjector
-    abstract fun contributeMainActivity(): MainActivity
 
     @ContributesAndroidInjector
     abstract fun contributeHomeFragment(): HomeFragment
