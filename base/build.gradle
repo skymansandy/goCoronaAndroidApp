@@ -117,4 +117,9 @@ dependencies {
 
     //TextDrawable
     api "com.amulyakhare:com.amulyakhare.textdrawable:$textdrawable"
+
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:retrofit-mock:$retrofit"
+    api "com.squareup.retrofit2:converter-gson:$retrofit"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp"
 }

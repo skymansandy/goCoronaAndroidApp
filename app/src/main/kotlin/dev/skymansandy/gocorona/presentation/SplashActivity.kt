@@ -1,11 +1,10 @@
-package dev.skymansandy.gocorona.presentation.splash
+package dev.skymansandy.gocorona.presentation
 
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import dev.skymansandy.base.dsl.launchActivity
 import dev.skymansandy.gocorona.R
-import dev.skymansandy.gocorona.presentation.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -20,6 +19,8 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             launchActivity<MainActivity>()
             finish()
-        }, SPLASH_TIME_MILLIS)
+        },
+            SPLASH_TIME_MILLIS
+        )
     }
 }
