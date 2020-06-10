@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="wizard_mandatory" format="boolean" />
+
+    <declare-styleable name="WizardRowTileView">
+        <attr name="title" format="string" />
+        <attr name="icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="WizardEditText">
+        <attr name="wizard_mandatory" />
+        <attr name="wizard_input_type" format="enum">
+            <enum name="text" value="0" />
+            <enum name="mobile" value="1" />
+            <enum name="email" value="2" />
+            <enum name="name" value="3" />
+            <enum name="unique_id" value="4" />
+            <enum name="pin_digits" value="5" />
+            <enum name="pin_alphanumeric" value="6" />
+            <enum name="long_desc" value="7" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="WizardAutoCompleteEditText">
+        <attr name="wizard_mandatory" />
+    </declare-styleable>
+</resources>

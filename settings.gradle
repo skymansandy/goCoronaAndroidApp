@@ -1,0 +1,4 @@
+rootProject.name = "GoCorona"
+
+include ':base'
+include ':app'
