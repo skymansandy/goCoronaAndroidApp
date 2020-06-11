@@ -14,6 +14,8 @@ import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickL
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import org.eazegraph.lib.charts.PieChart
+import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -29,7 +31,6 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.layoutStatList.setup(statAdapter, "State/UT")
 
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
@@ -46,20 +47,21 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
     override fun renderViewState(newState: HomeState) {
         binding.layoutLoading.visibility = View.GONE
-        binding.layoutStats.visibility = View.GONE
+        binding.statsIndia.root.visibility = View.GONE
+        binding.statsNonIndia.root.visibility = View.GONE
 
         when (newState) {
             is HomeState.Loading -> {
                 binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
-            is HomeState.State -> {
+            is HomeState.IndiaStats -> {
                 binding.swipe.isRefreshing = false
-                binding.layoutStats.visibility = View.VISIBLE
-
-                with(binding) {
-                    tvPlace.text = newState.placeName
-                    tvLastUpdated.text = newState.lastUpdated
+                binding.statsIndia.layoutStats.visibility = View.VISIBLE
+                binding.tvPlace.text = newState.placeName
+                binding.tvLastUpdated.text = newState.lastUpdated
+                binding.statsIndia.layoutStatList.setup(statAdapter, "State/UT")
+                with(binding.statsIndia) {
                     tvActiveCount.text =
                         NumberFormat.getInstance().format(newState.active.count.toInt())
                     statCardConfirmed.showStatCard(newState.confirmed, newState.growthTrendMaxScale)
@@ -71,6 +73,23 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                         statAdapter.submitList(newState.stats)
                         View.VISIBLE
                     }
+                }
+            }
+            is HomeState.NonIndiaStats -> {
+                binding.swipe.isRefreshing = false
+                binding.statsNonIndia.layoutStats.visibility = View.VISIBLE
+                binding.tvPlace.text = newState.placeName
+                binding.tvLastUpdated.text = newState.lastUpdated
+                with(binding.statsNonIndia) {
+                    tvActiveCount.text =
+                        NumberFormat.getInstance().format(newState.active.count.toInt())
+                    tvConfirmedCount.text =
+                        NumberFormat.getInstance().format(newState.confirmed.count.toInt())
+                    tvRecoveredCount.text =
+                        NumberFormat.getInstance().format(newState.recovered.count.toInt())
+                    tvDeceasedCount.text =
+                        NumberFormat.getInstance().format(newState.deceased.count.toInt())
+                    pieChart.loadData(newState)
                 }
             }
         }
@@ -96,7 +115,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
         activity?.let {
             when (this) {
-                binding.statCardConfirmed -> {
+                binding.statsIndia.statCardConfirmed -> {
                     tvTitle.text = "Confirmed"
                     tvCount.setTextColor(confirmedColor)
                     tvDelta.setTextColor(confirmedColor)
@@ -104,14 +123,14 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                     tvDelta.compoundDrawables[2]?.setTint(confirmedColor)
                     snake.setStrokeColor(confirmedColor)
                 }
-                binding.statCardRecovered -> {
+                binding.statsIndia.statCardRecovered -> {
                     tvTitle.text = "Recovered"
                     tvCount.setTextColor(recoveredColor)
                     tvDelta.setTextColor(recoveredColor)
                     tvDelta.compoundDrawables[2]?.setTint(recoveredColor)
                     snake.setStrokeColor(recoveredColor)
                 }
-                binding.statCardDeceased -> {
+                binding.statsIndia.statCardDeceased -> {
                     tvTitle.text = "Deceased"
                     tvCount.setTextColor(deceasedColor)
                     tvDelta.setTextColor(deceasedColor)
@@ -134,5 +153,19 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         statListHeader.tvConfirmed.setTextColor(confirmedColor)
         statListHeader.tvRecovered.setTextColor(recoveredColor)
         statListHeader.tvDeceased.setTextColor(deceasedColor)
+    }
+
+    private fun PieChart.loadData(countryData: HomeState.NonIndiaStats) {
+        clearChart()
+        addPieSlice(
+            PieModel("Active", countryData.active.count.toFloat(), activeColor)
+        )
+        addPieSlice(
+            PieModel("Recovered", countryData.recovered.count.toFloat(), recoveredColor)
+        )
+        addPieSlice(
+            PieModel("Deceased", countryData.deceased.count.toFloat(), deceasedColor)
+        )
+        startAnimation()
     }
 }

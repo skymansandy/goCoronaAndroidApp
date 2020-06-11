@@ -44,15 +44,13 @@ class GetOtherCountryDataForUiUseCase @Inject constructor(
                         )
 
                     emit(
-                        HomeState.State(
+                        HomeState.NonIndiaStats(
                             placeName = countryData.name,
                             lastUpdated = countryData.updated,
                             confirmed = confirmedStat,
                             active = activeStat,
                             recovered = recoveredStat,
-                            deceased = deceasedStat,
-                            growthTrendMaxScale = -1f,
-                            stats = null
+                            deceased = deceasedStat
                         )
                     )
                 }

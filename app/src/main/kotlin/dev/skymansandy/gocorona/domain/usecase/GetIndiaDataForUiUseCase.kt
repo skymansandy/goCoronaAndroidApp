@@ -73,7 +73,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                     ).max() ?: 1f
 
                     emit(
-                        HomeState.State(
+                        HomeState.IndiaStats(
                             placeName = "India",
                             lastUpdated = totalStat.updated,
                             confirmed = confirmedStat,

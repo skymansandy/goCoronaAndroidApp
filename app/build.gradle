@@ -62,4 +62,5 @@ dependencies {
     implementation "me.grantland:autofittextview:$autofit"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
     implementation "io.coil-kt:coil:$coil"
+    implementation "com.github.blackfizz:eazegraph:$easegraph"
 }

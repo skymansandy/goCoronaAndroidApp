@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -94,107 +93,17 @@
 
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout_stats"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/layout_banner"
-                    android:layout_marginTop="-130dp"
-                    android:orientation="vertical"
+                <include
+                    android:id="@+id/statsIndia"
+                    layout="@layout/stats_india"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="gone" />
 
-                    <LinearLayout
-                        android:id="@+id/layout_active_cases"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/dp_24"
-                        android:paddingEnd="@dimen/dp_24">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/dp_4"
-                            app:cardElevation="@dimen/dp_16">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="@dimen/dp_16">
-
-                                <TextView
-                                    style="@style/TextAppearance.MaterialComponents.Overline"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Active Cases"
-                                    android:textColor="@color/color_deceased"
-                                    android:textStyle="bold" />
-
-                                <me.grantland.widget.AutofitTextView
-                                    android:id="@+id/tv_active_count"
-                                    style="@style/TextAppearance.MaterialComponents.Headline6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="753"
-                                    android:textColor="@color/color_active"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/layout_stat_cards"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_8"
-                        android:orientation="vertical"
-                        android:paddingStart="@dimen/dp_24"
-                        android:paddingEnd="@dimen/dp_24">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <include
-                                android:id="@+id/statCardConfirmed"
-                                layout="@layout/layout_stat_card" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_12"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <include
-                                android:id="@+id/statCardRecovered"
-                                layout="@layout/layout_stat_card" />
-
-                            <Space
-                                android:layout_width="@dimen/dp_12"
-                                android:layout_height="match_parent" />
-
-                            <include
-                                android:id="@+id/statCardDeceased"
-                                layout="@layout/layout_stat_card" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <include
-                        android:id="@+id/layout_stat_list"
-                        layout="@layout/layout_stat_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/dp_16" />
-
-                </LinearLayout>
+                <include
+                    android:id="@+id/statsNonIndia"
+                    layout="@layout/stats_non_india"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <RelativeLayout
                     android:id="@+id/layout_loading"
