@@ -1,11 +1,9 @@
 package dev.skymansandy.gocorona.presentation.home
 
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.LiveData
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
 import dev.skymansandy.gocorona.domain.usecase.FetchCovid19StatsUseCase
 import dev.skymansandy.gocorona.domain.usecase.GetCountryDataUseCase
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
@@ -13,7 +11,8 @@ class HomeViewModel @Inject constructor(
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<HomeState, HomeEvent>() {
 
-    var countryCode: String = "IN"
+    private var countryCode: String = "IN"
+    private lateinit var liveData: LiveData<HomeState>
 
     init {
         getCountryData(countryCode)
@@ -34,10 +33,11 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getCountryData(countryCode: String) {
-        viewModelScope.launch {
-            getCountryDataUseCase(countryCode).collect {
-                viewState = it
-            }
+        if (::liveData.isInitialized)
+            mediator.removeSource(liveData)
+        liveData = getCountryDataUseCase(countryCode)
+        mediator.addSource(liveData) {
+            viewState = it
         }
     }
 }

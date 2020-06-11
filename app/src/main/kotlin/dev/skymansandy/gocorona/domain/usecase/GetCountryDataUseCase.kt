@@ -1,7 +1,8 @@
 package dev.skymansandy.gocorona.domain.usecase
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import dev.skymansandy.gocorona.presentation.home.HomeState
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetCountryDataUseCase @Inject constructor(
@@ -9,10 +10,10 @@ class GetCountryDataUseCase @Inject constructor(
     private val getOtherCountryDataForUiUseCase: GetOtherCountryDataForUiUseCase
 ) {
 
-    operator fun invoke(countryCode: String): Flow<HomeState> {
+    operator fun invoke(countryCode: String): LiveData<HomeState> {
         return when (countryCode) {
-            "IN" -> getIndiaDataForUiUseCase()
-            else -> getOtherCountryDataForUiUseCase(countryCode)
+            "IN" -> getIndiaDataForUiUseCase().asLiveData()
+            else -> getOtherCountryDataForUiUseCase(countryCode).asLiveData()
         }
     }
 }

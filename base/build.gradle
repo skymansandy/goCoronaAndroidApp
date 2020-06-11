@@ -65,6 +65,8 @@ dependencies {
     //Kotlin
     api "androidx.core:core-ktx:$corektx"
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
 
     //Reactive
     api "android.arch.lifecycle:reactivestreams:$reactivestreams"
