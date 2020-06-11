@@ -13,8 +13,10 @@ class HomeViewModel @Inject constructor(
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<HomeState, HomeEvent>() {
 
+    var countryCode: String = "IN"
+
     init {
-        getCountryData("IN")
+        getCountryData(countryCode)
     }
 
     fun refreshStats() {
@@ -25,7 +27,7 @@ class HomeViewModel @Inject constructor(
         super.onUserEvent(viewEvent)
         when (viewEvent) {
             is HomeEvent.CountryClicked -> {
-                val countryCode = viewEvent.countryId
+                countryCode = viewEvent.countryId
                 getCountryData(countryCode)
             }
         }
