@@ -61,4 +61,5 @@ dependencies {
     implementation project(':base')
     implementation "me.grantland:autofittextview:$autofit"
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
+    implementation "io.coil-kt:coil:$coil"
 }

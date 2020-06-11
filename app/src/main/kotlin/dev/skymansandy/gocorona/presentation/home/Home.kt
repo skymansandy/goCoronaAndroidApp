@@ -11,14 +11,14 @@ sealed class HomeState {
         val recovered: StatCard,
         val deceased: StatCard,
         val growthTrendMaxScale: Float,
-        val stats: List<CovidStat>
+        val stats: List<CovidStat>?
     ) : HomeState()
 
     object Loading : HomeState()
 }
 
 sealed class HomeEvent {
-
+    data class CountryClicked(val countryId: String) : HomeEvent()
 }
 
 data class StatCard(

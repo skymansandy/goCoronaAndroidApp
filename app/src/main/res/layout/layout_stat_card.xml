@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:animationDuration="1000"
+                app:minValue="-2"
                 app:strokeColor="@color/color_active"
                 app:strokeWidth="@dimen/dp_1" />
 

@@ -25,6 +25,14 @@ class GoCoronaRepositoryImpl @Inject constructor(
         return stateDataDao.getStats()
     }
 
+    override fun getCountries(): Flow<List<CountryData>> {
+        return countryDataDao.getStats()
+    }
+
+    override fun getCountryData(countryCode: String): Flow<CountryData?> {
+        return countryDataDao.getCountry(countryCode)
+    }
+
     override suspend fun insertCountryApi(countryDbList: List<CountryData>?) {
         countryDataDao.insertAll(countryDbList)
     }

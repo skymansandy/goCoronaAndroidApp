@@ -8,6 +8,7 @@ data class CountryData(
     @PrimaryKey
     val countryCode: String,
     val name: String,
+    val flag: String,
     val active: String,
     val critical: String,
     val tests: String,

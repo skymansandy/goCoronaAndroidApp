@@ -3,6 +3,7 @@ package dev.skymansandy.gocorona.dagger.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dev.skymansandy.base.di.BaseModule
+import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
 import dev.skymansandy.gocorona.presentation.health.HealthFragment
 import dev.skymansandy.gocorona.presentation.home.HomeFragment
 import dev.skymansandy.gocorona.presentation.main.MainActivity
@@ -36,4 +37,7 @@ abstract class UiInjectorModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): SettingsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChooseCountryBottomSheet(): ChooseCountryBottomSheet
 }

@@ -13,6 +13,8 @@ interface GoCoronaRepository {
 
     //Room
     fun getStateStats(): Flow<List<StateData>>
+    fun getCountries(): Flow<List<CountryData>>
+    fun getCountryData(countryCode: String): Flow<CountryData?>
     suspend fun insertCountryApi(countryDbList: List<CountryData>?)
     suspend fun insertDistricts(districtDbList: List<DistrictData>?)
     suspend fun insertStates(stateDbList: List<StateData>)

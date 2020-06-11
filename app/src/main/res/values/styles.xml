@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="background">@drawable/rounded_background_grey_solid</item>
+    </style>
+</resources>

@@ -33,6 +33,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                             countryCode = if (it.countryInfo.iso2.isNullOrEmpty())
                                 it.country else it.countryInfo.iso2,
                             name = it.country,
+                            flag = it.countryInfo.flag,
                             active = it.active,
                             critical = it.critical,
                             tests = it.tests,

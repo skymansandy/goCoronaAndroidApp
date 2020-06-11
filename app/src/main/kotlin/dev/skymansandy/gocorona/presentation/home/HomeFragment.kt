@@ -9,6 +9,9 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
+import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
+import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
+import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
 import java.text.NumberFormat
@@ -30,6 +33,14 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
+        }
+
+        binding.tvPlace.setOnClickListener {
+            ChooseCountryBottomSheet.getInstance(object : CountryClickListener {
+                override fun onCountryClick(countryItem: CountryItem) {
+                    vm.onUserEvent(HomeEvent.CountryClicked(countryItem.code))
+                }
+            }).show(childFragmentManager, "")
         }
     }
 
@@ -71,7 +82,11 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     ) {
         snake.clear()
         snake.setMaxValue(growthTrendMaxScale)
-        stat.growthTrend.map { snake.addValue(it.toFloat()) }
+        snake.visibility = if (growthTrendMaxScale >= 0) {
+            stat.growthTrend.map { snake.addValue(it.toFloat()) }
+            View.VISIBLE
+        } else View.GONE
+
         tvCount.text = NumberFormat.getInstance().format(stat.count.toInt())
         tvDelta.visibility =
             if (stat.deltaCount.toInt() > 0) {
