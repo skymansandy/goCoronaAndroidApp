@@ -29,12 +29,15 @@
     <dimen name="dp_92">92dp</dimen>
     <dimen name="dp_96">96dp</dimen>
     <dimen name="dp_108">108dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
     <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_180">180dp</dimen>
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_240">240dp</dimen>
     <dimen name="dp_300">300dp</dimen>
 
+    <dimen name="sp_2">2sp</dimen>
+    <dimen name="sp_4">4sp</dimen>
     <dimen name="sp_6">6sp</dimen>
     <dimen name="sp_10">10sp</dimen>
     <dimen name="sp_12">12sp</dimen>

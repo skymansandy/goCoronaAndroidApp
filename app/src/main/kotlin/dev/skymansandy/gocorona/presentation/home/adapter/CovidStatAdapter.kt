@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.skymansandy.gocorona.databinding.ItemCovidStatRowBinding
+import java.text.NumberFormat
 import javax.inject.Inject
 
 class CovidStatAdapter(
@@ -46,6 +47,14 @@ class StatRowViewHolder(
     }
 
     fun bind(covidStat: CovidStat?) {
+        covidStat?.let {
+            val numberFormat = NumberFormat.getInstance()
+            binding.tvTitle.text = it.name
+            binding.tvConfirmed.text = numberFormat.format(it.confirmed)
+            binding.tvActive.text = numberFormat.format(it.active)
+            binding.tvRecovered.text = numberFormat.format(it.recovered)
+            binding.tvDeceased.text = numberFormat.format(it.deceased)
+        }
     }
 }
 
@@ -61,8 +70,8 @@ class StatRowDiffCallback @Inject constructor() : DiffUtil.ItemCallback<CovidSta
 
 data class CovidStat(
     val name: String = "",
-    val one: String = "",
-    val two: String = "",
-    val three: String = "",
-    val four: String = ""
+    val confirmed: Int = 0,
+    val active: Int = 0,
+    val recovered: Int = 0,
+    val deceased: Int = 0
 )
