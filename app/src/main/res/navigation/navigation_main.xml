@@ -6,9 +6,27 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@id/homeFragment"
         android:name="dev.skymansandy.gocorona.presentation.home.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@id/newsFragment"
+        android:name="dev.skymansandy.gocorona.presentation.news.NewsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@id/healthFragment"
+        android:name="dev.skymansandy.gocorona.presentation.health.HealthFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_health" />
+
+    <fragment
+        android:id="@id/settingsFragment"
+        android:name="dev.skymansandy.gocorona.presentation.settings.SettingsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

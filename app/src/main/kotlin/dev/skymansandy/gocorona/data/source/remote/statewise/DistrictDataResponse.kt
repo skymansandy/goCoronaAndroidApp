@@ -1,6 +1,6 @@
 package dev.skymansandy.gocorona.data.source.remote.statewise
 
-data class StateWiseDataResponse(
+data class DistrictDataResponse(
     val state: String,
     val statecode: String,
     val districtData: List<DistrictDataItem>

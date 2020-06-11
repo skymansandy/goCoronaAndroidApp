@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary_dark">#3700B3</color>
-    <color name="color_accent">#03DAC5</color>
-    <color name="color_primary">#6200EE</color>
+    <color name="color_primary">#192036</color>
+    <color name="color_primary_dark">#192036</color>
+    <color name="color_accent">#E53B56</color>
     <color name="color_primary_900">#E66200EE</color>
     <color name="color_primary_800">#CC6200EE</color>
     <color name="color_primary_700">#B36200EE</color>
@@ -107,7 +107,7 @@
     <color name="blue_violet">#8A2BE2</color>
     <color name="light_sky_blue">#87CEFA</color>
     <color name="sky_blue">#87CEEB</color>
-    <color name="gray">#808080</color>
+    <color name="gray">#6F819A</color>
     <color name="olive">#808000</color>
     <color name="purple">#800080</color>
     <color name="maroon">#800000</color>

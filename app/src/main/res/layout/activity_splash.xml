@@ -5,16 +5,28 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_primary"
+        android:fitsSystemWindows="true"
+        android:gravity="center"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/dp_64"
-            android:layout_height="@dimen/dp_64"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/ic_launcher" />
-    </RelativeLayout>
+            android:id="@+id/iv_covid_log"
+            android:layout_width="@dimen/dp_108"
+            android:layout_height="@dimen/dp_108"
+            android:src="@drawable/covid2" />
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="@string/app_name"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 </layout>

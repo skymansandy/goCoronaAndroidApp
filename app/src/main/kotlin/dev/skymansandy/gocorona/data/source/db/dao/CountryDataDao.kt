@@ -3,13 +3,14 @@ package dev.skymansandy.gocorona.data.source.db.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import dev.skymansandy.gocorona.data.source.db.entity.StateData
+import dev.skymansandy.gocorona.data.source.db.entity.CountryData
 
 @Dao
-interface StateDataDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(stateDbList: StateData)
+interface CountryDataDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(stateDbList: List<StateData>?)
+    suspend fun insert(countryDbList: CountryData)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(countryDbList: List<CountryData>?)
 }

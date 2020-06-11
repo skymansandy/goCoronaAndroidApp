@@ -1,6 +1,6 @@
 package dev.skymansandy.gocorona.data.source.remote.brief
 
-data class BriefDataResponse(
+data class StatesDataResponse(
     val cases_time_series: List<CasesTimeSeries>,
     val statewise: List<Statewise>,
     val tested: List<Tested>
