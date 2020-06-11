@@ -36,11 +36,13 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/et_country_search"
+            style="@style/AppTheme.SearchEditText"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:drawableStart="@drawable/ic_baseline_search_24"
-            android:hint="Search"
-            android:theme="@style/AppTheme.EditText" />
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:hint="Search" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -61,6 +63,16 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 tools:visibility="visible">
+
+                <include
+                    android:id="@+id/layout_worldwide"
+                    layout="@layout/item_country" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_0_5"
+                    android:layout_margin="@dimen/dp_8"
+                    android:background="@color/color_deceased" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_countries"

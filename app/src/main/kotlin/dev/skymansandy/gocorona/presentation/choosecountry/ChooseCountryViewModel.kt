@@ -18,4 +18,13 @@ class ChooseCountryViewModel @Inject constructor(
             }
         }
     }
+
+    override fun onUserEvent(viewEvent: ChooseCountryEvent) {
+        super.onUserEvent(viewEvent)
+        when (viewEvent) {
+            is ChooseCountryEvent.SearchQuery -> {
+                
+            }
+        }
+    }
 }

@@ -8,4 +8,5 @@
     <color name="color_row_text">#252E39</color>
     <color name="color_bg">#FDFFFE</color>
     <color name="edittext_bg">#EEEEF4</color>
+    <color name="color_search_text">#71778B</color>
 </resources>

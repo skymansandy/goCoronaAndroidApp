@@ -70,7 +70,6 @@ dependencies {
 
     //Reactive
     api "android.arch.lifecycle:reactivestreams:$reactivestreams"
-    api "io.reactivex.rxjava2:rxandroid:$rxandroid"
 
     //Logger
     api "com.jakewharton.timber:timber:$timber"
@@ -95,7 +94,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room"
 
 
-    //Co routines
+    //Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutines"
@@ -103,23 +102,13 @@ dependencies {
     //Lottie
     api "com.airbnb.android:lottie:$lottieversion"
 
-    //Glide
-    api "com.github.bumptech.glide:glide:$glide"
-    kapt "com.github.bumptech.glide:compiler:$glide"
-
     //CircularImageView
     api "de.hdodenhof:circleimageview:$circularimageview"
-
-    //ComponentsManager
-    api "com.github.valeryponomarenko.componentsmanager:androidx:$componentsmanagerversion"
-
-    //Coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     //TextDrawable
     api "com.amulyakhare:com.amulyakhare.textdrawable:$textdrawable"
 
+    //Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit"
     api "com.squareup.retrofit2:retrofit-mock:$retrofit"
     api "com.squareup.retrofit2:converter-gson:$retrofit"

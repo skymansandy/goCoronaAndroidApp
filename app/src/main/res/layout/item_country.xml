@@ -23,10 +23,11 @@
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_24"
             android:scaleType="fitCenter"
-            app:loadFlag="@{country.flag}"
+            app:loadFlagUrl="@{country.flag}"
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
+            android:id="@+id/tv_name"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

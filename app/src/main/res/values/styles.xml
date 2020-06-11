@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
-        <item name="background">@drawable/rounded_background_grey_solid</item>
+    <style name="AppTheme.SearchEditText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:drawableStart">@drawable/ic_baseline_search_24</item>
+        <item name="android:drawablePadding">@dimen/dp_8</item>
+        <item name="drawableTint">@color/color_search_text</item>
+        <item name="android:padding">@dimen/dp_8</item>
+        <item name="android:textColorHint">@color/color_search_text</item>
+        <item name="android:layout_margin">@dimen/dp_16</item>
+        <item name="android:background">@drawable/rounded_background_grey_solid</item>
+        <item name="android:textSize">@dimen/sp_16</item>
     </style>
 </resources>

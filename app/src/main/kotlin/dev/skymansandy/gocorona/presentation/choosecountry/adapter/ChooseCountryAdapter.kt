@@ -3,6 +3,7 @@ package dev.skymansandy.gocorona.presentation.choosecountry.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -73,9 +74,17 @@ data class CountryItem(
     val flag: String = ""
 )
 
-@BindingAdapter("loadFlag")
+@BindingAdapter("loadFlagUrl")
 fun ImageView.loadFlag(flagUrl: String) {
     load(flagUrl) {
+        crossfade(true)
+        placeholder(R.mipmap.ic_launcher)
+    }
+}
+
+@BindingAdapter("loadFlagRes")
+fun ImageView.loadFlagRes(@DrawableRes src: Int) {
+    load(src) {
         crossfade(true)
         placeholder(R.mipmap.ic_launcher)
     }
