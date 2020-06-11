@@ -75,10 +75,12 @@ data class CountryItem(
 )
 
 @BindingAdapter("loadFlagUrl")
-fun ImageView.loadFlag(flagUrl: String) {
-    load(flagUrl) {
-        crossfade(true)
-        placeholder(R.mipmap.ic_launcher)
+fun ImageView.loadFlag(flagUrl: String?) {
+    flagUrl?.let {
+        load(it) {
+            crossfade(true)
+            placeholder(R.mipmap.ic_launcher)
+        }
     }
 }
 

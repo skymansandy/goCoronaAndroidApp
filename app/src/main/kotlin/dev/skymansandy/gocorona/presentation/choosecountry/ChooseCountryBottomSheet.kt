@@ -11,7 +11,6 @@ import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItemAdapter
-import dev.skymansandy.gocorona.presentation.choosecountry.adapter.loadFlagRes
 
 
 class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_choose_country) :
@@ -45,7 +44,7 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
 
     private fun setupWorldRow() {
         binding.layoutWorldwide.tvName.text = "Worldwide"
-        binding.layoutWorldwide.ivFlag.loadFlagRes(R.drawable.world)
+        binding.layoutWorldwide.ivFlag.setImageResource(R.drawable.world)
         binding.layoutWorldwide.root.setOnClickListener {
             Toast.makeText(activity, "Show Worldwide data", Toast.LENGTH_SHORT).show()
         }
