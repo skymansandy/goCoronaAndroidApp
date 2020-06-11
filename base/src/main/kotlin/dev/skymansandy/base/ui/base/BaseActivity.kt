@@ -1,7 +1,10 @@
 package dev.skymansandy.base.ui.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -16,6 +19,7 @@ import dev.skymansandy.base.util.ui.SnackBarUtil
 import dev.skymansandy.base.util.ui.ToastUtil
 import timber.log.Timber
 import javax.inject.Inject
+
 
 abstract class BaseActivity<T : ViewDataBinding,
         STATE, EVENT, VM : BaseViewModel<STATE, EVENT>>

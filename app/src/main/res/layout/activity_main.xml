@@ -30,8 +30,8 @@
                 android:id="@+id/bottom_nav_view"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:itemIconTint="@color/gray"
-                app:itemTextColor="@color/gray"
+                app:itemIconTint="@drawable/state_color"
+                app:itemTextColor="@drawable/state_color"
                 app:menu="@menu/menu_home_bottom" />
         </LinearLayout>
 

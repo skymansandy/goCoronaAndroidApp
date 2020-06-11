@@ -6,10 +6,9 @@
         <item name="colorAccent">@color/color_accent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="textInputStyle">@style/AppTheme.EditText.OutlinedBox</item>
-
-        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.DayNight.BottomSheetDialog">

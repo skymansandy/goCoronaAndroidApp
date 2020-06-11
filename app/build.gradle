@@ -59,4 +59,6 @@ dependencies {
     implementation crashlyticsDependencies.values()
 
     implementation project(':base')
+
+    implementation "com.txusballesteros:snake:$snakeview"
 }

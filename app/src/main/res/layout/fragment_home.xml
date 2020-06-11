@@ -1,20 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/layout_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_240"
+                android:background="@color/color_primary_dark">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_64"
+                    android:layout_height="@dimen/dp_64"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:layout_marginEnd="-16dp"
+                    android:rotation="27"
+                    android:src="@drawable/covid2" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_64"
+                    android:layout_height="@dimen/dp_64"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dp_24"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/covid2" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_108"
+                    android:layout_height="@dimen/dp_108"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="-24dp"
+                    android:rotation="173"
+                    android:src="@drawable/covid2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_240"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_24">
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_8"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:drawablePadding="@dimen/dp_8"
+                        android:drawableTint="@color/white"
+                        android:text="India"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/TextAppearance.MaterialComponents.Body2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last updated 1 hour ago"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_stat_cards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_banner"
+                android:layout_marginTop="-80dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/layout_stat_card" />
+
+                    <Space
+                        android:layout_width="@dimen/dp_12"
+                        android:layout_height="match_parent" />
+
+                    <include layout="@layout/layout_stat_card" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/layout_stat_card" />
+
+                    <Space
+                        android:layout_width="@dimen/dp_12"
+                        android:layout_height="match_parent" />
+
+                    <include layout="@layout/layout_stat_card" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_stat_cards"
+                android:layout_margin="@dimen/dp_16"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                android:paddingStart="@dimen/dp_16"
+                android:paddingEnd="@dimen/dp_16"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="6"
+                tools:listitem="@layout/item_covid_stat_row" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
