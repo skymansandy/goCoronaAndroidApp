@@ -7,6 +7,7 @@ import dev.skymansandy.gocorona.data.source.db.entity.CountryData
 import dev.skymansandy.gocorona.data.source.db.entity.DistrictData
 import dev.skymansandy.gocorona.data.source.db.entity.StateData
 import dev.skymansandy.gocorona.data.source.remote.GoCoronaApi
+import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
 import kotlinx.coroutines.flow.Flow
@@ -32,12 +33,20 @@ class GoCoronaRepositoryImpl @Inject constructor(
         districtDataDao.insertAll(districtDbList)
     }
 
+    override suspend fun insertStates(stateDbList: List<StateData>) {
+        stateDataDao.insertAll(stateDbList)
+    }
+
     override fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>> {
         return goCoronaApi.getCountryWiseData()
     }
 
     override fun fetchDistrictData(): Call<List<DistrictDataResponse>> {
         return goCoronaApi.getDistrictData()
+    }
+
+    override fun fetchStatesData(): Call<StatesDataResponse> {
+        return goCoronaApi.getStatesData()
     }
 
 }
