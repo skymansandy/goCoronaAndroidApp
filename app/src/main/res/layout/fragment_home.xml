@@ -1,172 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_bg"
-            android:orientation="vertical">
+            android:fillViewport="true">
 
             <RelativeLayout
-                android:id="@+id/layout_banner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_240"
-                android:background="@color/color_primary_dark">
+                android:layout_height="match_parent"
+                android:background="@color/color_bg"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="@dimen/dp_64"
-                    android:layout_height="@dimen/dp_64"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginEnd="-16dp"
-                    android:rotation="27"
-                    android:src="@drawable/covid2" />
+                <RelativeLayout
+                    android:id="@+id/layout_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_280"
+                    android:background="@color/color_primary_dark">
 
-                <ImageView
-                    android:layout_width="@dimen/dp_64"
-                    android:layout_height="@dimen/dp_64"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/covid2" />
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="-16dp"
+                        android:rotation="27"
+                        android:src="@drawable/covid2" />
 
-                <ImageView
-                    android:layout_width="@dimen/dp_108"
-                    android:layout_height="@dimen/dp_108"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="-24dp"
-                    android:rotation="173"
-                    android:src="@drawable/covid2" />
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/covid2" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_108"
+                        android:layout_height="@dimen/dp_108"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="-24dp"
+                        android:rotation="173"
+                        android:src="@drawable/covid2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_240"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_24">
+
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_place"
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:drawablePadding="@dimen/dp_8"
+                            android:drawableTint="@color/white"
+                            android:text="India"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_last_updated"
+                            style="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Last updated 1 hour ago"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_stats"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_240"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/layout_banner"
+                    android:layout_marginTop="-130dp"
                     android:orientation="vertical"
-                    android:padding="@dimen/dp_24">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body1"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/layout_active_cases"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@color/white" />
+                        android:paddingStart="@dimen/dp_24"
+                        android:paddingEnd="@dimen/dp_24">
 
-                    <TextView
-                        android:id="@+id/tv_place"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp_4"
+                            app:cardElevation="@dimen/dp_16">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="@dimen/dp_16">
+
+                                <TextView
+                                    style="@style/TextAppearance.MaterialComponents.Overline"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Active Cases"
+                                    android:textColor="@color/color_deceased"
+                                    android:textStyle="bold" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_active_count"
+                                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="753"
+                                    android:textColor="@color/color_active"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout_stat_cards"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_8"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:drawablePadding="@dimen/dp_8"
-                        android:drawableTint="@color/white"
-                        android:text="India"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/dp_24"
+                        android:paddingEnd="@dimen/dp_24">
 
-                    <TextView
-                        android:id="@+id/tv_last_updated"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <include
+                                android:id="@+id/statCardConfirmed"
+                                layout="@layout/layout_stat_card" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <include
+                                android:id="@+id/statCardRecovered"
+                                layout="@layout/layout_stat_card" />
+
+                            <Space
+                                android:layout_width="@dimen/dp_12"
+                                android:layout_height="match_parent" />
+
+                            <include
+                                android:id="@+id/statCardDeceased"
+                                layout="@layout/layout_stat_card" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <include
+                        android:id="@+id/layout_stat_list"
+                        layout="@layout/layout_stat_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_16" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/layout_banner"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ProgressBar
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Last updated 1 hour ago"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/layout_stats"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/layout_banner"
-                android:layout_marginTop="-80dp"
-                android:visibility="gone"
-                tools:visibility="visible">
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout_stat_cards"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <include
-                            android:id="@+id/statCardConfirmed"
-                            layout="@layout/layout_stat_card" />
-
-                        <Space
-                            android:layout_width="@dimen/dp_12"
-                            android:layout_height="match_parent" />
-
-                        <include
-                            android:id="@+id/statCardActive"
-                            layout="@layout/layout_stat_card" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_12"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <include
-                            android:id="@+id/statCardRecovered"
-                            layout="@layout/layout_stat_card" />
-
-                        <Space
-                            android:layout_width="@dimen/dp_12"
-                            android:layout_height="match_parent" />
-
-                        <include
-                            android:id="@+id/statCardDeceased"
-                            layout="@layout/layout_stat_card" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <include
-                    android:id="@+id/layout_stat_list"
-                    layout="@layout/layout_stat_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/layout_stat_cards"
-                    android:layout_margin="@dimen/dp_16" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout_loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/layout_banner"
-                android:visibility="gone"
-                tools:visibility="gone">
-
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-            </RelativeLayout>
-
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
 </layout>

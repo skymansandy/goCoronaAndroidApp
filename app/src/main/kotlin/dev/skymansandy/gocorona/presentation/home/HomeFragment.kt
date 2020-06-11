@@ -27,6 +27,10 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.layoutStatList.setup(statAdapter, "State/UT")
+
+        binding.swipe.setOnRefreshListener {
+            vm.refreshStats()
+        }
     }
 
     override fun renderViewState(newState: HomeState) {
@@ -35,16 +39,19 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
         when (newState) {
             is HomeState.Loading -> {
+                binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
             is HomeState.State -> {
+                binding.swipe.isRefreshing = false
                 binding.layoutStats.visibility = View.VISIBLE
 
                 with(binding) {
                     tvPlace.text = newState.placeName
                     tvLastUpdated.text = newState.lastUpdated
+                    tvActiveCount.text =
+                        NumberFormat.getInstance().format(newState.active.count.toInt())
                     statCardConfirmed.showStatCard(newState.confirmed, newState.growthTrendMaxScale)
-                    statCardActive.showStatCard(newState.active, newState.growthTrendMaxScale)
                     statCardRecovered.showStatCard(newState.recovered, newState.growthTrendMaxScale)
                     statCardDeceased.showStatCard(newState.deceased, newState.growthTrendMaxScale)
                     layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
@@ -81,13 +88,6 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                     tvDelta.compoundDrawables[2]?.setTint(confirmedColor)
                     tvDelta.compoundDrawables[2]?.setTint(confirmedColor)
                     snake.setStrokeColor(confirmedColor)
-                }
-                binding.statCardActive -> {
-                    tvTitle.text = "Active"
-                    tvCount.setTextColor(activeColor)
-                    tvDelta.setTextColor(activeColor)
-                    tvDelta.compoundDrawables[2]?.setTint(activeColor)
-                    snake.setStrokeColor(activeColor)
                 }
                 binding.statCardRecovered -> {
                     tvTitle.text = "Recovered"
