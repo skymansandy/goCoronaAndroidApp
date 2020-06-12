@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/covid1"
-        android:title="Home" />
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="India" />
 
     <item
-        android:id="@+id/newsFragment"
-        android:icon="@drawable/ic_news_24"
-        android:title="News" />
+        android:id="@+id/worldFragment"
+        android:icon="@drawable/ic_globe"
+        android:title="Worldwide" />
 
     <item
         android:id="@+id/healthFragment"

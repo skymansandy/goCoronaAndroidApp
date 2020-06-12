@@ -1,8 +1,8 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.home.HomeState
 import dev.skymansandy.gocorona.presentation.home.StatCard
+import dev.skymansandy.gocorona.presentation.world.WorldState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -13,9 +13,9 @@ class GetWorldDataForUiUseCase @Inject constructor(
     private val goCoronaRepository: GoCoronaRepository
 ) {
 
-    operator fun invoke(): Flow<HomeState> {
+    operator fun invoke(): Flow<WorldState> {
         return flow homeState@{
-            emit(HomeState.Loading)
+            emit(WorldState.Loading)
             delay(1000)
             val countriesStat = goCoronaRepository.getWorldData()
             countriesStat.collect {
@@ -44,7 +44,7 @@ class GetWorldDataForUiUseCase @Inject constructor(
                         )
 
                     emit(
-                        HomeState.NonIndiaStats(
+                        WorldState.WorldStats(
                             placeName = "Worldwide",
                             lastUpdated = worldData.lastUpdatedUiStr,
                             confirmed = confirmedStat,

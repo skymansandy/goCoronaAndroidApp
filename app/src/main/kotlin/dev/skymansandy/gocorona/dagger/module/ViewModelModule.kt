@@ -10,7 +10,7 @@ import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataViewModel
 import dev.skymansandy.gocorona.presentation.health.HealthViewModel
 import dev.skymansandy.gocorona.presentation.home.HomeViewModel
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
-import dev.skymansandy.gocorona.presentation.news.NewsViewModel
+import dev.skymansandy.gocorona.presentation.world.WorldViewModel
 import dev.skymansandy.gocorona.presentation.settings.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
 import dev.skymansandy.gocorona.presentation.statedata.StateDataViewModel
@@ -45,8 +45,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(NewsViewModel::class)
-    abstract fun bindNewsViewModel(vm: NewsViewModel): ViewModel
+    @ViewModelKey(WorldViewModel::class)
+    abstract fun bindNewsViewModel(vm: WorldViewModel): ViewModel
 
     @Binds
     @IntoMap

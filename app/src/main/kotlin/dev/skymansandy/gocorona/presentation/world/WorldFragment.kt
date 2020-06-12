@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.home
+package dev.skymansandy.gocorona.presentation.world
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -6,17 +6,23 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
-import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
+import dev.skymansandy.gocorona.databinding.FragmentWorldBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
+import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
+import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
+import dev.skymansandy.gocorona.presentation.home.HomeFragmentDirections
+import dev.skymansandy.gocorona.presentation.home.StatCard
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import org.eazegraph.lib.charts.PieChart
+import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
 import kotlin.math.absoluteValue
 
-class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
-    BaseFragment<FragmentHomeBinding, HomeState, HomeEvent, HomeViewModel>(),
+class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
+    BaseFragment<FragmentWorldBinding, WorldState, WorldEvent, WorldViewModel>(),
     CovidStatClickListener {
 
     private val confirmedColor get() = ContextCompat.getColor(activity!!, R.color.color_confirmed)
@@ -38,39 +44,49 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
         }
+
+        binding.tvPlace.setOnClickListener {
+            ChooseCountryBottomSheet.getInstance(object : CountryClickListener {
+                override fun onCountryClick(covidStat: CovidStat) {
+                    binding.tvPlace.text = covidStat.name
+                    vm.onUserEvent(WorldEvent.CountryClicked(covidStat.code))
+                }
+            }).show(childFragmentManager, "")
+        }
     }
 
-    override fun renderViewState(newState: HomeState) {
+    override fun renderViewState(newState: WorldState) {
         binding.layoutLoading.visibility = View.GONE
         binding.statsIndia.root.visibility = View.GONE
+        binding.statsNonIndia.root.visibility = View.GONE
         binding.swipe.isRefreshing = false
 
         when (newState) {
-            is HomeState.Loading -> {
+            is WorldState.Loading -> {
                 binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
-            is HomeState.IndiaStats -> {
-                binding.statsIndia.layoutStats.visibility = View.VISIBLE
+            is WorldState.WorldStats -> {
+                binding.swipe.isRefreshing = false
+                binding.statsNonIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
-                binding.tvLastUpdated.text =
-                    String.format("Last synced at %s", newState.lastUpdated)
-                binding.statsIndia.layoutStatList.setup(statAdapter, "State/UT")
-                with(binding.statsIndia) {
+                binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
+                with(binding.statsNonIndia) {
                     tvActiveCount.text =
-                        NumberFormat.getInstance().format(newState.active.count.toInt())
-                    statCardConfirmed.showStatCard(newState.confirmed, newState.growthTrendMaxScale)
-                    statCardRecovered.showStatCard(newState.recovered, newState.growthTrendMaxScale)
-                    statCardDeceased.showStatCard(newState.deceased, newState.growthTrendMaxScale)
-                    layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
-                        View.GONE
-                    } else {
-                        statAdapter.submitList(newState.stats)
-                        View.VISIBLE
-                    }
+                        java.text.NumberFormat.getInstance().format(newState.active.count.toInt())
+                    tvConfirmedCount.text =
+                        java.text.NumberFormat.getInstance()
+                            .format(newState.confirmed.count.toInt())
+                    tvRecoveredCount.text =
+                        java.text.NumberFormat.getInstance()
+                            .format(newState.recovered.count.toInt())
+                    tvDeceasedCount.text =
+                        java.text.NumberFormat.getInstance().format(newState.deceased.count.toInt())
+                    pieChart.loadData(newState)
                 }
             }
         }
@@ -151,6 +167,20 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         statListHeader.tvConfirmed.setTextColor(confirmedColor)
         statListHeader.tvRecovered.setTextColor(recoveredColor)
         statListHeader.tvDeceased.setTextColor(deceasedColor)
+    }
+
+    private fun PieChart.loadData(countryData: WorldState.WorldStats) {
+        clearChart()
+        addPieSlice(
+            PieModel("Active", countryData.active.count.toFloat(), activeColor)
+        )
+        addPieSlice(
+            PieModel("Recovered", countryData.recovered.count.toFloat(), recoveredColor)
+        )
+        addPieSlice(
+            PieModel("Deceased", countryData.deceased.count.toFloat(), deceasedColor)
+        )
+        startAnimation()
     }
 
     override fun onStateClicked(covidStat: CovidStat) {

@@ -32,17 +32,17 @@
         android:id="@+id/districtDataFragment"
         android:name="dev.skymansandy.gocorona.presentation.districtdata.DistrictDataFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_district_data" >
+        tools:layout="@layout/fragment_district_data">
         <argument
             android:name="district"
             app:argType="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
     </fragment>
 
     <fragment
-        android:id="@id/newsFragment"
-        android:name="dev.skymansandy.gocorona.presentation.news.NewsFragment"
+        android:id="@id/worldFragment"
+        android:name="dev.skymansandy.gocorona.presentation.world.WorldFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_world" />
 
     <fragment
         android:id="@id/healthFragment"

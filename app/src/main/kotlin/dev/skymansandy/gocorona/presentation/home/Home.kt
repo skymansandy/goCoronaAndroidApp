@@ -14,15 +14,6 @@ sealed class HomeState {
         val stats: List<CovidStat>?
     ) : HomeState()
 
-    data class NonIndiaStats(
-        val placeName: String,
-        val lastUpdated: String,
-        val confirmed: StatCard,
-        val active: StatCard,
-        val recovered: StatCard,
-        val deceased: StatCard
-    ) : HomeState()
-
     object Loading : HomeState()
 }
 
