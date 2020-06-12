@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="AppTheme.TransparentNavBar" parent="AppTheme">
+        <item name="android:navigationBarColor">@color/color_primary_dark</item>
+    </style>
+
     <style name="AppTheme.SearchEditText">
         <item name="android:textStyle">bold</item>
         <item name="android:inputType">textCapWords</item>

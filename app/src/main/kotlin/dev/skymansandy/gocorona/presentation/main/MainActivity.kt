@@ -40,7 +40,7 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
             else {
                 pressedBackOnce = true
                 vm.showToast(getString(R.string.press_back_again_to_exit))
-                backPressHandler.postDelayed(backPressRunnable, 2000)
+                backPressHandler.postDelayed(backPressRunnable, 3000)
             }
         } else {
             super.onBackPressed()
