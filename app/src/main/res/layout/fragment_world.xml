@@ -31,6 +31,22 @@
                     android:layout_height="@dimen/dp_280"
                     android:background="@color/color_primary_dark">
 
+                    <TextView
+                        android:id="@+id/iv_search_countries"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:layout_marginEnd="@dimen/dp_24"
+                        android:background="?selectableItemBackground"
+                        android:drawableStart="@drawable/ic_baseline_search_12"
+                        android:drawablePadding="@dimen/dp_4"
+                        android:padding="@dimen/dp_8"
+                        android:text="@string/search_country"
+                        android:textColor="@color/white"
+                        app:drawableTint="@color/white" />
+
                     <ImageView
                         android:layout_width="@dimen/dp_64"
                         android:layout_height="@dimen/dp_64"
@@ -63,34 +79,13 @@
                         android:orientation="vertical"
                         android:padding="@dimen/dp_24">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Body1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/TextAppearance.MaterialComponents.Body1"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/app_name"
-                                android:textColor="@color/white" />
-
-                            <TextView
-                                android:id="@+id/iv_search_countries"
-                                style="@style/TextAppearance.MaterialComponents.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/dp_12"
-                                android:background="?selectableItemBackground"
-                                android:drawableStart="@drawable/ic_baseline_search_12"
-                                android:drawablePadding="@dimen/dp_4"
-                                android:padding="@dimen/dp_8"
-                                android:text="@string/search_country"
-                                android:textColor="@color/white"
-                                app:drawableTint="@color/white" />
-
-                        </LinearLayout>
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:text="@string/app_name"
+                            android:textColor="@color/white" />
 
                         <TextView
                             style="@style/TextAppearance.MaterialComponents.Headline5"
