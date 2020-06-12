@@ -17,7 +17,7 @@ data class WorldEntity(
     val active: Int,
     val critical: Int,
     val tests: Int,
-    val testsPerOneMillion: Int,
+    val testsPerOneMillion: String,
     val population: Long,
     val updated: Long
 ) {

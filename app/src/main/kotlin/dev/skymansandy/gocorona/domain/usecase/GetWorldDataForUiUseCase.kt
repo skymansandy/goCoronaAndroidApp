@@ -23,7 +23,6 @@ class GetWorldDataForUiUseCase @Inject constructor(
             worldDetails.combine(countryStats) { details, stat ->
                 details?.let {
                     stat.let { countries ->
-
                         val countryDataStats = arrayListOf<CovidStat>()
                         for (district in countries) {
                             countryDataStats += CovidStat(
@@ -36,21 +35,19 @@ class GetWorldDataForUiUseCase @Inject constructor(
                             )
                         }
 
-                        it.let {
-                            emit(
-                                WorldState.WorldStats(
-                                    lastUpdated = it.lastUpdatedUiStr,
-                                    active = it.active,
-                                    confirmed = it.cases,
-                                    confirmedToday = it.todayCases,
-                                    recovered = it.recovered,
-                                    recoveredToday = it.todayRecovered,
-                                    deaths = it.deaths,
-                                    deathsToday = it.todayDeaths,
-                                    stats = countryDataStats
-                                )
+                        emit(
+                            WorldState.WorldStats(
+                                lastUpdated = details.lastUpdatedUiStr,
+                                active = details.active,
+                                confirmed = details.cases,
+                                confirmedToday = details.todayCases,
+                                recovered = details.recovered,
+                                recoveredToday = details.todayRecovered,
+                                deaths = details.deaths,
+                                deathsToday = details.todayDeaths,
+                                stats = countryDataStats
                             )
-                        }
+                        )
                     }
                 }
             }.collect()

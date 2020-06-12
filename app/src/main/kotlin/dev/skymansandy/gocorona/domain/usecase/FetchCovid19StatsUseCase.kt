@@ -163,7 +163,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                                 active = worldData.active ?: 0,
                                 critical = worldData.critical ?: 0,
                                 tests = worldData.tests ?: 0,
-                                testsPerOneMillion = worldData.testsPerOneMillion ?: 0,
+                                testsPerOneMillion = worldData.testsPerOneMillion,
                                 population = worldData.population ?: 0,
                                 updated = System.currentTimeMillis()
                             )
