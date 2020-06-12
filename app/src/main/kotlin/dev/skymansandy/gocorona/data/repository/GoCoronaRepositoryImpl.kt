@@ -34,7 +34,7 @@ class GoCoronaRepositoryImpl @Inject constructor(
     }
 
     override fun getFilteredCountries(searchQuery: String): Flow<List<CountryEntity>?> {
-        return countryDataDao.getFilteredStats("%$searchQuery%")
+        return countryDataDao.getFilteredCountries("%$searchQuery%")
     }
 
     override fun getCountryData(countryCode: String): Flow<CountryEntity?> {

@@ -16,7 +16,7 @@ interface DistrictDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(districtDbList: List<DistrictEntity>?)
 
-    @Query("SELECT * from DistrictData where stateCode=:stateCode")
+    @Query("SELECT * from DistrictData where stateCode=:stateCode  ORDER BY cases DESC")
     fun getDistrictsForState(stateCode: String): Flow<List<DistrictEntity>?>
 
     @Query("SELECT * from DistrictData where code=:districtCode")
