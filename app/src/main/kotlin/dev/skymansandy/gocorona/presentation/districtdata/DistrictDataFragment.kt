@@ -72,7 +72,7 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                     tvRecoveredDelta.visibility = View.VISIBLE
                     showDelta(tvRecoveredDelta, newState.recoveredToday.toInt())
                     tvDeceasedDelta.visibility = View.VISIBLE
-                    showDelta(tvDeceasedCount, newState.deathsToday.toInt())
+                    showDelta(tvDeceasedDelta, newState.deathsToday.toInt())
 
                     pieChart.loadData(
                         newState.active.toInt(),
