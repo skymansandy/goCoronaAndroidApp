@@ -27,7 +27,7 @@
                 style="@style/TextAppearance.MaterialComponents.Overline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirmed"
+                android:text="@string/confirmed"
                 android:textColor="@color/color_deceased"
                 android:textStyle="bold" />
 

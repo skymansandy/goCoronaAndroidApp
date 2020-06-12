@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -34,7 +35,7 @@
                         android:layout_width="@dimen/dp_64"
                         android:layout_height="@dimen/dp_64"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginTop="@dimen/dp_80"
                         android:layout_marginEnd="-16dp"
                         android:rotation="27"
                         android:src="@drawable/covid2" />
@@ -62,25 +63,42 @@
                         android:orientation="vertical"
                         android:padding="@dimen/dp_24">
 
-                        <TextView
-                            style="@style/TextAppearance.MaterialComponents.Body1"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textColor="@color/white" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/TextAppearance.MaterialComponents.Body1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/app_name"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/iv_search_countries"
+                                style="@style/TextAppearance.MaterialComponents.Caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dp_12"
+                                android:background="?selectableItemBackground"
+                                android:drawableStart="@drawable/ic_baseline_search_12"
+                                android:drawablePadding="@dimen/dp_4"
+                                android:padding="@dimen/dp_8"
+                                android:text="@string/search_country"
+                                android:textColor="@color/white"
+                                app:drawableTint="@color/white" />
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/tv_place"
                             style="@style/TextAppearance.MaterialComponents.Headline5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_8"
                             android:layout_marginEnd="@dimen/dp_36"
-                            android:background="?selectableItemBackground"
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                            android:drawablePadding="@dimen/dp_8"
-                            android:drawableTint="@color/white"
-                            android:text="India"
+                            android:text="@string/worldwide"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -97,16 +115,16 @@
                 </RelativeLayout>
 
                 <include
-                    android:id="@+id/statsIndia"
-                    layout="@layout/stats_india"
-                    android:visibility="gone"
-                    tools:visibility="gone" />
+                    android:id="@+id/statsWorld"
+                    layout="@layout/stats_non_india" />
 
                 <include
-                    android:id="@+id/statsNonIndia"
-                    layout="@layout/stats_non_india"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
+                    android:id="@+id/layout_stat_list"
+                    layout="@layout/layout_stat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/statsWorld"
+                    android:layout_margin="@dimen/dp_16" />
 
                 <RelativeLayout
                     android:id="@+id/layout_loading"

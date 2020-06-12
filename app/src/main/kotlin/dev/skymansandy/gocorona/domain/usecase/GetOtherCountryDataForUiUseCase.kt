@@ -1,8 +1,7 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.home.StatCard
-import dev.skymansandy.gocorona.presentation.world.WorldState
+import dev.skymansandy.gocorona.presentation.countrydata.CountryDataState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -13,44 +12,24 @@ class GetOtherCountryDataForUiUseCase @Inject constructor(
     private val goCoronaRepository: GoCoronaRepository
 ) {
 
-    operator fun invoke(countryCode: String): Flow<WorldState> {
+    operator fun invoke(countryCode: String): Flow<CountryDataState> {
         return flow homeState@{
-            emit(WorldState.Loading)
+            emit(CountryDataState.Loading)
             delay(1000)
             val countriesStat = goCoronaRepository.getCountryData(countryCode)
             countriesStat.collect {
                 it?.let {
-                    val countryData = it
-
-                    val confirmedStat =
-                        StatCard(
-                            countryData.cases, countryData.casesToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val activeStat =
-                        StatCard(
-                            countryData.active, "0",
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val recoveredStat =
-                        StatCard(
-                            countryData.recovered, countryData.recoveredToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val deceasedStat =
-                        StatCard(
-                            countryData.deaths, countryData.deathsToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-
                     emit(
-                        WorldState.WorldStats(
-                            placeName = countryData.name,
-                            lastUpdated = countryData.lastUpdatedUiStr,
-                            confirmed = confirmedStat,
-                            active = activeStat,
-                            recovered = recoveredStat,
-                            deceased = deceasedStat
+                        CountryDataState.CountryStats(
+                            placeName = it.name,
+                            lastUpdated = it.lastUpdatedUiStr,
+                            active = it.active,
+                            confirmed = it.cases,
+                            confirmedToday = it.casesToday,
+                            recovered = it.recovered,
+                            recoveredToday = it.recoveredToday,
+                            deaths = it.deaths,
+                            deathsToday = it.deathsToday
                         )
                     )
                 }

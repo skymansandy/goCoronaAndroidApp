@@ -37,7 +37,6 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 binding.layoutLoading.visibility = View.VISIBLE
             }
             is HomeState.IndiaStats -> {
-                binding.tvPlace.text = newState.placeName
                 binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)

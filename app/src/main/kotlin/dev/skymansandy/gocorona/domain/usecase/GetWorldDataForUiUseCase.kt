@@ -17,8 +17,7 @@ class GetWorldDataForUiUseCase @Inject constructor(
         return flow homeState@{
             emit(WorldState.Loading)
             delay(1000)
-            val countriesStat = goCoronaRepository.getWorldData()
-            countriesStat.collect {
+            goCoronaRepository.getWorldData().collect {
                 it?.let {
                     val worldData = it
 
@@ -45,7 +44,6 @@ class GetWorldDataForUiUseCase @Inject constructor(
 
                     emit(
                         WorldState.WorldStats(
-                            placeName = "Worldwide",
                             lastUpdated = worldData.lastUpdatedUiStr,
                             confirmed = confirmedStat,
                             active = activeStat,

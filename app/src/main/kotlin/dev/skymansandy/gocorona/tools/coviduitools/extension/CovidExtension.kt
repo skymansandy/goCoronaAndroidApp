@@ -18,13 +18,17 @@ fun TextView.showLocaleNumber(number: Int) {
 fun PieChart.loadData(covidRes: CovidRes, active: Int, recovered: Int, deceased: Int) {
     clearChart()
     addPieSlice(
-        PieModel("Active", active.toFloat(), covidRes.activeColor)
+        PieModel(resources.getString(R.string.active), active.toFloat(), covidRes.activeColor)
     )
     addPieSlice(
-        PieModel("Recovered", recovered.toFloat(), covidRes.recoveredColor)
+        PieModel(
+            resources.getString(R.string.recovered),
+            recovered.toFloat(),
+            covidRes.recoveredColor
+        )
     )
     addPieSlice(
-        PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
+        PieModel(resources.getString(R.string.deceased), deceased.toFloat(), covidRes.deceasedColor)
     )
     startAnimation()
 }

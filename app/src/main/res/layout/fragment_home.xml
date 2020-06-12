@@ -70,13 +70,12 @@
                             android:textColor="@color/white" />
 
                         <TextView
-                            android:id="@+id/tv_place"
                             style="@style/TextAppearance.MaterialComponents.Headline5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_8"
                             android:layout_marginEnd="@dimen/dp_36"
-                            android:text="India"
+                            android:text="@string/india"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 

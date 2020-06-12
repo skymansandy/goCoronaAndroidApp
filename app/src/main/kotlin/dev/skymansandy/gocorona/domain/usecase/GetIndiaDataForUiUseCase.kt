@@ -44,26 +44,26 @@ class GetIndiaDataForUiUseCase @Inject constructor(
 
                     val confirmedStat =
                         StatCard(
-                            totalStat.cases ?: "0",
-                            totalStat.casesToday ?: "0",
+                            totalStat.cases,
+                            totalStat.casesToday,
                             arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
                         )
                     val activeStat =
                         StatCard(
-                            totalStat.active ?: "0",
+                            totalStat.active,
                             "0",
                             arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
                         )
                     val recoveredStat =
                         StatCard(
-                            totalStat.recovered ?: "0",
-                            totalStat.recoveredToday ?: "0",
+                            totalStat.recovered,
+                            totalStat.recoveredToday,
                             arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
                         )
                     val deceasedStat =
                         StatCard(
-                            totalStat.deaths ?: "0",
-                            totalStat.deathsToday ?: "0",
+                            totalStat.deaths,
+                            totalStat.deathsToday,
                             arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
                         )
                     val maxScale = arrayListOf(

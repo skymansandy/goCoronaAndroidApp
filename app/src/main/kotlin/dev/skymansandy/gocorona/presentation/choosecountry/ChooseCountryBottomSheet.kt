@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.View
 import dev.skymansandy.base.ui.base.BaseDialogFragment
 import dev.skymansandy.gocorona.R
-import dev.skymansandy.gocorona.constant.AppConstant
 import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItemAdapter
@@ -31,7 +30,6 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupWorldWideRow()
         binding.ivExit.setOnClickListener { dismiss() }
         binding.rvCountries.adapter = countryAdapter
 
@@ -50,17 +48,6 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
                 }
             }
         })
-    }
-
-    private fun setupWorldWideRow() {
-        binding.layoutWorldwide.setOnClickListener {
-            onCountryClick(
-                CovidStat(
-                    code = AppConstant.WORLDWIDE,
-                    name = "Worldwide"
-                )
-            )
-        }
     }
 
     override fun renderViewState(newState: ChooseCountryState) {

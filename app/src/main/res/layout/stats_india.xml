@@ -41,7 +41,7 @@
                         style="@style/TextAppearance.MaterialComponents.Overline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Active Cases"
+                        android:text="@string/active_cases"
                         android:textColor="@color/color_deceased"
                         android:textStyle="bold" />
 

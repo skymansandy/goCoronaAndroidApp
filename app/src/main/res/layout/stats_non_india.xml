@@ -37,7 +37,7 @@
                     style="@style/TextAppearance.MaterialComponents.Overline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Active Cases"
+                    android:text="@string/active_cases"
                     android:textColor="@color/color_deceased"
                     android:textStyle="bold" />
 
@@ -46,9 +46,9 @@
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="753"
                     android:textColor="@color/color_active"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:text="753" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -105,7 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dp_8"
-                            android:text="Active"
+                            android:text="@string/active"
                             android:textSize="@dimen/sp_12" />
 
                     </LinearLayout>
@@ -126,7 +126,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dp_8"
-                            android:text="Recovered"
+                            android:text="@string/recovered"
                             android:textSize="@dimen/sp_12" />
 
                     </LinearLayout>
@@ -147,7 +147,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dp_8"
-                            android:text="Deceased"
+                            android:text="@string/deceased"
                             android:textSize="@dimen/sp_12" />
 
                     </LinearLayout>
@@ -176,7 +176,7 @@
                     style="@style/TextAppearance.MaterialComponents.Overline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Confirmed"
+                    android:text="@string/confirmed"
                     android:textColor="@color/color_deceased"
                     android:textStyle="bold" />
 
@@ -190,21 +190,21 @@
                         style="@style/TextAppearance.MaterialComponents.Headline6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="753"
+                        android:layout_marginEnd="@dimen/dp_12"
                         android:textColor="@color/color_confirmed"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="753" />
 
                     <TextView
                         android:id="@+id/tv_confirmed_delta"
                         style="@style/TextAppearance.MaterialComponents.Caption"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dp_12"
                         android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
-                        android:text="753"
-                        android:textColor="@color/color_active"
+                        android:textColor="@color/color_confirmed"
                         android:visibility="gone"
-                        app:drawableTint="@color/color_active"
+                        app:drawableTint="@color/color_confirmed"
+                        tools:text="753"
                         tools:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
@@ -236,7 +236,7 @@
                         style="@style/TextAppearance.MaterialComponents.Overline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Recovered"
+                        android:text="@string/recovered"
                         android:textColor="@color/color_deceased"
                         android:textStyle="bold" />
 
@@ -250,21 +250,21 @@
                             style="@style/TextAppearance.MaterialComponents.Headline6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="753"
+                            android:layout_marginEnd="@dimen/dp_12"
                             android:textColor="@color/color_recovered"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="753" />
 
                         <TextView
                             android:id="@+id/tv_recovered_delta"
                             style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_12"
                             android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
-                            android:text="753"
                             android:textColor="@color/color_recovered"
                             android:visibility="gone"
                             app:drawableTint="@color/color_recovered"
+                            tools:text="753"
                             tools:visibility="visible" />
                     </LinearLayout>
                 </LinearLayout>
@@ -291,7 +291,7 @@
                         style="@style/TextAppearance.MaterialComponents.Overline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deceased"
+                        android:text="@string/deceased"
                         android:textColor="@color/color_deceased"
                         android:textStyle="bold" />
 
@@ -305,21 +305,21 @@
                             style="@style/TextAppearance.MaterialComponents.Headline6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="753"
+                            android:layout_marginEnd="@dimen/dp_12"
                             android:textColor="@color/color_deceased"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:text="753" />
 
                         <TextView
                             android:id="@+id/tv_deceased_delta"
                             style="@style/TextAppearance.MaterialComponents.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/dp_12"
                             android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
-                            android:text="753"
                             android:textColor="@color/color_deceased"
                             android:visibility="gone"
                             app:drawableTint="@color/color_deceased"
+                            tools:text="753"
                             tools:visibility="visible" />
                     </LinearLayout>
                 </LinearLayout>

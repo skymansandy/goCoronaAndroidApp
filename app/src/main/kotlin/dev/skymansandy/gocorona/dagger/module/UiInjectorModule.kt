@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dev.skymansandy.base.di.BaseModule
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
-import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataFragment
+import dev.skymansandy.gocorona.presentation.countrydata.CountryDataFragment
 import dev.skymansandy.gocorona.presentation.health.HealthFragment
 import dev.skymansandy.gocorona.presentation.home.HomeFragment
 import dev.skymansandy.gocorona.presentation.main.MainActivity
@@ -35,7 +35,7 @@ abstract class UiInjectorModule {
     abstract fun contributeStateDataFragment(): StateDataFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeDistrictDataFragment(): DistrictDataFragment
+    abstract fun contributeDistrictDataFragment(): CountryDataFragment
 
     @ContributesAndroidInjector
     abstract fun contributeNewsFragment(): WorldFragment

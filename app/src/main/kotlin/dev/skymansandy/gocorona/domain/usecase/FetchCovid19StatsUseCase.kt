@@ -1,6 +1,5 @@
 package dev.skymansandy.gocorona.domain.usecase
 
-import android.util.Log
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
 import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
@@ -16,6 +15,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import timber.log.Timber
 import javax.inject.Inject
 
 class FetchCovid19StatsUseCase @Inject constructor(
@@ -39,8 +39,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                         }
 
                         CountryEntity(
-                            countryCode = if (it.countryInfo.iso2.isNullOrEmpty())
-                                it.country else it.countryInfo.iso2,
+                            countryCode = it.countryInfo.iso2 ?: it.country,
                             name = it.country,
                             flag = it.countryInfo.flag,
                             active = it.active,
@@ -63,12 +62,12 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     }
                     CoroutineScope(Dispatchers.Default).launch {
                         goCoronaRepository.insertCountryApi(countryDbList)
-                        Log.d("Tag", "inserted ${countryDbList?.size} countries")
+                        Timber.tag("Tag").d("inserted ${countryDbList?.size} countries")
                     }
                 }
 
                 override fun onFailure(call: Call<List<CountryWiseDataResponse>>, t: Throwable) {
-                    Log.d("Tag", t.localizedMessage)
+                    Timber.tag("Tag").d(t.localizedMessage)
                 }
             })
 
@@ -104,12 +103,12 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     }
                     CoroutineScope(Dispatchers.Default).launch {
                         goCoronaRepository.insertDistricts(districtDbList)
-                        Log.d("Tag", "inserted ${districtDbList?.size} Districts")
+                        Timber.tag("Tag").d("inserted ${districtDbList.size} Districts")
                     }
                 }
 
                 override fun onFailure(call: Call<List<DistrictDataResponse>>, t: Throwable) {
-                    Log.d("Tag", t.localizedMessage)
+                    Timber.tag("Tag").d(t.localizedMessage)
                 }
             })
 
@@ -120,7 +119,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     response: Response<StatesDataResponse>
                 ) {
                     val statesResponse = response.body()!!
-                    val stateDbList = statesResponse.statewise.map { it ->
+                    val stateDbList = statesResponse.statewise.map {
                         val timeMillis = try {
                             System.currentTimeMillis()
                         } catch (t: Throwable) {
@@ -142,12 +141,12 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     }
                     CoroutineScope(Dispatchers.Default).launch {
                         goCoronaRepository.insertStates(stateDbList)
-                        Log.d("Tag", "inserted ${stateDbList?.size} states")
+                        Timber.tag("Tag").d("inserted ${stateDbList.size} states")
                     }
                 }
 
                 override fun onFailure(call: Call<StatesDataResponse>, t: Throwable) {
-                    Log.d("Tag", t.localizedMessage)
+                    Timber.tag("Tag").d(t.localizedMessage)
                 }
             })
 
@@ -175,12 +174,12 @@ class FetchCovid19StatsUseCase @Inject constructor(
                                 updated = System.currentTimeMillis()
                             )
                         )
-                        Log.d("Tag", "inserted World data")
+                        Timber.tag("Tag").d("inserted World data")
                     }
                 }
 
                 override fun onFailure(call: Call<WorldDataResponse>, t: Throwable) {
-                    Log.d("Tag", t.localizedMessage)
+                    Timber.tag("Tag").d(t.localizedMessage)
                 }
             })
     }

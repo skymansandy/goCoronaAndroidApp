@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_8"
                             android:background="?selectableItemBackground"
-                            android:text="Karnataka"
+                            android:text="USA"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
