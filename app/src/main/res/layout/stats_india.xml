@@ -21,8 +21,8 @@
             android:id="@+id/layout_active_cases"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/dp_24"
-            android:paddingEnd="@dimen/dp_24">
+            android:paddingStart="@dimen/dp_16"
+            android:paddingEnd="@dimen/dp_16">
 
             <androidx.cardview.widget.CardView
                 style="@style/CardStyle"

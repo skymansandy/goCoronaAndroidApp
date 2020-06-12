@@ -6,9 +6,6 @@ import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentDistrictDataBinding
-import dev.skymansandy.gocorona.presentation.countrydata.CountryDataEvent
-import dev.skymansandy.gocorona.presentation.countrydata.CountryDataState
-import dev.skymansandy.gocorona.presentation.countrydata.CountryDataViewModel
 import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
@@ -16,7 +13,7 @@ import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWr
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
-    BaseFragment<FragmentDistrictDataBinding, CountryDataState, CountryDataEvent, CountryDataViewModel>() {
+    BaseFragment<FragmentDistrictDataBinding, DistrictDataState, DistrictDataEvent, DistrictDataViewModel>() {
 
     private val covidRes by lazy { CovidResImpl(activity!!) }
     private val args by navArgs<DistrictDataFragmentArgs>()
@@ -31,15 +28,15 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
         }
     }
 
-    override fun renderViewState(newState: CountryDataState) {
+    override fun renderViewState(newState: DistrictDataState) {
         binding.swipe.isRefreshing = false
         binding.statsNonIndia.root.visibility = View.GONE
 
         when (newState) {
-            is CountryDataState.Loading -> {
+            is DistrictDataState.Loading -> {
                 binding.swipe.isRefreshing = true
             }
-            is CountryDataState.CountryStats -> {
+            is DistrictDataState.DistrictStats -> {
                 binding.statsNonIndia.root.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
                 binding.tvLastUpdated.text =

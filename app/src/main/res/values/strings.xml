@@ -11,6 +11,7 @@
     <string name="india">India</string>
     <string name="search_country">Search country</string>
     <string name="choose_country">Choose country</string>
+    <string name="country">Country</string>
     <string name="search">Search</string>
     <string name="active_cases">Active Cases</string>
 </resources>

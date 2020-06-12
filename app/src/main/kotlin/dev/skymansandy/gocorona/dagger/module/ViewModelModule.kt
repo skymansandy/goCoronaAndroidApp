@@ -7,13 +7,14 @@ import dagger.multibindings.IntoMap
 import dev.skymansandy.base.di.ViewModelKey
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryViewModel
 import dev.skymansandy.gocorona.presentation.countrydata.CountryDataViewModel
+import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataViewModel
 import dev.skymansandy.gocorona.presentation.health.HealthViewModel
 import dev.skymansandy.gocorona.presentation.home.HomeViewModel
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
-import dev.skymansandy.gocorona.presentation.world.WorldViewModel
 import dev.skymansandy.gocorona.presentation.settings.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
 import dev.skymansandy.gocorona.presentation.statedata.StateDataViewModel
+import dev.skymansandy.gocorona.presentation.world.WorldViewModel
 
 @Module
 abstract class ViewModelModule {
@@ -40,8 +41,14 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
+    @ViewModelKey(DistrictDataViewModel::class)
+    abstract fun bindDistrictDataViewModel(vm: DistrictDataViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
     @ViewModelKey(CountryDataViewModel::class)
-    abstract fun bindDistrictDataViewModel(vm: CountryDataViewModel): ViewModel
+    abstract fun bindCountryDataViewModel(vm: CountryDataViewModel): ViewModel
 
     @Binds
     @IntoMap

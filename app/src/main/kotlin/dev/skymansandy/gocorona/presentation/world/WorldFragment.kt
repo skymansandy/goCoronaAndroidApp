@@ -10,6 +10,7 @@ import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickL
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import dev.skymansandy.gocorona.presentation.home.adapter.setup
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
@@ -55,6 +56,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                 binding.layoutStatList.root.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                binding.layoutStatList.setup(covidRes, statAdapter, getString(R.string.country))
                 with(binding.statsWorld) {
                     tvActiveCount.showNumber(newState.active.count.toInt())
                     tvConfirmedCount.showNumber(newState.confirmed.count.toInt())
@@ -70,6 +72,13 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                         newState.recovered.count.toInt(),
                         newState.deceased.count.toInt()
                     )
+                }
+
+                binding.layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
+                    View.GONE
+                } else {
+                    statAdapter.submitList(newState.stats)
+                    View.VISIBLE
                 }
             }
         }

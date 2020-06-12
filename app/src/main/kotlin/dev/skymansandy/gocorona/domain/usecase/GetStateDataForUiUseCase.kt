@@ -19,8 +19,8 @@ class GetStateDataForUiUseCase @Inject constructor(
             emit(StateDataState.Loading)
             delay(1000)
             val stateDetails = goCoronaRepository.getStateDetail(stateCode)
-            val stateStat = goCoronaRepository.getDistrictDataForState(stateCode)
-            stateDetails.combine(stateStat) { details, stat ->
+            val stateStats = goCoronaRepository.getDistrictDataForState(stateCode)
+            stateDetails.combine(stateStats) { details, stat ->
                 details?.let {
                     stat?.let { districts ->
 
