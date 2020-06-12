@@ -11,13 +11,13 @@ class ChooseCountryViewModel @Inject constructor(
     private val getCountriesUseCase: GetCountriesUseCase
 ) : BaseViewModel<ChooseCountryState, ChooseCountryEvent>() {
 
-    private lateinit var liveData: LiveData<ChooseCountryState>
-
     init {
         viewModelScope.launch {
             getCountries()
         }
     }
+
+    private lateinit var liveData: LiveData<ChooseCountryState>
 
     override fun onUserEvent(viewEvent: ChooseCountryEvent) {
         super.onUserEvent(viewEvent)

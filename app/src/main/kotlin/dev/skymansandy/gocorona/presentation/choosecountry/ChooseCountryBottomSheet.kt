@@ -31,13 +31,13 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupWorldRow()
+        setupWorldWideRow()
         binding.ivExit.setOnClickListener { dismiss() }
         binding.rvCountries.adapter = countryAdapter
+
         binding.etCountrySearch.addTextChangedListener(object : TextWatcher {
             private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
             private var searchJob: Job? = null
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
@@ -52,7 +52,7 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
         })
     }
 
-    private fun setupWorldRow() {
+    private fun setupWorldWideRow() {
         binding.layoutWorldwide.setOnClickListener {
             onCountryClick(
                 CovidStat(
@@ -66,6 +66,8 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
     override fun renderViewState(newState: ChooseCountryState) {
         binding.layoutCountries.visibility = View.GONE
         binding.layoutLoading.visibility = View.GONE
+        binding.rvCountries.visibility = View.GONE
+        binding.layoutNoCountries.visibility = View.GONE
 
         when (newState) {
             is ChooseCountryState.Loading -> {
@@ -73,8 +75,6 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
             }
             is ChooseCountryState.State -> {
                 binding.layoutCountries.visibility = View.VISIBLE
-                binding.rvCountries.visibility = View.GONE
-                binding.layoutNoCountries.visibility = View.GONE
                 when (newState.countries.isNullOrEmpty()) {
                     true -> binding.layoutNoCountries.visibility = View.VISIBLE
                     false -> {

@@ -9,6 +9,7 @@ import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
+import dev.skymansandy.gocorona.tools.coviduitools.extension.showLocaleNumber
 import java.text.NumberFormat
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -48,9 +49,18 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 with(binding.statsIndia) {
                     tvActiveCount.text =
                         NumberFormat.getInstance().format(newState.active.count.toInt())
-                    statCardConfirmed.showStatCard(newState.confirmed, newState.growthTrendMaxScale)
-                    statCardRecovered.showStatCard(newState.recovered, newState.growthTrendMaxScale)
-                    statCardDeceased.showStatCard(newState.deceased, newState.growthTrendMaxScale)
+                    statCardConfirmed.showStatCard(
+                        newState.confirmed, getString(R.string.confirmed),
+                        covidRes.confirmedColor, newState.growthTrendMaxScale
+                    )
+                    statCardRecovered.showStatCard(
+                        newState.recovered, getString(R.string.recovered),
+                        covidRes.recoveredColor, newState.growthTrendMaxScale
+                    )
+                    statCardDeceased.showStatCard(
+                        newState.deceased, getString(R.string.deceased),
+                        covidRes.deceasedColor, newState.growthTrendMaxScale
+                    )
                     layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
                         View.GONE
                     } else {
@@ -62,35 +72,25 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         }
     }
 
-    private fun LayoutStatCardBinding.showStatCard(stat: StatCard, growthTrendMaxScale: Float) {
+    private fun LayoutStatCardBinding.showStatCard(
+        statCard: StatCard,
+        title: String,
+        color: Int,
+        growthTrendMaxScale: Float
+    ) {
         snake.clear()
         snake.setMaxValue(growthTrendMaxScale)
+        snake.setStrokeColor(color)
         snake.visibility = if (growthTrendMaxScale >= 0) {
-            stat.growthTrend.map { snake.addValue(it.toFloat()) }
+            statCard.growthTrend.map { snake.addValue(it.toFloat()) }
             View.VISIBLE
         } else View.GONE
 
-        showDelta(covidRes, tvDelta, stat.count.toInt())
-        activity?.let {
-            when (this) {
-                binding.statsIndia.statCardConfirmed -> {
-                    tvTitle.text = getString(R.string.confirmed)
-                    tvCount.setTextColor(covidRes.confirmedColor)
-                    paintTextView(tvDelta, covidRes.confirmedColor)
-                    snake.setStrokeColor(covidRes.confirmedColor)
-                }
-                binding.statsIndia.statCardRecovered -> {
-                    tvTitle.text = getString(R.string.recovered)
-                    paintTextView(tvDelta, covidRes.recoveredColor)
-                    snake.setStrokeColor(covidRes.recoveredColor)
-                }
-                binding.statsIndia.statCardDeceased -> {
-                    tvTitle.text = getString(R.string.deceased)
-                    paintTextView(tvDelta, covidRes.deceasedColor)
-                    snake.setStrokeColor(covidRes.deceasedColor)
-                }
-            }
-        }
+        tvTitle.text = title
+        tvCount.showLocaleNumber(statCard.count.toInt())
+        showDelta(covidRes, tvDelta, statCard.deltaCount.toInt())
+        paintTextView(tvCount, color)
+        paintTextView(tvDelta, color)
     }
 
     private fun paintTextView(textView: TextView, color: Int) {
