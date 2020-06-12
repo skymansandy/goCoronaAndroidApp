@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class CountryData(
+data class CountryEntity(
     @PrimaryKey
     val countryCode: String,
     val name: String,

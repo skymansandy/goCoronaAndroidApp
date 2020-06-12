@@ -11,6 +11,7 @@ import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItemAdapter
+import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 
 
 class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_choose_country) :
@@ -65,8 +66,8 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
         }
     }
 
-    override fun onCountryClick(countryItem: CountryItem) {
-        countryClickListener.onCountryClick(countryItem)
+    override fun onCountryClick(covidStat: CovidStat) {
+        countryClickListener.onCountryClick(covidStat)
         dismiss()
     }
 }

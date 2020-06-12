@@ -11,7 +11,7 @@ import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
-import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
+import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
 import org.eazegraph.lib.charts.PieChart
@@ -38,8 +38,9 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
         binding.tvPlace.setOnClickListener {
             ChooseCountryBottomSheet.getInstance(object : CountryClickListener {
-                override fun onCountryClick(countryItem: CountryItem) {
-                    vm.onUserEvent(HomeEvent.CountryClicked(countryItem.code))
+                override fun onCountryClick(covidStat: CovidStat) {
+                    binding.tvPlace.text = covidStat.name
+                    vm.onUserEvent(HomeEvent.CountryClicked(covidStat.code))
                 }
             }).show(childFragmentManager, "")
         }
@@ -141,7 +142,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         }
     }
 
-    private fun LayoutStatListBinding.setup(covidStatAdapter: CovidStatAdapter, title: String) {
+    fun LayoutStatListBinding.setup(covidStatAdapter: CovidStatAdapter, title: String) {
         statList.adapter = covidStatAdapter
         statListHeader.tvTitle.text = title
         statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
@@ -168,4 +169,14 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         )
         startAnimation()
     }
+
+    override fun onStateClicked(covidStat: CovidStat) {
+        navController.navigate(
+            HomeFragmentDirections.actionHomeFragmentToStateDataFragment(
+                covidStat
+            )
+        )
+    }
+
+    override fun onDistrictClicked(covidStat: CovidStat) = TODO()
 }

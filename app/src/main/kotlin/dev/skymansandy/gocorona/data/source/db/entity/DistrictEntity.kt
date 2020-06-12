@@ -3,10 +3,18 @@ package dev.skymansandy.gocorona.data.source.db.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class StateData(
+@Entity(
+    /*foreignKeys = [ForeignKey(
+        entity = StateData::class,
+        parentColumns = ["code"],
+        childColumns = ["stateCode"],
+        onDelete = ForeignKey.RESTRICT
+    )]*/
+)
+data class DistrictEntity(
     @PrimaryKey
     val code: String,
+    val stateCode: String,
     val name: String,
     val active: String,
     val cases: String,
@@ -15,6 +23,5 @@ data class StateData(
     val deathsToday: String,
     val recovered: String,
     val recoveredToday: String,
-    val migratedToOther: String,
     val updated: String
 )

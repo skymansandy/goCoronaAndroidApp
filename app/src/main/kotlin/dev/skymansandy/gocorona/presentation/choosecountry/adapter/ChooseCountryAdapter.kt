@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.ItemCountryBinding
+import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import javax.inject.Inject
 
 class CountryItemAdapter(
@@ -34,7 +35,7 @@ class CountryItemAdapter(
  * Country click listener
  */
 interface CountryClickListener {
-    fun onCountryClick(countryItem: CountryItem)
+    fun onCountryClick(covidStat: CovidStat)
 }
 
 /**
@@ -48,7 +49,12 @@ class CountryViewHolder(
     init {
         binding.root.setOnClickListener {
             binding.country?.let { country ->
-                countryClickListener.onCountryClick(country)
+                countryClickListener.onCountryClick(
+                    CovidStat(
+                        name = country.name,
+                        code = country.code
+                    )
+                )
             }
         }
     }

@@ -1,7 +1,7 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.data.source.db.entity.StateData
+import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
 import dev.skymansandy.gocorona.presentation.home.HomeState
 import dev.skymansandy.gocorona.presentation.home.StatCard
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
@@ -24,7 +24,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                 .collect {
                     val dataSet = it
 
-                    lateinit var totalStat: StateData
+                    lateinit var totalStat: StateEntity
 
                     val statesDataForUi = arrayListOf<CovidStat>()
                     for (state in dataSet) {
@@ -32,6 +32,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                             totalStat = state
                         } else {
                             statesDataForUi += CovidStat(
+                                code = state.code,
                                 name = state.name,
                                 confirmed = state.cases.toInt(),
                                 active = state.active.toInt(),

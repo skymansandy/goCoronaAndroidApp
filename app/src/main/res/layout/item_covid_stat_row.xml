@@ -3,6 +3,10 @@
 
     <data>
 
+        <variable
+            name="stat"
+            type="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
+
     </data>
 
     <LinearLayout

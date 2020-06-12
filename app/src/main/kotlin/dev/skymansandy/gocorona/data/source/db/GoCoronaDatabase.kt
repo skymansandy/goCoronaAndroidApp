@@ -5,15 +5,15 @@ import androidx.room.RoomDatabase
 import dev.skymansandy.gocorona.data.source.db.dao.CountryDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.DistrictDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.StateDataDao
-import dev.skymansandy.gocorona.data.source.db.entity.CountryData
-import dev.skymansandy.gocorona.data.source.db.entity.DistrictData
-import dev.skymansandy.gocorona.data.source.db.entity.StateData
+import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
+import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
+import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
 
 @Database(
     entities = [
-        CountryData::class,
-        StateData::class,
-        DistrictData::class
+        CountryEntity::class,
+        StateEntity::class,
+        DistrictEntity::class
     ],
     version = 1
 )

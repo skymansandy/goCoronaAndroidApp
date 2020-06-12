@@ -73,12 +73,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_8"
-                            android:layout_marginEnd="@dimen/dp_36"
                             android:background="?selectableItemBackground"
-                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
                             android:drawablePadding="@dimen/dp_8"
                             android:drawableTint="@color/white"
-                            android:text="India"
+                            android:text="Karnataka"
                             android:textColor="@color/white"
                             android:textStyle="bold" />
 
@@ -95,30 +93,18 @@
                 </RelativeLayout>
 
                 <include
-                    android:id="@+id/statsIndia"
-                    layout="@layout/stats_india"
-                    android:visibility="gone"
-                    tools:visibility="gone" />
-
-                <include
                     android:id="@+id/statsNonIndia"
                     layout="@layout/stats_non_india"
                     android:visibility="gone"
                     tools:visibility="visible" />
 
-                <RelativeLayout
-                    android:id="@+id/layout_loading"
+                <include
+                    android:id="@+id/layout_stat_list"
+                    layout="@layout/layout_stat_list"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/layout_banner"
-                    android:visibility="gone"
-                    tools:visibility="gone">
-
-                    <ProgressBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true" />
-                </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/statsNonIndia"
+                    android:layout_margin="@dimen/dp_16" />
 
             </RelativeLayout>
 

@@ -2,9 +2,9 @@ package dev.skymansandy.gocorona.domain.usecase
 
 import android.util.Log
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.data.source.db.entity.CountryData
-import dev.skymansandy.gocorona.data.source.db.entity.DistrictData
-import dev.skymansandy.gocorona.data.source.db.entity.StateData
+import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
+import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
+import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
@@ -29,7 +29,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 ) {
                     val countryData = response.body()
                     val countryDbList = countryData?.map { it ->
-                        CountryData(
+                        CountryEntity(
                             countryCode = if (it.countryInfo.iso2.isNullOrEmpty())
                                 it.country else it.countryInfo.iso2,
                             name = it.country,
@@ -70,10 +70,10 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     response: Response<List<DistrictDataResponse>>
                 ) {
                     val districtResponse = response.body()!!
-                    val districtDbList = arrayListOf<DistrictData>()
+                    val districtDbList = arrayListOf<DistrictEntity>()
                     districtResponse.map { state ->
                         state.districtData.map { district ->
-                            districtDbList += DistrictData(
+                            districtDbList += DistrictEntity(
                                 code = district.district,
                                 stateCode = state.statecode,
                                 name = district.district,
@@ -107,7 +107,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 ) {
                     val statesResponse = response.body()!!
                     val stateDbList = statesResponse.statewise.map { it ->
-                        StateData(
+                        StateEntity(
                             code = it.statecode,
                             name = it.state,
                             active = it.active,
