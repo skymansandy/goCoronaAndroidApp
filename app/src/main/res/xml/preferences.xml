@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/pref_night_auto"
+        android:entries="@array/settings_night_mode_options"
+        android:entryValues="@array/settings_night_mode_values"
+        android:icon="@drawable/ic_baseline_night_24"
+        android:key="@string/pref_key_night"
+        android:summary="@string/setting_night_mode_desc"
+        android:title="@string/setting_night_mode" />
+
+</androidx.preference.PreferenceScreen>

@@ -55,10 +55,10 @@
         tools:layout="@layout/fragment_health" />
 
     <fragment
-        android:id="@id/settingsFragment"
-        android:name="dev.skymansandy.gocorona.presentation.settings.SettingsFragment"
+        android:id="@id/aboutFragment"
+        android:name="dev.skymansandy.gocorona.presentation.about.AboutFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/countryDataFragment"

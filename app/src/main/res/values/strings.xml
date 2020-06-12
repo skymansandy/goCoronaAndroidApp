@@ -15,4 +15,7 @@
     <string name="search">Search</string>
     <string name="active_cases">Active Cases</string>
     <string name="press_back_again_to_exit">Press back again to exit!</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="setting_night_mode_desc">Select theme</string>
+    <string name="setting_night_mode">Night mode</string>
 </resources>

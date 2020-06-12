@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.settings
+package dev.skymansandy.gocorona.presentation.about
 
 data class SettingsState(val str: String)
 

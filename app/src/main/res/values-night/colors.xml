@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_confirmed">#D61A43</color>
+    <color name="color_active">#1562F8</color>
+    <color name="color_recovered">#389944</color>
+    <color name="color_deceased">@color/white</color>
+    <color name="color_row_bg">@color/color_primary</color>
+    <color name="color_appbar">@color/black</color>
+    <color name="color_row_text">@color/white</color>
+    <color name="color_bg">#FDFFFE</color>
+    <color name="edittext_bg">@color/color_row_bg</color>
+    <color name="color_search_text">#71778B</color>
+    <color name="activity_background">@color/black</color>
+    <color name="banner_color">@color/black</color>
+</resources>

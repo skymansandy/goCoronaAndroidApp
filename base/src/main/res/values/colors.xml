@@ -14,6 +14,7 @@
     <color name="color_primary_100">#1A6200EE</color>
 
     <color name="transparent">@android:color/transparent</color>
+    <color name="color_dark">@color/black</color>
     <color name="white">#FFFFFF</color>
     <color name="ivory">#FFFFF0</color>
     <color name="light_yellow">#FFFFE0</color>

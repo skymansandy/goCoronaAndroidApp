@@ -8,6 +8,7 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe"
+        android:background="@color/activity_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -19,14 +20,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_bg"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/layout_banner"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_280"
-                    android:background="@color/color_primary_dark">
+                    android:background="@color/banner_color">
 
                     <ImageView
                         android:layout_width="@dimen/dp_64"

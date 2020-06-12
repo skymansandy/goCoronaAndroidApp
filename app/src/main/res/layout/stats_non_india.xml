@@ -71,7 +71,7 @@
                     android:padding="@dimen/dp_12"
                     app:egAnimationTime="1000"
                     app:egDrawValueInPie="true"
-                    app:egInnerPaddingColor="@color/white"
+                    app:egInnerPaddingColor="@color/color_row_bg"
                     app:egLegendHeight="0sp"
                     app:egValueTextSize="0sp" />
 

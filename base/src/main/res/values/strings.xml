@@ -1,1 +1,22 @@
-<resources></resources>
+<resources>
+
+    <!-- Night Mode related-->
+    <string name="pref_key_night" translatable="false">key_night_mode</string>
+    <string name="pref_night_on" translatable="false">on</string>
+    <string name="pref_night_off" translatable="false">off</string>
+    <string name="pref_night_auto" translatable="false">auto</string>
+    <string name="night_mode_auto">Automatic</string>
+    <string name="night_mode_on">Night mode</string>
+    <string name="night_mode_off">Day mode</string>
+    <string-array name="settings_night_mode_options">
+        <item>@string/night_mode_auto</item>
+        <item>@string/night_mode_on</item>
+        <item>@string/night_mode_off</item>
+    </string-array>
+    <string-array name="settings_night_mode_values">
+        <item>@string/pref_night_auto</item>
+        <item>@string/pref_night_on</item>
+        <item>@string/pref_night_off</item>
+    </string-array>
+
+</resources>

@@ -19,7 +19,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/color_bg"
+                android:background="@color/activity_background"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical">
@@ -28,7 +28,7 @@
                     android:id="@+id/layout_banner"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_280"
-                    android:background="@color/color_primary_dark">
+                    android:background="@color/banner_color">
 
                     <ImageView
                         android:layout_width="@dimen/dp_64"

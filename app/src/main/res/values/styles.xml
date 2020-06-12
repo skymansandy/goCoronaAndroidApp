@@ -21,5 +21,6 @@
     <style name="CardStyle">
         <item name="cardElevation">@dimen/stat_card_elevation</item>
         <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/color_row_bg</item>
     </style>
 </resources>

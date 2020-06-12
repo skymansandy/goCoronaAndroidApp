@@ -11,7 +11,7 @@ import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataViewModel
 import dev.skymansandy.gocorona.presentation.health.HealthViewModel
 import dev.skymansandy.gocorona.presentation.home.HomeViewModel
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
-import dev.skymansandy.gocorona.presentation.settings.SettingsViewModel
+import dev.skymansandy.gocorona.presentation.about.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
 import dev.skymansandy.gocorona.presentation.statedata.StateDataViewModel
 import dev.skymansandy.gocorona.presentation.world.WorldViewModel

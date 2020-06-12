@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.settings
+package dev.skymansandy.gocorona.presentation.about
 
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
 import javax.inject.Inject

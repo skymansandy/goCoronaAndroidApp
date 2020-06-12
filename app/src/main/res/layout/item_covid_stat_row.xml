@@ -43,7 +43,6 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="C"
-            android:textColor="@color/black"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -59,7 +58,6 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="A"
-            android:textColor="@color/black"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -75,7 +73,6 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="R"
-            android:textColor="@color/black"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -91,7 +88,6 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="D"
-            android:textColor="@color/black"
             android:textSize="@dimen/sp_10" />
 
         <Space

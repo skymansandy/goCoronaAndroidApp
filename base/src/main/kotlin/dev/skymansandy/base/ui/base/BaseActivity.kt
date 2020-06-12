@@ -1,10 +1,7 @@
 package dev.skymansandy.base.ui.base
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import androidx.annotation.IdRes
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
@@ -15,6 +12,7 @@ import androidx.navigation.Navigation.findNavController
 import dagger.android.support.DaggerAppCompatActivity
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
 import dev.skymansandy.base.util.ui.KeyboardUtil
+import dev.skymansandy.base.util.ui.NightModeUtil
 import dev.skymansandy.base.util.ui.SnackBarUtil
 import dev.skymansandy.base.util.ui.ToastUtil
 import timber.log.Timber
@@ -74,6 +72,15 @@ abstract class BaseActivity<T : ViewDataBinding,
     override fun onBackPressed() {
         KeyboardUtil.hideKeyboard(this)
         super.onBackPressed()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        applyNightMode()
+    }
+
+    private fun applyNightMode() {
+        NightModeUtil.setNightMode(this)
     }
 
     abstract fun renderViewState(newState: STATE)
