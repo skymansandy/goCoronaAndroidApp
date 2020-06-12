@@ -1,7 +1,5 @@
 package dev.skymansandy.gocorona.presentation.districtdata
 
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
-
 sealed class DistrictDataState {
     data class DistrictStats(
         val placeName: String,
@@ -18,6 +16,4 @@ sealed class DistrictDataState {
     object Loading : DistrictDataState()
 }
 
-sealed class DistrictDataEvent {
-
-}
+sealed class DistrictDataEvent

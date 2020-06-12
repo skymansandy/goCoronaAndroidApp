@@ -8,9 +8,8 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentDistrictDataBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
-import org.eazegraph.lib.charts.PieChart
-import org.eazegraph.lib.models.PieModel
-import java.text.NumberFormat
+import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
+import dev.skymansandy.gocorona.tools.coviduitools.extension.showLocaleNumber
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
     BaseFragment<FragmentDistrictDataBinding, DistrictDataState, DistrictDataEvent, DistrictDataViewModel>() {
@@ -20,9 +19,9 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        vm.getDistrictData(args.district.code)
 
         binding.tvPlace.text = args.district.name
-        vm.getDistrictData(args.district.code)
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
         }
@@ -37,29 +36,20 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 binding.swipe.isRefreshing = true
             }
             is DistrictDataState.DistrictStats -> {
-                binding.swipe.isRefreshing = false
                 binding.statsNonIndia.root.visibility = View.VISIBLE
-
                 binding.tvPlace.text = newState.placeName
-                binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
+                binding.tvLastUpdated.text =
+                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
                 with(binding.statsNonIndia) {
-                    tvActiveCount.text =
-                        NumberFormat.getInstance().format(newState.active.toInt())
-                    tvConfirmedCount.text =
-                        NumberFormat.getInstance().format(newState.confirmed.toInt())
-                    tvRecoveredCount.text =
-                        NumberFormat.getInstance().format(newState.recovered.toInt())
-                    tvDeceasedCount.text =
-                        NumberFormat.getInstance().format(newState.deaths.toInt())
-
-                    tvConfirmedDelta.visibility = View.VISIBLE
+                    tvActiveCount.showLocaleNumber(newState.active.toInt())
+                    tvConfirmedCount.showLocaleNumber(newState.confirmed.toInt())
+                    tvRecoveredCount.showLocaleNumber(newState.recovered.toInt())
+                    tvDeceasedCount.showLocaleNumber(newState.deaths.toInt())
                     showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
-                    tvRecoveredDelta.visibility = View.VISIBLE
                     showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())
-                    tvDeceasedDelta.visibility = View.VISIBLE
                     showDelta(covidRes, tvDeceasedDelta, newState.deathsToday.toInt())
-
                     pieChart.loadData(
+                        covidRes,
                         newState.active.toInt(),
                         newState.recovered.toInt(),
                         newState.deaths.toInt()
@@ -67,19 +57,5 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 }
             }
         }
-    }
-
-    private fun PieChart.loadData(active: Int, recovered: Int, deceased: Int) {
-        clearChart()
-        addPieSlice(
-            PieModel("Active", active.toFloat(), covidRes.activeColor)
-        )
-        addPieSlice(
-            PieModel("Recovered", recovered.toFloat(), covidRes.recoveredColor)
-        )
-        addPieSlice(
-            PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
-        )
-        startAnimation()
     }
 }

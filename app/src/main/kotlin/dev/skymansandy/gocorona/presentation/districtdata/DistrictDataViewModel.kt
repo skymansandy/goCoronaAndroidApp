@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DistrictDataViewModel @Inject constructor(
-    val getDistrictDataForUiUseCase: GetDistrictDataForUiUseCase,
+    private val getDistrictDataForUiUseCase: GetDistrictDataForUiUseCase,
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<DistrictDataState, DistrictDataEvent>() {
 
@@ -24,5 +24,4 @@ class DistrictDataViewModel @Inject constructor(
             }
         }
     }
-
 }
