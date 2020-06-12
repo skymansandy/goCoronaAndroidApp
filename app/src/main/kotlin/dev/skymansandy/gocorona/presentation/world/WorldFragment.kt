@@ -7,10 +7,7 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentWorldBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
-import dev.skymansandy.gocorona.presentation.home.adapter.setup
+import dev.skymansandy.gocorona.presentation.home.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
@@ -21,7 +18,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
     CovidStatClickListener {
 
     private val covidRes by lazy { CovidResImpl(activity!!) }
-    private val statAdapter = CovidStatAdapter(this)
+    private val statAdapter = CovidStatListAdapter(this, CovidStatListType.COUNTRY)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

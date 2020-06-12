@@ -17,7 +17,7 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
     CovidStatClickListener {
 
     private val covidRes by lazy { CovidResImpl(activity!!) }
-    private val statAdapter = CovidStatAdapter(this, true)
+    private val statAdapter = CovidStatListAdapter(this, CovidStatListType.DISTRICT)
     private val args by navArgs<StateDataFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

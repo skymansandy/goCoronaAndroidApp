@@ -11,9 +11,9 @@ import kotlinx.android.parcel.Parcelize
 import java.text.NumberFormat
 import javax.inject.Inject
 
-class CovidStatAdapter(
+class CovidStatListAdapter(
     private val covidStatClickListener: CovidStatClickListener,
-    private val isDistrictStat: Boolean = false
+    private val covidStatListType: CovidStatListType
 ) : ListAdapter<CovidStat, StatRowViewHolder>(StatRowDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatRowViewHolder {
@@ -21,7 +21,7 @@ class CovidStatAdapter(
         return StatRowViewHolder(
             ItemCovidStatRowBinding.inflate(inflater, parent, false),
             covidStatClickListener,
-            isDistrictStat
+            covidStatListType
         )
     }
 
@@ -47,15 +47,16 @@ interface CovidStatClickListener {
 class StatRowViewHolder(
     private val binding: ItemCovidStatRowBinding,
     private val covidStatClickListener: CovidStatClickListener,
-    private val isDistrictStat: Boolean = false
+    private val covidStatListType: CovidStatListType
 ) : RecyclerView.ViewHolder(binding.root) {
 
     init {
         binding.root.setOnClickListener {
             binding.stat?.let {
-                when {
-                    isDistrictStat -> covidStatClickListener.onDistrictClicked(it)
-                    else -> covidStatClickListener.onStateClicked(it)
+                when (covidStatListType) {
+                    CovidStatListType.DISTRICT -> covidStatClickListener.onDistrictClicked(it)
+                    CovidStatListType.STATE -> covidStatClickListener.onStateClicked(it)
+                    CovidStatListType.COUNTRY -> covidStatClickListener.onCountryClicked(it)
                 }
             }
         }
@@ -93,3 +94,7 @@ data class CovidStat(
     val recovered: Int = 0,
     val deceased: Int = 0
 ) : Parcelable
+
+enum class CovidStatListType {
+    DISTRICT, STATE, COUNTRY
+}

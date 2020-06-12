@@ -17,7 +17,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     CovidStatClickListener {
 
     private val covidRes by lazy { CovidResImpl(activity!!) }
-    private val statAdapter = CovidStatAdapter(this)
+    private val statAdapter = CovidStatListAdapter(this, CovidStatListType.STATE)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

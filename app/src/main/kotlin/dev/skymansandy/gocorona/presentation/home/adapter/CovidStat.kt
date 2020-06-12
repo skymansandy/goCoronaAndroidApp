@@ -10,10 +10,10 @@ import kotlin.math.absoluteValue
 
 fun LayoutStatListBinding.setup(
     covidRes: CovidRes,
-    covidStatAdapter: CovidStatAdapter,
+    covidStatListAdapter: CovidStatListAdapter,
     title: String
 ) {
-    statList.adapter = covidStatAdapter
+    statList.adapter = covidStatListAdapter
     statListHeader.tvTitle.text = title
     statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
     statListHeader.tvActive.setTypeface(null, Typeface.BOLD)
