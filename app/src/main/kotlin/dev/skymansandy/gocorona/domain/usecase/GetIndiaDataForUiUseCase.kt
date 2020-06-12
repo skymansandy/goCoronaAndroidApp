@@ -34,10 +34,10 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                             statesDataForUi += CovidStat(
                                 code = state.code,
                                 name = state.name,
-                                confirmed = state.cases.toInt(),
-                                active = state.active.toInt(),
-                                recovered = state.recovered.toInt(),
-                                deceased = state.deaths.toInt()
+                                confirmed = state.cases,
+                                active = state.active,
+                                recovered = state.recovered,
+                                deceased = state.deaths
                             )
                         }
                     }
@@ -51,7 +51,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                     val activeStat =
                         StatCard(
                             totalStat.active,
-                            "0",
+                            0,
                             arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
                         )
                     val recoveredStat =
@@ -75,7 +75,6 @@ class GetIndiaDataForUiUseCase @Inject constructor(
 
                     emit(
                         HomeState.IndiaStats(
-                            placeName = "India",
                             lastUpdated = totalStat.lastUpdatedUiStr,
                             confirmed = confirmedStat,
                             active = activeStat,

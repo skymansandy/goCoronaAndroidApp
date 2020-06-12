@@ -44,24 +44,24 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 with(binding.statsNonIndia) {
-                    tvActiveCount.showNumber(newState.active.toInt())
-                    tvConfirmedCount.showNumber(newState.confirmed.toInt())
-                    tvRecoveredCount.showNumber(newState.recovered.toInt())
-                    tvDeceasedCount.showNumber(newState.deaths.toInt())
+                    tvActiveCount.showNumber(newState.active)
+                    tvConfirmedCount.showNumber(newState.confirmed)
+                    tvRecoveredCount.showNumber(newState.recovered)
+                    tvDeceasedCount.showNumber(newState.deaths)
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
                     if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
                         tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
 
-                    showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
-                    showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())
-                    showDelta(covidRes, tvDeceasedDelta, newState.deathsToday.toInt())
+                    showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday)
+                    showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday)
+                    showDelta(covidRes, tvDeceasedDelta, newState.deathsToday)
                     pieChart.loadData(
                         covidRes,
-                        newState.active.toInt(),
-                        newState.recovered.toInt(),
-                        newState.deaths.toInt()
+                        newState.active,
+                        newState.recovered,
+                        newState.deaths
                     )
                 }
             }

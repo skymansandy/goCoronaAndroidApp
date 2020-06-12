@@ -57,10 +57,10 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                     String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 binding.layoutStatList.setup(covidRes, statAdapter, getString(R.string.country))
                 with(binding.statsWorld) {
-                    tvActiveCount.showNumber(newState.active.count.toInt())
-                    tvConfirmedCount.showNumber(newState.confirmed.count.toInt())
-                    tvRecoveredCount.showNumber(newState.recovered.count.toInt())
-                    tvDeceasedCount.showNumber(newState.deceased.count.toInt())
+                    tvActiveCount.showNumber(newState.active)
+                    tvConfirmedCount.showNumber(newState.confirmed)
+                    tvRecoveredCount.showNumber(newState.recovered)
+                    tvDeceasedCount.showNumber(newState.deaths)
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
@@ -69,9 +69,9 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
 
                     pieChart.loadData(
                         covidRes,
-                        newState.active.count.toInt(),
-                        newState.recovered.count.toInt(),
-                        newState.deceased.count.toInt()
+                        newState.active,
+                        newState.recovered,
+                        newState.deaths
                     )
                 }
 

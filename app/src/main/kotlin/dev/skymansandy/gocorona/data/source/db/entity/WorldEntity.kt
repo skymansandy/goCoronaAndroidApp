@@ -8,17 +8,17 @@ import dev.skymansandy.base.util.date.DateUtil
 data class WorldEntity(
     @PrimaryKey
     val id: Long = 0L,
-    val cases: String,
-    val todayCases: String,
-    val deaths: String,
-    val todayDeaths: String,
-    val recovered: String,
-    val todayRecovered: String,
-    val active: String,
-    val critical: String,
-    val tests: String,
-    val testsPerOneMillion: String,
-    val population: String,
+    val cases: Int,
+    val todayCases: Int,
+    val deaths: Int,
+    val todayDeaths: Int,
+    val recovered: Int,
+    val todayRecovered: Int,
+    val active: Int,
+    val critical: Int,
+    val tests: Int,
+    val testsPerOneMillion: Int,
+    val population: Long,
     val updated: Long
 ) {
     val lastUpdatedUiStr get() = DateUtil.getDateInFormat(updated)

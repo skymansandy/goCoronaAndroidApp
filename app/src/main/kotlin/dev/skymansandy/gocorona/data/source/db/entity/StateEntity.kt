@@ -9,14 +9,14 @@ data class StateEntity(
     @PrimaryKey
     val code: String,
     val name: String,
-    val active: String,
-    val cases: String,
-    val casesToday: String,
-    val deaths: String,
-    val deathsToday: String,
-    val recovered: String,
-    val recoveredToday: String,
-    val migratedToOther: String,
+    val active: Int,
+    val cases: Int,
+    val casesToday: Int,
+    val deaths: Int,
+    val deathsToday: Int,
+    val recovered: Int,
+    val recoveredToday: Int,
+    val migratedToOther: Int,
     val updated: Long
 ) {
     val lastUpdatedUiStr get() = DateUtil.getDateInFormat(updated)

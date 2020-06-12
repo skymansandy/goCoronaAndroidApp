@@ -1,7 +1,6 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.home.StatCard
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.world.WorldState
 import kotlinx.coroutines.delay
@@ -30,44 +29,24 @@ class GetWorldDataForUiUseCase @Inject constructor(
                             countryDataStats += CovidStat(
                                 code = district.countryCode,
                                 name = district.name,
-                                confirmed = district.cases.toInt(),
-                                active = district.active.toInt(),
-                                recovered = district.recovered.toInt(),
-                                deceased = district.deaths.toInt()
+                                confirmed = district.cases,
+                                active = district.active,
+                                recovered = district.recovered,
+                                deceased = district.deaths
                             )
                         }
 
                         it.let {
-                            val worldData = it
-
-                            val confirmedStat =
-                                StatCard(
-                                    worldData.cases, worldData.todayCases,
-                                    arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                                )
-                            val activeStat =
-                                StatCard(
-                                    worldData.active, "0",
-                                    arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                                )
-                            val recoveredStat =
-                                StatCard(
-                                    worldData.recovered, worldData.todayRecovered,
-                                    arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                                )
-                            val deceasedStat =
-                                StatCard(
-                                    worldData.deaths, worldData.todayDeaths,
-                                    arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                                )
-
                             emit(
                                 WorldState.WorldStats(
-                                    lastUpdated = worldData.lastUpdatedUiStr,
-                                    confirmed = confirmedStat,
-                                    active = activeStat,
-                                    recovered = recoveredStat,
-                                    deceased = deceasedStat,
+                                    lastUpdated = it.lastUpdatedUiStr,
+                                    active = it.active,
+                                    confirmed = it.cases,
+                                    confirmedToday = it.todayCases,
+                                    recovered = it.recovered,
+                                    recoveredToday = it.todayRecovered,
+                                    deaths = it.deaths,
+                                    deathsToday = it.todayDeaths,
                                     stats = countryDataStats
                                 )
                             )

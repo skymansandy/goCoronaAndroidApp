@@ -4,7 +4,6 @@ import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 
 sealed class HomeState {
     data class IndiaStats(
-        val placeName: String,
         val lastUpdated: String,
         val confirmed: StatCard,
         val active: StatCard,
@@ -20,7 +19,7 @@ sealed class HomeState {
 sealed class HomeEvent
 
 data class StatCard(
-    var count: String = "",
-    var deltaCount: String = "",
+    var count: Int = 0,
+    var deltaCount: Int = 0,
     var growthTrend: List<Int> = arrayListOf(0, 0)
 )

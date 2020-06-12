@@ -30,10 +30,10 @@ class GetStateDataForUiUseCase @Inject constructor(
                             districtDataStatList += CovidStat(
                                 code = district.code,
                                 name = district.name,
-                                confirmed = district.cases.toInt(),
-                                active = district.active.toInt(),
-                                recovered = district.recovered.toInt(),
-                                deceased = district.deaths.toInt()
+                                confirmed = district.cases,
+                                active = district.active,
+                                recovered = district.recovered,
+                                deceased = district.deaths
                             )
                         }
 

@@ -7,17 +7,17 @@ data class DistrictDataResponse(
 )
 
 data class DistrictDataItem(
-    val recovered: String,
-    val notes: String,
-    val deceased: String,
     val district: String,
+    val notes: String,
+    val recovered: Int?,
+    val deceased: Int?,
     val delta: Delta,
-    val active: String,
-    val confirmed: String
+    val active: Int,
+    val confirmed: Int
 )
 
 data class Delta(
-    val recovered: String,
-    val deceased: String,
-    val confirmed: String
+    val recovered: Int?,
+    val deceased: Int?,
+    val confirmed: Int?
 )

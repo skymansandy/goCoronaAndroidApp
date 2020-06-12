@@ -42,21 +42,15 @@ class FetchCovid19StatsUseCase @Inject constructor(
                             countryCode = it.countryInfo.iso2 ?: it.country,
                             name = it.country,
                             flag = it.countryInfo.flag,
-                            active = it.active,
-                            critical = it.critical,
-                            tests = it.tests,
-                            cases = it.cases,
-                            casesToday = it.todayCases,
-                            deaths = it.deaths,
-                            deathsToday = it.todayDeaths,
-                            recovered = it.recovered,
-                            recoveredToday = it.todayRecovered,
-                            testsPerMillion = it.testsPerOneMillion,
-                            casesPerPeople = it.casesPerOneMillion,
-                            deathsPerPeople = it.deathsPerOneMillion,
-                            activePerMillion = it.activePerOneMillion,
-                            recoveredPerMillion = it.recoveredPerOneMillion,
-                            criticalPerMillion = it.criticalPerOneMillion,
+                            active = it.active ?: 0,
+                            critical = it.critical ?: 0,
+                            tests = it.tests ?: 0,
+                            cases = it.cases ?: 0,
+                            casesToday = it.todayCases ?: 0,
+                            deaths = it.deaths ?: 0,
+                            deathsToday = it.todayDeaths ?: 0,
+                            recovered = it.recovered ?: 0,
+                            recoveredToday = it.todayRecovered ?: 0,
                             updated = timeMillis
                         )
                     }
@@ -92,11 +86,11 @@ class FetchCovid19StatsUseCase @Inject constructor(
                                 name = district.district,
                                 active = district.active,
                                 cases = district.confirmed,
-                                casesToday = district.delta.confirmed,
-                                deaths = district.deceased,
-                                deathsToday = district.delta.deceased,
-                                recovered = district.recovered,
-                                recoveredToday = district.delta.recovered,
+                                casesToday = district.delta.confirmed ?: 0,
+                                deaths = district.deceased ?: 0,
+                                deathsToday = district.delta.deceased ?: 0,
+                                recovered = district.recovered ?: 0,
+                                recoveredToday = district.delta.recovered ?: 0,
                                 updated = timeMillis
                             )
                         }
@@ -128,14 +122,14 @@ class FetchCovid19StatsUseCase @Inject constructor(
                         StateEntity(
                             code = it.statecode,
                             name = it.state,
-                            active = it.active,
-                            cases = it.confirmed,
-                            casesToday = it.deltaconfirmed,
-                            deaths = it.deaths,
-                            deathsToday = it.deltadeaths,
-                            recovered = it.recovered,
-                            recoveredToday = it.deltarecovered,
-                            migratedToOther = it.migratedother,
+                            active = it.active ?: 0,
+                            cases = it.confirmed ?: 0,
+                            casesToday = it.deltaconfirmed ?: 0,
+                            deaths = it.deaths ?: 0,
+                            deathsToday = it.deltadeaths ?: 0,
+                            recovered = it.recovered ?: 0,
+                            recoveredToday = it.deltarecovered ?: 0,
+                            migratedToOther = it.migratedother ?: 0,
                             updated = timeMillis
                         )
                     }
@@ -160,17 +154,17 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     CoroutineScope(Dispatchers.Default).launch {
                         goCoronaRepository.insertWorldData(
                             WorldEntity(
-                                cases = worldData.cases,
-                                todayCases = worldData.todayCases,
-                                deaths = worldData.deaths,
-                                todayDeaths = worldData.todayDeaths,
-                                recovered = worldData.recovered,
-                                todayRecovered = worldData.todayRecovered,
-                                active = worldData.active,
-                                critical = worldData.critical,
-                                tests = worldData.tests,
-                                testsPerOneMillion = worldData.testsPerOneMillion,
-                                population = worldData.population,
+                                cases = worldData.cases ?: 0,
+                                todayCases = worldData.todayCases ?: 0,
+                                deaths = worldData.deaths ?: 0,
+                                todayDeaths = worldData.todayDeaths ?: 0,
+                                recovered = worldData.recovered ?: 0,
+                                todayRecovered = worldData.todayRecovered ?: 0,
+                                active = worldData.active ?: 0,
+                                critical = worldData.critical ?: 0,
+                                tests = worldData.tests ?: 0,
+                                testsPerOneMillion = worldData.testsPerOneMillion ?: 0,
+                                population = worldData.population ?: 0,
                                 updated = System.currentTimeMillis()
                             )
                         )

@@ -6,13 +6,13 @@ sealed class StateDataState {
     data class StateStats(
         val placeName: String,
         val lastUpdated: String,
-        val active: String,
-        val confirmed: String,
-        val confirmedToday: String,
-        val recovered: String,
-        val recoveredToday: String,
-        val deaths: String,
-        val deathsToday: String,
+        val active: Int,
+        val confirmed: Int,
+        val confirmedToday: Int,
+        val recovered: Int,
+        val recoveredToday: Int,
+        val deaths: Int,
+        val deathsToday: Int,
         val stats: List<CovidStat>?
     ) : StateDataState()
 

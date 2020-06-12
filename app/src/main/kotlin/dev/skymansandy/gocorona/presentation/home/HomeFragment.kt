@@ -47,7 +47,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 )
                 with(binding.statsIndia) {
                     tvActiveCount.text =
-                        NumberFormat.getInstance().format(newState.active.count.toInt())
+                        NumberFormat.getInstance().format(newState.active.count)
                     statCardConfirmed.showStatCard(
                         newState.confirmed, getString(R.string.confirmed),
                         covidRes.confirmedColor, newState.growthTrendMaxScale
@@ -86,8 +86,8 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         } else View.GONE
 
         tvTitle.text = title
-        tvCount.showNumber(statCard.count.toInt())
-        showDelta(covidRes, tvDelta, statCard.deltaCount.toInt())
+        tvCount.showNumber(statCard.count)
+        showDelta(covidRes, tvDelta, statCard.deltaCount)
         paintTextView(tvCount, color)
         paintTextView(tvDelta, color)
     }
