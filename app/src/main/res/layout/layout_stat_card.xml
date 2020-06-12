@@ -12,7 +12,7 @@
         android:layout_height="@dimen/dp_160"
         android:layout_margin="@dimen/dp_4"
         android:layout_weight="1"
-        app:cardElevation="@dimen/dp_16"
+        app:cardElevation="@dimen/stat_card_elevation"
         tools:ignore="ObsoleteLayoutParam"
         tools:layout_width="match_parent">
 

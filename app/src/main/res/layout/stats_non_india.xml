@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_4"
-            app:cardElevation="@dimen/dp_16">
+            app:cardElevation="@dimen/stat_card_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_4"
-            app:cardElevation="@dimen/dp_16">
+            app:cardElevation="@dimen/stat_card_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_4"
-            app:cardElevation="@dimen/dp_16">
+            app:cardElevation="@dimen/stat_card_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_4"
                 android:layout_weight="1"
-                app:cardElevation="@dimen/dp_16">
+                app:cardElevation="@dimen/stat_card_elevation">
 
                 <LinearLayout
                     android:layout_width="match_parent"

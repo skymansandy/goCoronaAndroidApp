@@ -20,6 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/color_bg"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -87,8 +89,8 @@
                             style="@style/TextAppearance.MaterialComponents.Body2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Last updated 1 hour ago"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            tools:text="Last updated 1 hour ago" />
 
                     </LinearLayout>
 

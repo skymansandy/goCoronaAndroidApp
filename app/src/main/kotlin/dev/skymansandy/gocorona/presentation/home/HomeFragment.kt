@@ -61,6 +61,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         binding.layoutLoading.visibility = View.GONE
         binding.statsIndia.root.visibility = View.GONE
         binding.statsNonIndia.root.visibility = View.GONE
+        binding.swipe.isRefreshing = false
 
         when (newState) {
             is HomeState.Loading -> {
@@ -68,7 +69,6 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 binding.layoutLoading.visibility = View.VISIBLE
             }
             is HomeState.IndiaStats -> {
-                binding.swipe.isRefreshing = false
                 binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
                 binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
