@@ -3,7 +3,6 @@ package dev.skymansandy.gocorona.presentation.statedata
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
@@ -12,11 +11,11 @@ import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
-import kotlin.math.absoluteValue
 
 class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_data) :
     BaseFragment<FragmentStateDataBinding, StateDataState, StateDataEvent, StateDataViewModel>(),
@@ -65,11 +64,11 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                         NumberFormat.getInstance().format(newState.deaths.toInt())
 
                     tvConfirmedDelta.visibility = View.VISIBLE
-                    showDelta(tvConfirmedDelta, newState.confirmedToday.toInt())
+                    showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
                     tvRecoveredDelta.visibility = View.VISIBLE
-                    showDelta(tvRecoveredDelta, newState.recoveredToday.toInt())
+                    showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())
                     tvDeceasedDelta.visibility = View.VISIBLE
-                    showDelta(tvDeceasedDelta, newState.deathsToday.toInt())
+                    showDelta(covidRes, tvDeceasedDelta, newState.deathsToday.toInt())
 
                     pieChart.loadData(
                         newState.active.toInt(),
@@ -125,30 +124,5 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
             PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
         )
         startAnimation()
-    }
-
-    private fun showDelta(textView: TextView, delta: Int) {
-        textView.visibility =
-            if (delta != 0) {
-                textView.text =
-                    NumberFormat.getInstance().format(delta.absoluteValue)
-                when {
-                    delta < 0 ->
-                        textView.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.downDrawable,
-                            null
-                        )
-                    else ->
-                        textView.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.upDrawable,
-                            null
-                        )
-                }
-                View.VISIBLE
-            } else View.GONE
     }
 }

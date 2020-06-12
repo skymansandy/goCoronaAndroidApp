@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GoCorona Tracker</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="recovered">Recovered</string>
+    <string name="deceased">Deceased</string>
+    <string name="state_ut">State/UT</string>
+    <string name="last_synced_at">Last synced at</string>
 </resources>

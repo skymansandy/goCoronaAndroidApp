@@ -2,16 +2,15 @@ package dev.skymansandy.gocorona.presentation.districtdata
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentDistrictDataBinding
+import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
-import kotlin.math.absoluteValue
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
     BaseFragment<FragmentDistrictDataBinding, DistrictDataState, DistrictDataEvent, DistrictDataViewModel>() {
@@ -54,11 +53,11 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                         NumberFormat.getInstance().format(newState.deaths.toInt())
 
                     tvConfirmedDelta.visibility = View.VISIBLE
-                    showDelta(tvConfirmedDelta, newState.confirmedToday.toInt())
+                    showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
                     tvRecoveredDelta.visibility = View.VISIBLE
-                    showDelta(tvRecoveredDelta, newState.recoveredToday.toInt())
+                    showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())
                     tvDeceasedDelta.visibility = View.VISIBLE
-                    showDelta(tvDeceasedDelta, newState.deathsToday.toInt())
+                    showDelta(covidRes, tvDeceasedDelta, newState.deathsToday.toInt())
 
                     pieChart.loadData(
                         newState.active.toInt(),
@@ -82,30 +81,5 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
             PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
         )
         startAnimation()
-    }
-
-    private fun showDelta(textView: TextView, delta: Int) {
-        textView.visibility =
-            if (delta != 0) {
-                textView.text =
-                    NumberFormat.getInstance().format(delta.absoluteValue)
-                when {
-                    delta < 0 ->
-                        textView.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.downDrawable,
-                            null
-                        )
-                    else ->
-                        textView.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.upDrawable,
-                            null
-                        )
-                }
-                View.VISIBLE
-            } else View.GONE
     }
 }

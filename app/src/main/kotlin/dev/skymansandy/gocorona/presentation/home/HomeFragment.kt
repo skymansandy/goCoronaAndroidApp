@@ -1,19 +1,15 @@
 package dev.skymansandy.gocorona.presentation.home
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
-import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import dev.skymansandy.gocorona.presentation.home.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import java.text.NumberFormat
-import kotlin.math.absoluteValue
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     BaseFragment<FragmentHomeBinding, HomeState, HomeEvent, HomeViewModel>(),
@@ -30,9 +26,9 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     }
 
     override fun renderViewState(newState: HomeState) {
+        binding.swipe.isRefreshing = false
         binding.layoutLoading.visibility = View.GONE
         binding.statsIndia.root.visibility = View.GONE
-        binding.swipe.isRefreshing = false
 
         when (newState) {
             is HomeState.Loading -> {
@@ -40,11 +36,15 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 binding.layoutLoading.visibility = View.VISIBLE
             }
             is HomeState.IndiaStats -> {
-                binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
+                binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
-                    String.format("Last synced at %s", newState.lastUpdated)
-                binding.statsIndia.layoutStatList.setup(statAdapter, "State/UT")
+                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                binding.statsIndia.layoutStatList.setup(
+                    covidRes,
+                    statAdapter,
+                    getString(R.string.state_ut)
+                )
                 with(binding.statsIndia) {
                     tvActiveCount.text =
                         NumberFormat.getInstance().format(newState.active.count.toInt())
@@ -62,10 +62,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         }
     }
 
-    private fun LayoutStatCardBinding.showStatCard(
-        stat: StatCard,
-        growthTrendMaxScale: Float
-    ) {
+    private fun LayoutStatCardBinding.showStatCard(stat: StatCard, growthTrendMaxScale: Float) {
         snake.clear()
         snake.setMaxValue(growthTrendMaxScale)
         snake.visibility = if (growthTrendMaxScale >= 0) {
@@ -73,80 +70,42 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
             View.VISIBLE
         } else View.GONE
 
-        tvCount.text = NumberFormat.getInstance().format(stat.count.toInt())
-        tvDelta.visibility =
-            if (stat.deltaCount.toInt() != 0) {
-                tvDelta.text =
-                    NumberFormat.getInstance().format(stat.deltaCount.toInt().absoluteValue)
-                when {
-                    stat.deltaCount.toInt() < 0 ->
-                        tvDelta.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.downDrawable,
-                            null
-                        )
-                    else ->
-                        tvDelta.setCompoundDrawablesWithIntrinsicBounds(
-                            null,
-                            null,
-                            covidRes.upDrawable,
-                            null
-                        )
-                }
-                View.VISIBLE
-            } else View.GONE
-
+        showDelta(covidRes, tvDelta, stat.count.toInt())
         activity?.let {
             when (this) {
                 binding.statsIndia.statCardConfirmed -> {
-                    tvTitle.text = "Confirmed"
+                    tvTitle.text = getString(R.string.confirmed)
                     tvCount.setTextColor(covidRes.confirmedColor)
-                    tvDelta.setTextColor(covidRes.confirmedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(covidRes.confirmedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(covidRes.confirmedColor)
+                    paintTextView(tvDelta, covidRes.confirmedColor)
                     snake.setStrokeColor(covidRes.confirmedColor)
                 }
                 binding.statsIndia.statCardRecovered -> {
-                    tvTitle.text = "Recovered"
-                    tvCount.setTextColor(covidRes.recoveredColor)
-                    tvDelta.setTextColor(covidRes.recoveredColor)
-                    tvDelta.compoundDrawables[2]?.setTint(covidRes.recoveredColor)
+                    tvTitle.text = getString(R.string.recovered)
+                    paintTextView(tvDelta, covidRes.recoveredColor)
                     snake.setStrokeColor(covidRes.recoveredColor)
                 }
                 binding.statsIndia.statCardDeceased -> {
-                    tvTitle.text = "Deceased"
-                    tvCount.setTextColor(covidRes.deceasedColor)
-                    tvDelta.setTextColor(covidRes.deceasedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(covidRes.deceasedColor)
+                    tvTitle.text = getString(R.string.deceased)
+                    paintTextView(tvDelta, covidRes.deceasedColor)
                     snake.setStrokeColor(covidRes.deceasedColor)
                 }
             }
         }
     }
 
+    private fun paintTextView(textView: TextView, color: Int) {
+        textView.setTextColor(color)
+        textView.compoundDrawables[2]?.setTint(color)
+        textView.compoundDrawables[2]?.setTint(color)
+    }
+
+    override fun onCountryClicked(covidStat: CovidStat) = TODO()
+    override fun onDistrictClicked(covidStat: CovidStat) = TODO()
     override fun onStateClicked(covidStat: CovidStat) {
         navController.navigate(
             HomeFragmentDirections.actionHomeFragmentToStateDataFragment(
                 covidStat
             )
         )
-    }
-
-    override fun onCountryClicked(covidStat: CovidStat) = TODO()
-    override fun onDistrictClicked(covidStat: CovidStat) = TODO()
-
-    fun LayoutStatListBinding.setup(covidStatAdapter: CovidStatAdapter, title: String) {
-        statList.adapter = covidStatAdapter
-        statListHeader.tvTitle.text = title
-        statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvActive.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvConfirmed.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvRecovered.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvDeceased.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvActive.setTextColor(covidRes.activeColor)
-        statListHeader.tvConfirmed.setTextColor(covidRes.confirmedColor)
-        statListHeader.tvRecovered.setTextColor(covidRes.recoveredColor)
-        statListHeader.tvDeceased.setTextColor(covidRes.deceasedColor)
     }
 }

@@ -17,9 +17,7 @@ sealed class HomeState {
     object Loading : HomeState()
 }
 
-sealed class HomeEvent {
-    data class CountryClicked(val countryId: String) : HomeEvent()
-}
+sealed class HomeEvent
 
 data class StatCard(
     var count: String = "",

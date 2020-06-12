@@ -7,6 +7,6 @@ interface CovidRes {
     val activeColor: Int
     val recoveredColor: Int
     val deceasedColor: Int
-    val upDrawable: Drawable
-    val downDrawable: Drawable
+    val upDrawableArr: Drawable
+    val downDrawableArr: Drawable
 }
