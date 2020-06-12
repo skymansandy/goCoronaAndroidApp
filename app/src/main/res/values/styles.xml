@@ -13,4 +13,9 @@
         <item name="android:background">@drawable/rounded_background_grey_solid</item>
         <item name="android:textSize">@dimen/sp_16</item>
     </style>
+
+    <style name="CardStyle">
+        <item name="cardElevation">@dimen/stat_card_elevation</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
 </resources>
