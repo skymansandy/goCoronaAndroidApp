@@ -20,9 +20,8 @@ fun TextView.scanForBigTextAndWrapNextLine(): Boolean {
     val linearLayout = parent as? LinearLayout?
     return linearLayout?.let {
         val isLargeText = text.toString().length > 7
-        it.orientation = when (isLargeText) {
-            true -> LinearLayout.VERTICAL
-            false -> LinearLayout.HORIZONTAL
+        if (isLargeText) {
+            it.orientation = LinearLayout.VERTICAL
         }
         isLargeText
     } ?: false
