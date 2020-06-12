@@ -12,7 +12,8 @@ import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
-import dev.skymansandy.gocorona.tools.coviduitools.extension.showLocaleNumber
+import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
+import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 
 class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
     BaseFragment<FragmentWorldBinding, WorldState, WorldEvent, WorldViewModel>(),
@@ -55,10 +56,14 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
                 with(binding.statsWorld) {
-                    tvActiveCount.showLocaleNumber(newState.active.count.toInt())
-                    tvConfirmedCount.showLocaleNumber(newState.confirmed.count.toInt())
-                    tvRecoveredCount.showLocaleNumber(newState.recovered.count.toInt())
-                    tvDeceasedCount.showLocaleNumber(newState.deceased.count.toInt())
+                    tvActiveCount.showNumber(newState.active.count.toInt())
+                    tvConfirmedCount.showNumber(newState.confirmed.count.toInt())
+                    tvRecoveredCount.showNumber(newState.recovered.count.toInt())
+                    tvDeceasedCount.showNumber(newState.deceased.count.toInt())
+
+                    tvRecoveredCount.scanForBigTextAndWrapNextLine()
+                    tvDeceasedCount.scanForBigTextAndWrapNextLine()
+
                     pieChart.loadData(
                         covidRes,
                         newState.active.count.toInt(),

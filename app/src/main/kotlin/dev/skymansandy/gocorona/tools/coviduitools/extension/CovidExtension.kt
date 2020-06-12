@@ -1,6 +1,7 @@
 package dev.skymansandy.gocorona.tools.coviduitools.extension
 
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
@@ -11,8 +12,18 @@ import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
 
-fun TextView.showLocaleNumber(number: Int) {
+fun TextView.showNumber(number: Int) {
     text = NumberFormat.getInstance().format(number)
+}
+
+fun TextView.scanForBigTextAndWrapNextLine() {
+    val linearLayout = parent as? LinearLayout?
+    linearLayout?.let {
+        it.orientation = when (text.toString().length > 7) {
+            true -> LinearLayout.VERTICAL
+            false -> LinearLayout.HORIZONTAL
+        }
+    }
 }
 
 fun PieChart.loadData(covidRes: CovidRes, active: Int, recovered: Int, deceased: Int) {

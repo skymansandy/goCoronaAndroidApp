@@ -9,7 +9,7 @@ import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
-import dev.skymansandy.gocorona.tools.coviduitools.extension.showLocaleNumber
+import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 import java.text.NumberFormat
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -86,7 +86,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         } else View.GONE
 
         tvTitle.text = title
-        tvCount.showLocaleNumber(statCard.count.toInt())
+        tvCount.showNumber(statCard.count.toInt())
         showDelta(covidRes, tvDelta, statCard.deltaCount.toInt())
         paintTextView(tvCount, color)
         paintTextView(tvDelta, color)

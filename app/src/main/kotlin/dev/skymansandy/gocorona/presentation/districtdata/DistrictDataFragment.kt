@@ -12,7 +12,8 @@ import dev.skymansandy.gocorona.presentation.countrydata.CountryDataViewModel
 import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
-import dev.skymansandy.gocorona.tools.coviduitools.extension.showLocaleNumber
+import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
+import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
     BaseFragment<FragmentDistrictDataBinding, CountryDataState, CountryDataEvent, CountryDataViewModel>() {
@@ -44,10 +45,14 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
                 with(binding.statsNonIndia) {
-                    tvActiveCount.showLocaleNumber(newState.active.toInt())
-                    tvConfirmedCount.showLocaleNumber(newState.confirmed.toInt())
-                    tvRecoveredCount.showLocaleNumber(newState.recovered.toInt())
-                    tvDeceasedCount.showLocaleNumber(newState.deaths.toInt())
+                    tvActiveCount.showNumber(newState.active.toInt())
+                    tvConfirmedCount.showNumber(newState.confirmed.toInt())
+                    tvRecoveredCount.showNumber(newState.recovered.toInt())
+                    tvDeceasedCount.showNumber(newState.deaths.toInt())
+
+                    tvRecoveredCount.scanForBigTextAndWrapNextLine()
+                    tvDeceasedCount.scanForBigTextAndWrapNextLine()
+
                     showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
                     showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())
                     showDelta(covidRes, tvDeceasedDelta, newState.deathsToday.toInt())
