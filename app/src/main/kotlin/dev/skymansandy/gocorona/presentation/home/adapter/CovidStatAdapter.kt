@@ -34,6 +34,8 @@ class CovidStatAdapter(
  * StatRow click listener
  */
 interface CovidStatClickListener {
+    fun onCountryClicked(covidStat: CovidStat)
+
     fun onStateClicked(covidStat: CovidStat)
 
     fun onDistrictClicked(covidStat: CovidStat)

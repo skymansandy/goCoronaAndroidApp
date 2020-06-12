@@ -3,11 +3,11 @@ package dev.skymansandy.gocorona.presentation.districtdata
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentDistrictDataBinding
+import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
@@ -16,21 +16,7 @@ import kotlin.math.absoluteValue
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
     BaseFragment<FragmentDistrictDataBinding, DistrictDataState, DistrictDataEvent, DistrictDataViewModel>() {
 
-    private val confirmedColor get() = ContextCompat.getColor(activity!!, R.color.color_confirmed)
-    private val activeColor get() = ContextCompat.getColor(activity!!, R.color.color_active)
-    private val recoveredColor get() = ContextCompat.getColor(activity!!, R.color.color_recovered)
-    private val deceasedColor get() = ContextCompat.getColor(activity!!, R.color.color_deceased)
-    private val upDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_upward_24
-        )
-    private val downDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_downward_24
-        )
-
+    private val covidRes by lazy { CovidResImpl(activity!!) }
     private val args by navArgs<DistrictDataFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -87,13 +73,13 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
     private fun PieChart.loadData(active: Int, recovered: Int, deceased: Int) {
         clearChart()
         addPieSlice(
-            PieModel("Active", active.toFloat(), activeColor)
+            PieModel("Active", active.toFloat(), covidRes.activeColor)
         )
         addPieSlice(
-            PieModel("Recovered", recovered.toFloat(), recoveredColor)
+            PieModel("Recovered", recovered.toFloat(), covidRes.recoveredColor)
         )
         addPieSlice(
-            PieModel("Deceased", deceased.toFloat(), deceasedColor)
+            PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
         )
         startAnimation()
     }
@@ -108,14 +94,14 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                         textView.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            downDrawable,
+                            covidRes.downDrawable,
                             null
                         )
                     else ->
                         textView.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            upDrawable,
+                            covidRes.upDrawable,
                             null
                         )
                 }

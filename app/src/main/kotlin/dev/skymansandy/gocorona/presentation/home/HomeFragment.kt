@@ -3,7 +3,6 @@ package dev.skymansandy.gocorona.presentation.home
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
@@ -12,6 +11,7 @@ import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import java.text.NumberFormat
 import kotlin.math.absoluteValue
 
@@ -19,21 +19,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     BaseFragment<FragmentHomeBinding, HomeState, HomeEvent, HomeViewModel>(),
     CovidStatClickListener {
 
-    private val confirmedColor get() = ContextCompat.getColor(activity!!, R.color.color_confirmed)
-    private val activeColor get() = ContextCompat.getColor(activity!!, R.color.color_active)
-    private val recoveredColor get() = ContextCompat.getColor(activity!!, R.color.color_recovered)
-    private val deceasedColor get() = ContextCompat.getColor(activity!!, R.color.color_deceased)
-    private val upDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_upward_24
-        )
-    private val downDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_downward_24
-        )
-
+    private val covidRes by lazy { CovidResImpl(activity!!) }
     private val statAdapter = CovidStatAdapter(this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -97,14 +83,14 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                         tvDelta.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            downDrawable,
+                            covidRes.downDrawable,
                             null
                         )
                     else ->
                         tvDelta.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            upDrawable,
+                            covidRes.upDrawable,
                             null
                         )
                 }
@@ -115,42 +101,28 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
             when (this) {
                 binding.statsIndia.statCardConfirmed -> {
                     tvTitle.text = "Confirmed"
-                    tvCount.setTextColor(confirmedColor)
-                    tvDelta.setTextColor(confirmedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(confirmedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(confirmedColor)
-                    snake.setStrokeColor(confirmedColor)
+                    tvCount.setTextColor(covidRes.confirmedColor)
+                    tvDelta.setTextColor(covidRes.confirmedColor)
+                    tvDelta.compoundDrawables[2]?.setTint(covidRes.confirmedColor)
+                    tvDelta.compoundDrawables[2]?.setTint(covidRes.confirmedColor)
+                    snake.setStrokeColor(covidRes.confirmedColor)
                 }
                 binding.statsIndia.statCardRecovered -> {
                     tvTitle.text = "Recovered"
-                    tvCount.setTextColor(recoveredColor)
-                    tvDelta.setTextColor(recoveredColor)
-                    tvDelta.compoundDrawables[2]?.setTint(recoveredColor)
-                    snake.setStrokeColor(recoveredColor)
+                    tvCount.setTextColor(covidRes.recoveredColor)
+                    tvDelta.setTextColor(covidRes.recoveredColor)
+                    tvDelta.compoundDrawables[2]?.setTint(covidRes.recoveredColor)
+                    snake.setStrokeColor(covidRes.recoveredColor)
                 }
                 binding.statsIndia.statCardDeceased -> {
                     tvTitle.text = "Deceased"
-                    tvCount.setTextColor(deceasedColor)
-                    tvDelta.setTextColor(deceasedColor)
-                    tvDelta.compoundDrawables[2]?.setTint(deceasedColor)
-                    snake.setStrokeColor(deceasedColor)
+                    tvCount.setTextColor(covidRes.deceasedColor)
+                    tvDelta.setTextColor(covidRes.deceasedColor)
+                    tvDelta.compoundDrawables[2]?.setTint(covidRes.deceasedColor)
+                    snake.setStrokeColor(covidRes.deceasedColor)
                 }
             }
         }
-    }
-
-    fun LayoutStatListBinding.setup(covidStatAdapter: CovidStatAdapter, title: String) {
-        statList.adapter = covidStatAdapter
-        statListHeader.tvTitle.text = title
-        statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvActive.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvConfirmed.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvRecovered.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvDeceased.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvActive.setTextColor(activeColor)
-        statListHeader.tvConfirmed.setTextColor(confirmedColor)
-        statListHeader.tvRecovered.setTextColor(recoveredColor)
-        statListHeader.tvDeceased.setTextColor(deceasedColor)
     }
 
     override fun onStateClicked(covidStat: CovidStat) {
@@ -161,5 +133,20 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         )
     }
 
+    override fun onCountryClicked(covidStat: CovidStat) = TODO()
     override fun onDistrictClicked(covidStat: CovidStat) = TODO()
+
+    fun LayoutStatListBinding.setup(covidStatAdapter: CovidStatAdapter, title: String) {
+        statList.adapter = covidStatAdapter
+        statListHeader.tvTitle.text = title
+        statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
+        statListHeader.tvActive.setTypeface(null, Typeface.BOLD)
+        statListHeader.tvConfirmed.setTypeface(null, Typeface.BOLD)
+        statListHeader.tvRecovered.setTypeface(null, Typeface.BOLD)
+        statListHeader.tvDeceased.setTypeface(null, Typeface.BOLD)
+        statListHeader.tvActive.setTextColor(covidRes.activeColor)
+        statListHeader.tvConfirmed.setTextColor(covidRes.confirmedColor)
+        statListHeader.tvRecovered.setTextColor(covidRes.recoveredColor)
+        statListHeader.tvDeceased.setTextColor(covidRes.deceasedColor)
+    }
 }

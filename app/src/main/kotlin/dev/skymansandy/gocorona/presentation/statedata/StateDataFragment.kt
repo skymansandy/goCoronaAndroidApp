@@ -4,7 +4,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
@@ -13,6 +12,7 @@ import dev.skymansandy.gocorona.databinding.LayoutStatListBinding
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
+import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
@@ -22,21 +22,7 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
     BaseFragment<FragmentStateDataBinding, StateDataState, StateDataEvent, StateDataViewModel>(),
     CovidStatClickListener {
 
-    private val confirmedColor get() = ContextCompat.getColor(activity!!, R.color.color_confirmed)
-    private val activeColor get() = ContextCompat.getColor(activity!!, R.color.color_active)
-    private val recoveredColor get() = ContextCompat.getColor(activity!!, R.color.color_recovered)
-    private val deceasedColor get() = ContextCompat.getColor(activity!!, R.color.color_deceased)
-    private val upDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_upward_24
-        )
-    private val downDrawable
-        get() = ContextCompat.getDrawable(
-            activity!!,
-            R.drawable.ic_baseline_arrow_downward_24
-        )
-
+    private val covidRes by lazy { CovidResImpl(activity!!) }
     private val statAdapter = CovidStatAdapter(this, true)
 
     private val args by navArgs<StateDataFragmentArgs>()
@@ -101,6 +87,7 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
         }
     }
 
+    override fun onCountryClicked(covidStat: CovidStat) = TODO()
     override fun onStateClicked(covidStat: CovidStat) = TODO()
 
     override fun onDistrictClicked(covidStat: CovidStat) {
@@ -120,22 +107,22 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
         statListHeader.tvConfirmed.setTypeface(null, Typeface.BOLD)
         statListHeader.tvRecovered.setTypeface(null, Typeface.BOLD)
         statListHeader.tvDeceased.setTypeface(null, Typeface.BOLD)
-        statListHeader.tvActive.setTextColor(activeColor)
-        statListHeader.tvConfirmed.setTextColor(confirmedColor)
-        statListHeader.tvRecovered.setTextColor(recoveredColor)
-        statListHeader.tvDeceased.setTextColor(deceasedColor)
+        statListHeader.tvActive.setTextColor(covidRes.activeColor)
+        statListHeader.tvConfirmed.setTextColor(covidRes.confirmedColor)
+        statListHeader.tvRecovered.setTextColor(covidRes.recoveredColor)
+        statListHeader.tvDeceased.setTextColor(covidRes.deceasedColor)
     }
 
     private fun PieChart.loadData(active: Int, recovered: Int, deceased: Int) {
         clearChart()
         addPieSlice(
-            PieModel("Active", active.toFloat(), activeColor)
+            PieModel("Active", active.toFloat(), covidRes.activeColor)
         )
         addPieSlice(
-            PieModel("Recovered", recovered.toFloat(), recoveredColor)
+            PieModel("Recovered", recovered.toFloat(), covidRes.recoveredColor)
         )
         addPieSlice(
-            PieModel("Deceased", deceased.toFloat(), deceasedColor)
+            PieModel("Deceased", deceased.toFloat(), covidRes.deceasedColor)
         )
         startAnimation()
     }
@@ -150,14 +137,14 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                         textView.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            downDrawable,
+                            covidRes.downDrawable,
                             null
                         )
                     else ->
                         textView.setCompoundDrawablesWithIntrinsicBounds(
                             null,
                             null,
-                            upDrawable,
+                            covidRes.upDrawable,
                             null
                         )
                 }
