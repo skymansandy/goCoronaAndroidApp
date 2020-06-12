@@ -11,6 +11,7 @@ import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItemAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
+import kotlinx.coroutines.*
 
 
 class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_choose_country) :
@@ -34,10 +35,19 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
         binding.ivExit.setOnClickListener { dismiss() }
         binding.rvCountries.adapter = countryAdapter
         binding.etCountrySearch.addTextChangedListener(object : TextWatcher {
+            private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main)
+            private var searchJob: Job? = null
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                vm.onUserEvent(ChooseCountryEvent.SearchQuery(s.toString()))
+                searchJob?.cancel()
+                searchJob = coroutineScope.launch {
+                    s.toString().let {
+                        delay(200)
+                        vm.onUserEvent(ChooseCountryEvent.SearchQuery(it))
+                    }
+                }
             }
         })
     }
@@ -63,7 +73,15 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
             }
             is ChooseCountryState.State -> {
                 binding.layoutCountries.visibility = View.VISIBLE
-                countryAdapter.submitList(newState.countries)
+                binding.rvCountries.visibility = View.GONE
+                binding.layoutNoCountries.visibility = View.GONE
+                when (newState.countries.isNullOrEmpty()) {
+                    true -> binding.layoutNoCountries.visibility = View.VISIBLE
+                    false -> {
+                        binding.rvCountries.visibility = View.VISIBLE
+                        countryAdapter.submitList(newState.countries)
+                    }
+                }
             }
         }
     }

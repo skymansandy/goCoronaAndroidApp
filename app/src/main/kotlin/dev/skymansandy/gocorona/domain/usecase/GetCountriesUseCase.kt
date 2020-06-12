@@ -1,33 +1,19 @@
 package dev.skymansandy.gocorona.domain.usecase
 
-import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryState
-import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class GetCountriesUseCase @Inject constructor(
-    private val goCoronaRepository: GoCoronaRepository
+    private val getAllCountryUseCase: GetAllCountriesUseCase,
+    private val getFilteredCountryUseCase: GetFilteredCountriesUseCase
 ) {
 
-    operator fun invoke(): Flow<ChooseCountryState> {
-        return flow {
-            emit(ChooseCountryState.Loading)
-
-            goCoronaRepository.getCountries().collect {
-                val dataSet = it
-                val countries = arrayListOf<CountryItem>()
-                for (countryData in dataSet) {
-                    countries += CountryItem(
-                        code = countryData.countryCode,
-                        name = countryData.name,
-                        flag = countryData.flag
-                    )
-                }
-                emit(ChooseCountryState.State(countries))
-            }
+    operator fun invoke(searchQuery: String = ""): LiveData<ChooseCountryState> {
+        return when (searchQuery.isEmpty()) {
+            true -> getAllCountryUseCase().asLiveData()
+            false -> getFilteredCountryUseCase(searchQuery).asLiveData()
         }
     }
 }

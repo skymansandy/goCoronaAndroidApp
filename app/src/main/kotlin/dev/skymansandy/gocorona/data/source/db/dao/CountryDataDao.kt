@@ -21,4 +21,7 @@ interface CountryDataDao {
 
     @Query("SELECT * FROM CountryData WHERE countryCode = :countryCode")
     fun getCountry(countryCode: String): Flow<CountryEntity?>
+
+    @Query("SELECT * FROM CountryData WHERE name LIKE :searchQuery")
+    fun getFilteredStats(searchQuery: String): Flow<List<CountryEntity>?>
 }

@@ -8,5 +8,5 @@ sealed class ChooseCountryState {
 }
 
 sealed class ChooseCountryEvent {
-    data class SearchQuery(val toString: String) : ChooseCountryEvent()
+    data class SearchQuery(val searchQuery: String) : ChooseCountryEvent()
 }
