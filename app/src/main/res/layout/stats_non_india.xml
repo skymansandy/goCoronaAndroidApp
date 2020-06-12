@@ -41,7 +41,7 @@
                     android:textColor="@color/color_deceased"
                     android:textStyle="bold" />
 
-                <me.grantland.widget.AutofitTextView
+                <TextView
                     android:id="@+id/tv_active_count"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="match_parent"
@@ -180,14 +180,33 @@
                     android:textColor="@color/color_deceased"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_confirmed_count"
-                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="753"
-                    android:textColor="@color/color_confirmed"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_confirmed_count"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="753"
+                        android:textColor="@color/color_confirmed"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_confirmed_delta"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
+                        android:text="753"
+                        android:textColor="@color/color_active"
+                        android:visibility="gone"
+                        app:drawableTint="@color/color_active"
+                        tools:visibility="visible" />
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -221,14 +240,33 @@
                         android:textColor="@color/color_deceased"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_recovered_count"
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="753"
-                        android:textColor="@color/color_recovered"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_recovered_count"
+                            style="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="753"
+                            android:textColor="@color/color_recovered"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_recovered_delta"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
+                            android:text="753"
+                            android:textColor="@color/color_recovered"
+                            android:visibility="gone"
+                            app:drawableTint="@color/color_recovered"
+                            tools:visibility="visible" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -257,15 +295,35 @@
                         android:textColor="@color/color_deceased"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_deceased_count"
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="753"
-                        android:textColor="@color/color_deceased"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_deceased_count"
+                            style="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="753"
+                            android:textColor="@color/color_deceased"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_deceased_delta"
+                            style="@style/TextAppearance.MaterialComponents.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_upward_24"
+                            android:text="753"
+                            android:textColor="@color/color_deceased"
+                            android:visibility="gone"
+                            app:drawableTint="@color/color_deceased"
+                            tools:visibility="visible" />
+                    </LinearLayout>
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 

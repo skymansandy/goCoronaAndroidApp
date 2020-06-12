@@ -29,6 +29,13 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 ) {
                     val countryData = response.body()
                     val countryDbList = countryData?.map { it ->
+
+                        val timeMillis = try {
+                            System.currentTimeMillis()
+                        } catch (t: Throwable) {
+                            System.currentTimeMillis()
+                        }
+
                         CountryEntity(
                             countryCode = if (it.countryInfo.iso2.isNullOrEmpty())
                                 it.country else it.countryInfo.iso2,
@@ -49,7 +56,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                             activePerMillion = it.activePerOneMillion,
                             recoveredPerMillion = it.recoveredPerOneMillion,
                             criticalPerMillion = it.criticalPerOneMillion,
-                            updated = it.updated
+                            updated = timeMillis
                         )
                     }
                     CoroutineScope(Dispatchers.Default).launch {
@@ -73,6 +80,11 @@ class FetchCovid19StatsUseCase @Inject constructor(
                     val districtDbList = arrayListOf<DistrictEntity>()
                     districtResponse.map { state ->
                         state.districtData.map { district ->
+                            val timeMillis = try {
+                                System.currentTimeMillis()
+                            } catch (t: Throwable) {
+                                System.currentTimeMillis()
+                            }
                             districtDbList += DistrictEntity(
                                 code = district.district,
                                 stateCode = state.statecode,
@@ -84,7 +96,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                                 deathsToday = district.delta.deceased,
                                 recovered = district.recovered,
                                 recoveredToday = district.delta.recovered,
-                                updated = System.currentTimeMillis().toString()
+                                updated = timeMillis
                             )
                         }
                     }
@@ -107,6 +119,11 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 ) {
                     val statesResponse = response.body()!!
                     val stateDbList = statesResponse.statewise.map { it ->
+                        val timeMillis = try {
+                            System.currentTimeMillis()
+                        } catch (t: Throwable) {
+                            System.currentTimeMillis()
+                        }
                         StateEntity(
                             code = it.statecode,
                             name = it.state,
@@ -118,7 +135,7 @@ class FetchCovid19StatsUseCase @Inject constructor(
                             recovered = it.recovered,
                             recoveredToday = it.deltarecovered,
                             migratedToOther = it.migratedother,
-                            updated = it.lastupdatedtime
+                            updated = timeMillis
                         )
                     }
                     CoroutineScope(Dispatchers.Default).launch {

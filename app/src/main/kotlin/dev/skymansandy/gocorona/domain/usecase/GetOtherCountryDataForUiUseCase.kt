@@ -46,7 +46,7 @@ class GetOtherCountryDataForUiUseCase @Inject constructor(
                     emit(
                         HomeState.NonIndiaStats(
                             placeName = countryData.name,
-                            lastUpdated = countryData.updated,
+                            lastUpdated = countryData.lastUpdatedUiStr,
                             confirmed = confirmedStat,
                             active = activeStat,
                             recovered = recoveredStat,

@@ -16,9 +16,9 @@ interface CountryDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countryDbList: List<CountryEntity>?)
 
-    @Query("SELECT * FROM countrydata")
+    @Query("SELECT * FROM CountryData")
     fun getStats(): Flow<List<CountryEntity>>
 
-    @Query("SELECT * FROM countrydata WHERE countryCode = :countryCode")
+    @Query("SELECT * FROM CountryData WHERE countryCode = :countryCode")
     fun getCountry(countryCode: String): Flow<CountryEntity?>
 }

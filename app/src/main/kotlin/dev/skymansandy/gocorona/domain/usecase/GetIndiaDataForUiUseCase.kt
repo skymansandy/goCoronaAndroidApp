@@ -76,7 +76,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                     emit(
                         HomeState.IndiaStats(
                             placeName = "India",
-                            lastUpdated = totalStat.updated,
+                            lastUpdated = totalStat.lastUpdatedUiStr,
                             confirmed = confirmedStat,
                             active = activeStat,
                             recovered = recoveredStat,

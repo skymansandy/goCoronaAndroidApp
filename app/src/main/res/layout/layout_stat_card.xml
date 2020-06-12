@@ -37,7 +37,7 @@
                 android:gravity="bottom"
                 android:orientation="vertical">
 
-                <me.grantland.widget.AutofitTextView
+                <TextView
                     android:id="@+id/tv_count"
                     style="@style/TextAppearance.MaterialComponents.Headline6"
                     android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                     android:textColor="@color/color_active"
                     android:textStyle="bold" />
 
-                <me.grantland.widget.AutofitTextView
+                <TextView
                     android:id="@+id/tv_delta"
                     style="@style/TextAppearance.MaterialComponents.Caption"
                     android:layout_width="wrap_content"

@@ -15,9 +15,9 @@ interface StateDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(stateDbList: List<StateEntity>?)
 
-    @Query("SELECT * FROM statedata")
+    @Query("SELECT * FROM StateData")
     fun getStats(): Flow<List<StateEntity>>
 
-    @Query("SELECT * FROM statedata WHERE code=:stateCode")
+    @Query("SELECT * FROM StateData WHERE code=:stateCode")
     fun getState(stateCode: String): Flow<StateEntity?>
 }

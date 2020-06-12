@@ -2,8 +2,10 @@ package dev.skymansandy.gocorona.data.source.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import dev.skymansandy.base.util.date.DateUtil
 
 @Entity(
+    tableName = "DistrictData"
     /*foreignKeys = [ForeignKey(
         entity = StateData::class,
         parentColumns = ["code"],
@@ -23,5 +25,7 @@ data class DistrictEntity(
     val deathsToday: String,
     val recovered: String,
     val recoveredToday: String,
-    val updated: String
-)
+    val updated: Long
+){
+    val lastUpdatedUiStr get() = DateUtil.getDateInFormat(updated)
+}

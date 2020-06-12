@@ -2,6 +2,7 @@ package dev.skymansandy.gocorona.presentation.districtdata
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
@@ -10,6 +11,7 @@ import dev.skymansandy.gocorona.databinding.FragmentDistrictDataBinding
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
+import kotlin.math.absoluteValue
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
     BaseFragment<FragmentDistrictDataBinding, DistrictDataState, DistrictDataEvent, DistrictDataViewModel>() {
@@ -18,6 +20,16 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
     private val activeColor get() = ContextCompat.getColor(activity!!, R.color.color_active)
     private val recoveredColor get() = ContextCompat.getColor(activity!!, R.color.color_recovered)
     private val deceasedColor get() = ContextCompat.getColor(activity!!, R.color.color_deceased)
+    private val upDrawable
+        get() = ContextCompat.getDrawable(
+            activity!!,
+            R.drawable.ic_baseline_arrow_upward_24
+        )
+    private val downDrawable
+        get() = ContextCompat.getDrawable(
+            activity!!,
+            R.drawable.ic_baseline_arrow_downward_24
+        )
 
     private val args by navArgs<DistrictDataFragmentArgs>()
 
@@ -44,7 +56,7 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 binding.statsNonIndia.root.visibility = View.VISIBLE
 
                 binding.tvPlace.text = newState.placeName
-                binding.tvLastUpdated.text = newState.lastUpdated
+                binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
                 with(binding.statsNonIndia) {
                     tvActiveCount.text =
                         NumberFormat.getInstance().format(newState.active.toInt())
@@ -54,6 +66,14 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                         NumberFormat.getInstance().format(newState.recovered.toInt())
                     tvDeceasedCount.text =
                         NumberFormat.getInstance().format(newState.deaths.toInt())
+
+                    tvConfirmedCount.visibility = View.VISIBLE
+                    showDelta(tvConfirmedCount, newState.confirmedToday.toInt())
+                    tvRecoveredCount.visibility = View.VISIBLE
+                    showDelta(tvRecoveredCount, newState.recoveredToday.toInt())
+                    tvDeceasedCount.visibility = View.VISIBLE
+                    showDelta(tvDeceasedCount, newState.deathsToday.toInt())
+
                     pieChart.loadData(
                         newState.active.toInt(),
                         newState.recovered.toInt(),
@@ -76,5 +96,30 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
             PieModel("Deceased", deceased.toFloat(), deceasedColor)
         )
         startAnimation()
+    }
+
+    private fun showDelta(textView: TextView, delta: Int) {
+        textView.visibility =
+            if (delta != 0) {
+                textView.text =
+                    NumberFormat.getInstance().format(delta.absoluteValue)
+                when {
+                    delta < 0 ->
+                        textView.setCompoundDrawablesWithIntrinsicBounds(
+                            null,
+                            null,
+                            downDrawable,
+                            null
+                        )
+                    else ->
+                        textView.setCompoundDrawablesWithIntrinsicBounds(
+                            null,
+                            null,
+                            upDrawable,
+                            null
+                        )
+                }
+                View.VISIBLE
+            } else View.GONE
     }
 }

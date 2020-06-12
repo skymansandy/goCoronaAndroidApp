@@ -2,8 +2,9 @@ package dev.skymansandy.gocorona.data.source.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import dev.skymansandy.base.util.date.DateUtil
 
-@Entity
+@Entity(tableName = "CountryData")
 data class CountryEntity(
     @PrimaryKey
     val countryCode: String,
@@ -24,5 +25,7 @@ data class CountryEntity(
     val activePerMillion: String,
     val recoveredPerMillion: String,
     val criticalPerMillion: String,
-    val updated: String
-)
+    val updated: Long
+) {
+    val lastUpdatedUiStr get() = DateUtil.getDateInFormat(updated)
+}

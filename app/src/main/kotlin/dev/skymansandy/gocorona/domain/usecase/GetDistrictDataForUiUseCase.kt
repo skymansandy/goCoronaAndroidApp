@@ -22,7 +22,7 @@ class GetDistrictDataForUiUseCase @Inject constructor(
                     emit(
                         DistrictDataState.DistrictStats(
                             placeName = it.name,
-                            lastUpdated = it.updated,
+                            lastUpdated = it.lastUpdatedUiStr,
                             active = it.active,
                             confirmed = it.cases,
                             confirmedToday = it.casesToday,

@@ -40,7 +40,7 @@ class GetStateDataForUiUseCase @Inject constructor(
                         emit(
                             StateDataState.StateStats(
                                 placeName = details.name,
-                                lastUpdated = details.updated,
+                                lastUpdated = details.lastUpdatedUiStr,
                                 active = details.active,
                                 confirmed = details.cases,
                                 confirmedToday = details.casesToday,

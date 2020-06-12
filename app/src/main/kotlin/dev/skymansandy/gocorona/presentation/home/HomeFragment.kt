@@ -17,6 +17,7 @@ import dev.skymansandy.gocorona.presentation.home.adapter.CovidStatClickListener
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.text.NumberFormat
+import kotlin.math.absoluteValue
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     BaseFragment<FragmentHomeBinding, HomeState, HomeEvent, HomeViewModel>(),
@@ -26,6 +27,16 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     private val activeColor get() = ContextCompat.getColor(activity!!, R.color.color_active)
     private val recoveredColor get() = ContextCompat.getColor(activity!!, R.color.color_recovered)
     private val deceasedColor get() = ContextCompat.getColor(activity!!, R.color.color_deceased)
+    private val upDrawable
+        get() = ContextCompat.getDrawable(
+            activity!!,
+            R.drawable.ic_baseline_arrow_upward_24
+        )
+    private val downDrawable
+        get() = ContextCompat.getDrawable(
+            activity!!,
+            R.drawable.ic_baseline_arrow_downward_24
+        )
 
     private val statAdapter = CovidStatAdapter(this)
 
@@ -60,7 +71,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 binding.swipe.isRefreshing = false
                 binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
-                binding.tvLastUpdated.text = newState.lastUpdated
+                binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
                 binding.statsIndia.layoutStatList.setup(statAdapter, "State/UT")
                 with(binding.statsIndia) {
                     tvActiveCount.text =
@@ -80,7 +91,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                 binding.swipe.isRefreshing = false
                 binding.statsNonIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
-                binding.tvLastUpdated.text = newState.lastUpdated
+                binding.tvLastUpdated.text = "Last synced at ${newState.lastUpdated}"
                 with(binding.statsNonIndia) {
                     tvActiveCount.text =
                         NumberFormat.getInstance().format(newState.active.count.toInt())
@@ -109,8 +120,25 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
         tvCount.text = NumberFormat.getInstance().format(stat.count.toInt())
         tvDelta.visibility =
-            if (stat.deltaCount.toInt() > 0) {
-                tvDelta.text = NumberFormat.getInstance().format(stat.deltaCount.toInt())
+            if (stat.deltaCount.toInt() != 0) {
+                tvDelta.text =
+                    NumberFormat.getInstance().format(stat.deltaCount.toInt().absoluteValue)
+                when {
+                    stat.deltaCount.toInt() < 0 ->
+                        tvDelta.setCompoundDrawablesWithIntrinsicBounds(
+                            null,
+                            null,
+                            downDrawable,
+                            null
+                        )
+                    else ->
+                        tvDelta.setCompoundDrawablesWithIntrinsicBounds(
+                            null,
+                            null,
+                            upDrawable,
+                            null
+                        )
+                }
                 View.VISIBLE
             } else View.GONE
 

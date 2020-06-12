@@ -1,5 +1,6 @@
 package dev.skymansandy.base.util.date
 
+import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtil {
@@ -22,5 +23,13 @@ object DateUtil {
             set(Calendar.MILLISECOND, 999)
         }
         return cal
+    }
+
+    fun getDateInFormat(millis: Long, str: String = "dd MMM yy, hh:mm a"): String {
+        return try {
+            SimpleDateFormat(str, Locale.ENGLISH).format(millis)
+        } catch (e: Throwable) {
+            ""
+        }
     }
 }
