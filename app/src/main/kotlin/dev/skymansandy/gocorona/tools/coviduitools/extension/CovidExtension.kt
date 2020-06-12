@@ -16,13 +16,22 @@ fun TextView.showNumber(number: Int) {
     text = NumberFormat.getInstance().format(number)
 }
 
-fun TextView.scanForBigTextAndWrapNextLine() {
+fun TextView.scanForBigTextAndWrapNextLine(): Boolean {
     val linearLayout = parent as? LinearLayout?
-    linearLayout?.let {
-        it.orientation = when (text.toString().length > 7) {
+    return linearLayout?.let {
+        val isLargeText = text.toString().length > 7
+        it.orientation = when (isLargeText) {
             true -> LinearLayout.VERTICAL
             false -> LinearLayout.HORIZONTAL
         }
+        isLargeText
+    } ?: false
+}
+
+fun TextView.setOrientation(newOrientation: Int) {
+    val linearLayout = parent as? LinearLayout?
+    linearLayout?.let {
+        it.orientation = newOrientation
     }
 }
 

@@ -2,6 +2,7 @@ package dev.skymansandy.gocorona.presentation.world
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentWorldBinding
@@ -11,6 +12,7 @@ import dev.skymansandy.gocorona.presentation.home.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
+import dev.skymansandy.gocorona.tools.coviduitools.extension.setOrientation
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 
 class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
@@ -60,8 +62,10 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                     tvRecoveredCount.showNumber(newState.recovered.count.toInt())
                     tvDeceasedCount.showNumber(newState.deceased.count.toInt())
 
-                    tvRecoveredCount.scanForBigTextAndWrapNextLine()
-                    tvDeceasedCount.scanForBigTextAndWrapNextLine()
+                    if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
+                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
+                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
+                        tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
 
                     pieChart.loadData(
                         covidRes,

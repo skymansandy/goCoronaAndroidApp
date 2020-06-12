@@ -2,6 +2,7 @@ package dev.skymansandy.gocorona.presentation.districtdata
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
@@ -10,6 +11,7 @@ import dev.skymansandy.gocorona.presentation.home.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
+import dev.skymansandy.gocorona.tools.coviduitools.extension.setOrientation
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 
 class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_district_data) :
@@ -47,8 +49,10 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                     tvRecoveredCount.showNumber(newState.recovered.toInt())
                     tvDeceasedCount.showNumber(newState.deaths.toInt())
 
-                    tvRecoveredCount.scanForBigTextAndWrapNextLine()
-                    tvDeceasedCount.scanForBigTextAndWrapNextLine()
+                    if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
+                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
+                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
+                        tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
 
                     showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
                     showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())

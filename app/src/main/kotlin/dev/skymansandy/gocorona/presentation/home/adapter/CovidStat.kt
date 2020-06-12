@@ -37,5 +37,5 @@ fun showDelta(covidRes: CovidRes, textView: TextView, delta: Int) {
                 null
             )
             View.VISIBLE
-        } else View.GONE
+        } else View.INVISIBLE
 }
