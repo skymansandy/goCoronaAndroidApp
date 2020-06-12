@@ -38,6 +38,7 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         if (navHostFragment.isEmptyBackStack()) {
             if (pressedBackOnce) finish()
             else {
+                pressedBackOnce = true
                 vm.showToast(getString(R.string.press_back_again_to_exit))
                 backPressHandler.postDelayed(backPressRunnable, 2000)
             }
