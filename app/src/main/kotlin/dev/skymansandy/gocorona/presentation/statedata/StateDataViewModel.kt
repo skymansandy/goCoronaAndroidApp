@@ -24,5 +24,4 @@ class StateDataViewModel @Inject constructor(
     fun refreshStats() {
         fetchCovid19StatsUseCase()
     }
-
 }

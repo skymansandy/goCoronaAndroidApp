@@ -19,6 +19,4 @@ sealed class StateDataState {
     object Loading : StateDataState()
 }
 
-sealed class StateDataEvent {
-
-}
+sealed class StateDataEvent
