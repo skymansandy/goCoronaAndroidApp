@@ -7,28 +7,28 @@ data class StatesDataResponse(
 )
 
 data class CasesTimeSeries(
-    val dailyconfirmed: String,
-    val dailydeceased: String,
-    val dailyrecovered: String,
     val date: String,
-    val totalconfirmed: String,
-    val totaldeceased: String,
-    val totalrecovered: String
+    val dailyconfirmed: Int?,
+    val dailydeceased: Int?,
+    val dailyrecovered: Int?,
+    val totalconfirmed: Int?,
+    val totaldeceased: Int?,
+    val totalrecovered: Int?
 )
 
 data class Statewise(
-    val active: String,
-    val confirmed: String,
-    val deaths: String,
-    val deltaconfirmed: String,
-    val deltadeaths: String,
-    val deltarecovered: String,
-    val lastupdatedtime: String,
-    val migratedother: String,
-    val recovered: String,
     val state: String,
     val statecode: String,
-    val statenotes: String
+    val statenotes: String,
+    val active: Int?,
+    val confirmed: Int?,
+    val deaths: Int?,
+    val deltaconfirmed: Int?,
+    val deltadeaths: Int?,
+    val deltarecovered: Int?,
+    val lastupdatedtime: String,
+    val migratedother: Int?,
+    val recovered: Int?
 )
 
 data class Tested(

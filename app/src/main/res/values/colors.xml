@@ -5,6 +5,11 @@
     <color name="color_recovered">#389944</color>
     <color name="color_deceased">#586068</color>
     <color name="color_row_bg">#F7F9FB</color>
+    <color name="color_appbar">@color/white</color>
     <color name="color_row_text">#252E39</color>
     <color name="color_bg">#FDFFFE</color>
+    <color name="edittext_bg">#EEEEF4</color>
+    <color name="color_search_text">#71778B</color>
+    <color name="activity_background">@color/white</color>
+    <color name="banner_color">@color/color_primary_dark</color>
 </resources>

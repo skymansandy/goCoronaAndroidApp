@@ -26,8 +26,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
     kotlinOptions {
@@ -65,10 +65,11 @@ dependencies {
     //Kotlin
     api "androidx.core:core-ktx:$corektx"
     api "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
 
     //Reactive
     api "android.arch.lifecycle:reactivestreams:$reactivestreams"
-    api "io.reactivex.rxjava2:rxandroid:$rxandroid"
 
     //Logger
     api "com.jakewharton.timber:timber:$timber"
@@ -93,7 +94,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room"
 
 
-    //Co routines
+    //Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutines"
@@ -101,25 +102,18 @@ dependencies {
     //Lottie
     api "com.airbnb.android:lottie:$lottieversion"
 
-    //Glide
-    api "com.github.bumptech.glide:glide:$glide"
-    kapt "com.github.bumptech.glide:compiler:$glide"
-
     //CircularImageView
     api "de.hdodenhof:circleimageview:$circularimageview"
-
-    //ComponentsManager
-    api "com.github.valeryponomarenko.componentsmanager:androidx:$componentsmanagerversion"
-
-    //Coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
     //TextDrawable
     api "com.amulyakhare:com.amulyakhare.textdrawable:$textdrawable"
 
+    //Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit"
     api "com.squareup.retrofit2:retrofit-mock:$retrofit"
     api "com.squareup.retrofit2:converter-gson:$retrofit"
     api "com.squareup.okhttp3:logging-interceptor:$okhttp"
+
+    //Preference
+    api "androidx.preference:preference-ktx:$preference"
 }

@@ -3,6 +3,7 @@ package dev.skymansandy.gocorona.data.source.remote
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
+import dev.skymansandy.gocorona.data.source.remote.worlddata.WorldDataResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url
@@ -19,4 +20,9 @@ interface GoCoronaApi {
     fun getCountryWiseData(
         @Url baseUrl: String = "https://corona.lmao.ninja/v2/countries"
     ): Call<List<CountryWiseDataResponse>>
+
+    @GET
+    fun getWorldData(
+        @Url baseUrl: String = "https://corona.lmao.ninja/v2/all"
+    ): Call<WorldDataResponse>
 }

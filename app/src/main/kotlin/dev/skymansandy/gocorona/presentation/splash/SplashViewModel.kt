@@ -3,11 +3,15 @@ package dev.skymansandy.gocorona.presentation.splash
 import android.os.Handler
 import dev.skymansandy.base.lifecycle.event.SingleLiveEvent
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
+import dev.skymansandy.gocorona.domain.usecase.FetchCovid19StatsUseCase
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor() : BaseViewModel<Void, Void>() {
+class SplashViewModel @Inject constructor(
+    private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
+) : BaseViewModel<Void, Void>() {
 
     init {
+        fetchCovid19StatsUseCase()
         Handler().postDelayed(
             { _actionLaunchApp.call() },
             SplashActivity.SPLASH_TIME_MILLIS

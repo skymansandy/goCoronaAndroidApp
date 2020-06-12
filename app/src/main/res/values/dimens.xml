@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stat_card_elevation">@dimen/dp_8</dimen>
+</resources>

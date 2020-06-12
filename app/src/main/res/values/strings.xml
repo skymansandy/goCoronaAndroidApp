@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">GoCorona Tracker</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="active">Active</string>
+    <string name="recovered">Recovered</string>
+    <string name="deceased">Deceased</string>
+    <string name="state_ut">State/UT</string>
+    <string name="last_synced">Last synced </string>
+    <string name="district">District</string>
+    <string name="worldwide">Worldwide</string>
+    <string name="india">India</string>
+    <string name="search_country">Search country</string>
+    <string name="choose_country">Choose country</string>
+    <string name="country">Country</string>
+    <string name="search">Search</string>
+    <string name="active_cases">Active Cases</string>
+    <string name="press_back_again_to_exit">Press back again to exit!</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="setting_night_mode_desc">Select theme</string>
+    <string name="setting_night_mode">Night mode</string>
 </resources>

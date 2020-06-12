@@ -5,14 +5,14 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import dev.skymansandy.base.di.AppScope
 import dev.skymansandy.gocorona.GoCoronaApp
 import dev.skymansandy.gocorona.dagger.module.AppModule
 import dev.skymansandy.gocorona.dagger.module.DbModule
 import dev.skymansandy.gocorona.dagger.module.NetworkModule
 import dev.skymansandy.gocorona.dagger.module.UiInjectorModule
+import javax.inject.Singleton
 
-@AppScope
+@Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,

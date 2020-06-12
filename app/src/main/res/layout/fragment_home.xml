@@ -6,167 +6,114 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_bg"
-            android:orientation="vertical">
+            android:fillViewport="true">
 
             <RelativeLayout
-                android:id="@+id/layout_banner"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_240"
-                android:background="@color/color_primary_dark">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_64"
-                    android:layout_height="@dimen/dp_64"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginEnd="-16dp"
-                    android:rotation="27"
-                    android:src="@drawable/covid2" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp_64"
-                    android:layout_height="@dimen/dp_64"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/covid2" />
-
-                <ImageView
-                    android:layout_width="@dimen/dp_108"
-                    android:layout_height="@dimen/dp_108"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="-24dp"
-                    android:rotation="173"
-                    android:src="@drawable/covid2" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_240"
-                    android:orientation="vertical"
-                    android:padding="@dimen/dp_24">
-
-                    <TextView
-                        style="@style/TextAppearance.MaterialComponents.Body1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/tv_place"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_8"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:drawablePadding="@dimen/dp_8"
-                        android:drawableTint="@color/white"
-                        android:text="India"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_last_updated"
-                        style="@style/TextAppearance.MaterialComponents.Body2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last updated 1 hour ago"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/layout_stats"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/layout_banner"
-                android:layout_marginTop="-80dp"
-                android:visibility="gone"
-                tools:visibility="visible">
+                android:background="@color/activity_background"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/layout_stat_cards"
+                <RelativeLayout
+                    android:id="@+id/layout_banner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/dp_280"
+                    android:background="@color/banner_color">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="-16dp"
+                        android:rotation="27"
+                        android:src="@drawable/covid2" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/covid2" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_108"
+                        android:layout_height="@dimen/dp_108"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="-24dp"
+                        android:rotation="173"
+                        android:src="@drawable/covid2" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:layout_height="@dimen/dp_240"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_24">
 
-                        <include
-                            android:id="@+id/statCardConfirmed"
-                            layout="@layout/layout_stat_card" />
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textColor="@color/white" />
 
-                        <Space
-                            android:layout_width="@dimen/dp_12"
-                            android:layout_height="match_parent" />
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:layout_marginEnd="@dimen/dp_36"
+                            android:text="@string/india"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
 
-                        <include
-                            android:id="@+id/statCardActive"
-                            layout="@layout/layout_stat_card" />
+                        <TextView
+                            android:id="@+id/tv_last_updated"
+                            style="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            tools:text="Last updated 1 hour ago" />
+
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_12"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <include
-                            android:id="@+id/statCardRecovered"
-                            layout="@layout/layout_stat_card" />
-
-                        <Space
-                            android:layout_width="@dimen/dp_12"
-                            android:layout_height="match_parent" />
-
-                        <include
-                            android:id="@+id/statCardDeceased"
-                            layout="@layout/layout_stat_card" />
-                    </LinearLayout>
-
-                </LinearLayout>
+                </RelativeLayout>
 
                 <include
-                    android:id="@+id/layout_stat_list"
-                    layout="@layout/layout_stat_list"
+                    android:id="@+id/statsIndia"
+                    layout="@layout/stats_india" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_loading"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/layout_stat_cards"
-                    android:layout_margin="@dimen/dp_16" />
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/layout_banner"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/layout_loading"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/layout_banner"
-                android:visibility="gone"
-                tools:visibility="gone">
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true" />
-            </RelativeLayout>
-
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
 </layout>

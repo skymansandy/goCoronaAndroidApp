@@ -5,12 +5,16 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import dev.skymansandy.base.di.ViewModelKey
+import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryViewModel
+import dev.skymansandy.gocorona.presentation.countrydata.CountryDataViewModel
+import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataViewModel
 import dev.skymansandy.gocorona.presentation.health.HealthViewModel
 import dev.skymansandy.gocorona.presentation.home.HomeViewModel
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
-import dev.skymansandy.gocorona.presentation.news.NewsViewModel
-import dev.skymansandy.gocorona.presentation.settings.SettingsViewModel
+import dev.skymansandy.gocorona.presentation.about.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
+import dev.skymansandy.gocorona.presentation.statedata.StateDataViewModel
+import dev.skymansandy.gocorona.presentation.world.WorldViewModel
 
 @Module
 abstract class ViewModelModule {
@@ -32,8 +36,24 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(NewsViewModel::class)
-    abstract fun bindNewsViewModel(vm: NewsViewModel): ViewModel
+    @ViewModelKey(StateDataViewModel::class)
+    abstract fun bindStateDataViewModel(vm: StateDataViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DistrictDataViewModel::class)
+    abstract fun bindDistrictDataViewModel(vm: DistrictDataViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CountryDataViewModel::class)
+    abstract fun bindCountryDataViewModel(vm: CountryDataViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WorldViewModel::class)
+    abstract fun bindNewsViewModel(vm: WorldViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -44,4 +64,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingsViewModel::class)
     abstract fun bindSettingsViewModel(vm: SettingsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChooseCountryViewModel::class)
+    abstract fun bindChooseCountryViewModel(vm: ChooseCountryViewModel): ViewModel
 }

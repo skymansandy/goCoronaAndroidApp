@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:background="@color/activity_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layout_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_280"
+                    android:background="@color/banner_color">
+
+                    <TextView
+                        android:id="@+id/iv_search_countries"
+                        style="@style/TextAppearance.MaterialComponents.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:layout_marginEnd="@dimen/dp_24"
+                        android:background="?selectableItemBackground"
+                        android:drawableStart="@drawable/ic_baseline_search_12"
+                        android:drawablePadding="@dimen/dp_4"
+                        android:padding="@dimen/dp_8"
+                        android:text="@string/search_country"
+                        android:textColor="@color/white"
+                        app:drawableTint="@color/white" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/dp_80"
+                        android:layout_marginEnd="-16dp"
+                        android:rotation="27"
+                        android:src="@drawable/covid2" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_64"
+                        android:layout_height="@dimen/dp_64"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/covid2" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_108"
+                        android:layout_height="@dimen/dp_108"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="-24dp"
+                        android:rotation="173"
+                        android:src="@drawable/covid2" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_240"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_24">
+
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:text="@string/app_name"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_8"
+                            android:layout_marginEnd="@dimen/dp_36"
+                            android:text="@string/worldwide"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_last_updated"
+                            style="@style/TextAppearance.MaterialComponents.Body2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            tools:text="Last updated 1 hour ago" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <include
+                    android:id="@+id/statsWorld"
+                    layout="@layout/stats_non_india" />
+
+                <include
+                    android:id="@+id/layout_stat_list"
+                    layout="@layout/layout_stat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/statsWorld"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_16" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/layout_banner"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

@@ -4,8 +4,7 @@ import dagger.Module
 
 @Module(
     includes = [
-        ViewModuleFactoryModule::class,
-        GlideModule::class
+        ViewModuleFactoryModule::class
     ]
 )
 class BaseModule

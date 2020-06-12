@@ -9,7 +9,8 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/snack_bar_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/activity_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,6 +31,7 @@
                 android:id="@+id/bottom_nav_view"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:background="@color/color_appbar"
                 app:itemIconTint="@drawable/state_color"
                 app:itemTextColor="@drawable/state_color"
                 app:menu="@menu/menu_home_bottom" />
