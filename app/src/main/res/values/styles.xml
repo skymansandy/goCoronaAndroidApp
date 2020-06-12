@@ -3,6 +3,7 @@
 
     <style name="AppTheme.SearchEditText">
         <item name="android:textStyle">bold</item>
+        <item name="android:inputType">textCapWords</item>
         <item name="android:drawableStart">@drawable/ic_baseline_search_24</item>
         <item name="android:drawablePadding">@dimen/dp_8</item>
         <item name="drawableTint">@color/color_search_text</item>

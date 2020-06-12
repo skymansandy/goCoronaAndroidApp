@@ -8,6 +8,7 @@ import dev.skymansandy.gocorona.data.source.db.GoCoronaDatabase
 import dev.skymansandy.gocorona.data.source.db.dao.CountryDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.DistrictDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.StateDataDao
+import dev.skymansandy.gocorona.data.source.db.dao.WorldDataDao
 import javax.inject.Singleton
 
 @Module
@@ -33,6 +34,12 @@ class DbModule {
     @Singleton
     fun getStateDataDao(attendanceDb: GoCoronaDatabase): StateDataDao {
         return attendanceDb.stateDataDao()
+    }
+
+    @Provides
+    @Singleton
+    fun getWorldDataDao(attendanceDb: GoCoronaDatabase): WorldDataDao {
+        return attendanceDb.worldDataDao()
     }
 
     @Provides

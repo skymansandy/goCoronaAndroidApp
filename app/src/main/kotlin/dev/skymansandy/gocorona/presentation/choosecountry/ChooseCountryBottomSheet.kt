@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import dev.skymansandy.base.ui.base.BaseDialogFragment
 import dev.skymansandy.gocorona.R
+import dev.skymansandy.gocorona.constant.AppConstant
 import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryClickListener
-import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
 import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItemAdapter
 import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 
@@ -44,10 +43,13 @@ class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_ch
     }
 
     private fun setupWorldRow() {
-        binding.layoutWorldwide.tvName.text = "Worldwide"
-        binding.layoutWorldwide.ivFlag.setImageResource(R.drawable.world)
-        binding.layoutWorldwide.root.setOnClickListener {
-            Toast.makeText(activity, "Show Worldwide data", Toast.LENGTH_SHORT).show()
+        binding.layoutWorldwide.setOnClickListener {
+            onCountryClick(
+                CovidStat(
+                    code = AppConstant.WORLDWIDE,
+                    name = "Worldwide"
+                )
+            )
         }
     }
 

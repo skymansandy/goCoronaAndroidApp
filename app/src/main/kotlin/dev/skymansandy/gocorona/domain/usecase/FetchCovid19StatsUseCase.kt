@@ -5,9 +5,11 @@ import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
 import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
 import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
+import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
+import dev.skymansandy.gocorona.data.source.remote.worlddata.WorldDataResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -145,6 +147,39 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 }
 
                 override fun onFailure(call: Call<StatesDataResponse>, t: Throwable) {
+                    Log.d("Tag", t.localizedMessage)
+                }
+            })
+
+        goCoronaRepository.fetchWorldData()
+            .enqueue(object : Callback<WorldDataResponse> {
+                override fun onResponse(
+                    call: Call<WorldDataResponse>,
+                    response: Response<WorldDataResponse>
+                ) {
+                    val worldData = response.body()!!
+                    CoroutineScope(Dispatchers.Default).launch {
+                        goCoronaRepository.insertWorldData(
+                            WorldEntity(
+                                cases = worldData.cases,
+                                todayCases = worldData.todayCases,
+                                deaths = worldData.deaths,
+                                todayDeaths = worldData.todayDeaths,
+                                recovered = worldData.recovered,
+                                todayRecovered = worldData.todayRecovered,
+                                active = worldData.active,
+                                critical = worldData.critical,
+                                tests = worldData.tests,
+                                testsPerOneMillion = worldData.testsPerOneMillion,
+                                population = worldData.population,
+                                updated = System.currentTimeMillis()
+                            )
+                        )
+                        Log.d("Tag", "inserted World data")
+                    }
+                }
+
+                override fun onFailure(call: Call<WorldDataResponse>, t: Throwable) {
                     Log.d("Tag", t.localizedMessage)
                 }
             })

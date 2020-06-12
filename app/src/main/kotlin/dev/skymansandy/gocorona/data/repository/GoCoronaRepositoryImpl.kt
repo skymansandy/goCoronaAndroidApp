@@ -3,13 +3,16 @@ package dev.skymansandy.gocorona.data.repository
 import dev.skymansandy.gocorona.data.source.db.dao.CountryDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.DistrictDataDao
 import dev.skymansandy.gocorona.data.source.db.dao.StateDataDao
+import dev.skymansandy.gocorona.data.source.db.dao.WorldDataDao
 import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
 import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
 import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
+import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
 import dev.skymansandy.gocorona.data.source.remote.GoCoronaApi
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
+import dev.skymansandy.gocorona.data.source.remote.worlddata.WorldDataResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import javax.inject.Inject
@@ -17,6 +20,7 @@ import javax.inject.Inject
 class GoCoronaRepositoryImpl @Inject constructor(
     private val goCoronaApi: GoCoronaApi,
     private val stateDataDao: StateDataDao,
+    private val worldDataDao: WorldDataDao,
     private val countryDataDao: CountryDataDao,
     private val districtDataDao: DistrictDataDao
 ) : GoCoronaRepository {
@@ -31,6 +35,10 @@ class GoCoronaRepositoryImpl @Inject constructor(
 
     override fun getCountryData(countryCode: String): Flow<CountryEntity?> {
         return countryDataDao.getCountry(countryCode)
+    }
+
+    override fun getWorldData(): Flow<WorldEntity?> {
+        return worldDataDao.getWorldData()
     }
 
     override fun getDistrictDataForState(stateCode: String): Flow<List<DistrictEntity>?> {
@@ -57,6 +65,10 @@ class GoCoronaRepositoryImpl @Inject constructor(
         stateDataDao.insertAll(stateDbList)
     }
 
+    override suspend fun insertWorldData(worldEntity: WorldEntity) {
+        worldDataDao.insert(worldEntity)
+    }
+
     override fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>> {
         return goCoronaApi.getCountryWiseData()
     }
@@ -67,6 +79,10 @@ class GoCoronaRepositoryImpl @Inject constructor(
 
     override fun fetchStatesData(): Call<StatesDataResponse> {
         return goCoronaApi.getStatesData()
+    }
+
+    override fun fetchWorldData(): Call<WorldDataResponse> {
+        return goCoronaApi.getWorldData()
     }
 
 }
