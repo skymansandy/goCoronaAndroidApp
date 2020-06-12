@@ -56,9 +56,9 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                     tvDeceasedCount.showNumber(newState.deaths.toInt())
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
-                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
-                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
+                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
+                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
 
                     showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday.toInt())
                     showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday.toInt())

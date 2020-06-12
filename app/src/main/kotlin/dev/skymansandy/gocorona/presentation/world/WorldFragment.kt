@@ -63,9 +63,9 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                     tvDeceasedCount.showNumber(newState.deceased.count.toInt())
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
-                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
-                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
+                    if (tvDeceasedCount.scanForBigTextAndWrapNextLine())
+                        tvRecoveredDelta.setOrientation(LinearLayout.VERTICAL)
 
                     pieChart.loadData(
                         covidRes,
