@@ -54,7 +54,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                 binding.statsWorld.layoutStats.visibility = View.VISIBLE
                 binding.layoutStatList.root.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
-                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                    String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 binding.layoutStatList.setup(covidRes, statAdapter, getString(R.string.country))
                 with(binding.statsWorld) {
                     tvActiveCount.showNumber(newState.active.count.toInt())

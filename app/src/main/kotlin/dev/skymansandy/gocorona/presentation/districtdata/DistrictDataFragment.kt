@@ -42,7 +42,7 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                 binding.statsNonIndia.root.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
                 binding.tvLastUpdated.text =
-                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                    String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 with(binding.statsNonIndia) {
                     tvActiveCount.showNumber(newState.active.toInt())
                     tvConfirmedCount.showNumber(newState.confirmed.toInt())

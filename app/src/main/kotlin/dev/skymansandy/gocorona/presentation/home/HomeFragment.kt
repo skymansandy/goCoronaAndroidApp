@@ -39,7 +39,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
             is HomeState.IndiaStats -> {
                 binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
-                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                    String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 binding.statsIndia.layoutStatList.setup(
                     covidRes,
                     statAdapter,

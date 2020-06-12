@@ -46,7 +46,7 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                 binding.layoutStatList.root.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
                 binding.tvLastUpdated.text =
-                    String.format("%s %s", getString(R.string.last_synced_at), newState.lastUpdated)
+                    String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
                 binding.layoutStatList.setup(covidRes, statAdapter, getString(R.string.district))
 
                 with(binding.statsNonIndia) {
