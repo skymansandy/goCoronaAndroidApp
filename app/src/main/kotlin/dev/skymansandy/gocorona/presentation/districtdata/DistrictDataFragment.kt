@@ -67,11 +67,11 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
                     tvDeceasedCount.text =
                         NumberFormat.getInstance().format(newState.deaths.toInt())
 
-                    tvConfirmedCount.visibility = View.VISIBLE
-                    showDelta(tvConfirmedCount, newState.confirmedToday.toInt())
-                    tvRecoveredCount.visibility = View.VISIBLE
-                    showDelta(tvRecoveredCount, newState.recoveredToday.toInt())
-                    tvDeceasedCount.visibility = View.VISIBLE
+                    tvConfirmedDelta.visibility = View.VISIBLE
+                    showDelta(tvConfirmedDelta, newState.confirmedToday.toInt())
+                    tvRecoveredDelta.visibility = View.VISIBLE
+                    showDelta(tvRecoveredDelta, newState.recoveredToday.toInt())
+                    tvDeceasedDelta.visibility = View.VISIBLE
                     showDelta(tvDeceasedCount, newState.deathsToday.toInt())
 
                     pieChart.loadData(
