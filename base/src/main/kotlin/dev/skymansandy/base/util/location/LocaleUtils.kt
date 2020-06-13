@@ -34,11 +34,7 @@ object LocaleUtils {
     }
 
     fun setupLocale(context: Context, recreateActivity: Boolean = true) {
-        val localeStr = PreferenceManager.getDefaultSharedPreferences(context).getString(
-            context.getString(R.string.pref_key_app_language),
-            context.getString(R.string.pref_app_language_english)
-        )
-        localeStr?.let {
+        getLocaleString(context)?.let {
             setLocale(Locale(it))
             if (context is Activity)
                 updateConfig(context, recreateActivity)
@@ -51,5 +47,12 @@ object LocaleUtils {
             context.getString(R.string.pref_key_app_language), localeString
         ).commit()
         setupLocale(context)
+    }
+
+    fun getLocaleString(context: Context?): String {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString(
+            context?.getString(R.string.pref_key_app_language),
+            context?.getString(R.string.pref_app_language_english)
+        ) ?: "en_IN"
     }
 }
