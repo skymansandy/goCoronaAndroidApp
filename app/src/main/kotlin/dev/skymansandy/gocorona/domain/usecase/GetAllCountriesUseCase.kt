@@ -15,7 +15,7 @@ class GetAllCountriesUseCase @Inject constructor(
     operator fun invoke(): Flow<ChooseCountryState> {
         return flow {
             emit(ChooseCountryState.Loading)
-            goCoronaRepository.getCountries().collect {
+            goCoronaRepository.getCountries(false).collect {
                 val dataSet = it
                 val countries = arrayListOf<CountryItem>()
                 for (countryData in dataSet) {

@@ -16,6 +16,15 @@
     <string name="active_cases">Active Cases</string>
     <string name="press_back_again_to_exit">Press back again to exit!</string>
     <string name="night_mode">Night Mode</string>
-    <string name="setting_night_mode_desc">Select theme</string>
     <string name="setting_night_mode">Night mode</string>
+    <string name="setting_night_mode_desc">Select theme</string>
+    <string name="setting_app_language">App Language</string>
+    <string name="setting_app_language_desc">Choose Language</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="about_developer">About Developer</string>
+    <string name="health">Health</string>
+    <string name="credits">Credits</string>
+    <string name="visit_my_blog">Visit my blog</string>
+    <string name="about_me_desc">Sandesh Baliga P.\nGeek, Explorer &amp; more!</string>
 </resources>

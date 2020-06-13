@@ -5,13 +5,13 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import dev.skymansandy.base.di.ViewModelKey
+import dev.skymansandy.gocorona.presentation.about.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryViewModel
 import dev.skymansandy.gocorona.presentation.countrydata.CountryDataViewModel
 import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataViewModel
 import dev.skymansandy.gocorona.presentation.health.HealthViewModel
 import dev.skymansandy.gocorona.presentation.home.HomeViewModel
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
-import dev.skymansandy.gocorona.presentation.about.SettingsViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
 import dev.skymansandy.gocorona.presentation.statedata.StateDataViewModel
 import dev.skymansandy.gocorona.presentation.world.WorldViewModel

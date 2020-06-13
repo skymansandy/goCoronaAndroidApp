@@ -29,8 +29,11 @@ class GoCoronaRepositoryImpl @Inject constructor(
         return stateDataDao.getStats()
     }
 
-    override fun getCountries(): Flow<List<CountryEntity>> {
-        return countryDataDao.getStats()
+    override fun getCountries(sortedByCaseCount: Boolean): Flow<List<CountryEntity>> {
+        return when (sortedByCaseCount) {
+            true -> countryDataDao.getStatsSortedByCases()
+            false -> countryDataDao.getStats()
+        }
     }
 
     override fun getFilteredCountries(searchQuery: String): Flow<List<CountryEntity>?> {

@@ -26,6 +26,6 @@ data class DistrictEntity(
     val recovered: Int,
     val recoveredToday: Int,
     val updated: Long
-){
+) {
     val lastUpdatedUiStr get() = DateUtil.getDateInFormat(updated)
 }

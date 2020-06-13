@@ -15,7 +15,7 @@ interface GoCoronaRepository {
 
     //Room
     fun getStateStats(): Flow<List<StateEntity>>
-    fun getCountries(): Flow<List<CountryEntity>>
+    fun getCountries(sortedByCaseCount: Boolean = true): Flow<List<CountryEntity>>
     fun getFilteredCountries(searchQuery: String): Flow<List<CountryEntity>?>
     fun getCountryData(countryCode: String): Flow<CountryEntity?>
     fun getWorldData(): Flow<WorldEntity?>

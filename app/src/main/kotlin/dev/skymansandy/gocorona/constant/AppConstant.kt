@@ -6,6 +6,6 @@ object AppConstant {
     const val IN = "IN"
 }
 
-object DaggerNamedConstants{
+object DaggerNamedConstants {
     const val BASE_URL = "BASE_URL"
 }

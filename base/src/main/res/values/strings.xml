@@ -19,4 +19,23 @@
         <item>@string/pref_night_off</item>
     </string-array>
 
+    <!-- App Language related-->
+    <string name="pref_key_app_language" translatable="false">key_app_language</string>
+    <string name="pref_app_language_english" translatable="false">on</string>
+    <string name="pref_app_language_kannada" translatable="false">off</string>
+    <string name="pref_app_language_hindi" translatable="false">auto</string>
+    <string name="app_language_english">English</string>
+    <string name="app_language_kannada">Kannada</string>
+    <string name="app_language_hindi">Hindi</string>
+    <string-array name="settings_app_language_options">
+        <item>@string/app_language_english</item>
+        <item>@string/app_language_kannada</item>
+        <item>@string/app_language_hindi</item>
+    </string-array>
+    <string-array name="settings_app_language_values">
+        <item>@string/pref_app_language_english</item>
+        <item>@string/pref_app_language_kannada</item>
+        <item>@string/pref_app_language_hindi</item>
+    </string-array>
+
 </resources>

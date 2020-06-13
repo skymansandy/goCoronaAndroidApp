@@ -10,14 +10,127 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/activity_background"
-        android:orientation="vertical"
-        android:padding="@dimen/dp_24">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/container"
+        <!-- About Developer-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@xml/preferences" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:background="@color/banner_color"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_24">
+
+            <TextView
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_developer"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_dp"
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_marginTop="@dimen/dp_16"
+                android:src="@mipmap/ic_launcher"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:gravity="center"
+                android:text="@string/about_me_desc"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_visit_blog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@color/gray"
+                android:paddingStart="@dimen/dp_80"
+                android:paddingEnd="@dimen/dp_80"
+                android:text="@string/visit_my_blog"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <!-- Settings -->
+        <androidx.cardview.widget.CardView
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_16">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings"
+                    android:textStyle="bold" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout="@xml/preferences" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Credits-->
+        <androidx.cardview.widget.CardView
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_16">
+
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_16"
+                    android:text="@string/credits"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_credit_india_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="India Data: covid19india.org" />
+
+                <TextView
+                    android:id="@+id/tv_credit_world_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="World Data: corona.lmao.ninja" />
+
+                <TextView
+                    android:id="@+id/tv_credit_graph_library"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Graph Library: github.com/txusballesteros/snake" />
+
+                <TextView
+                    android:id="@+id/tv_credit_pie_chart_library"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PieChart Library: github.com/blackfizz/EazeGraph" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </layout>

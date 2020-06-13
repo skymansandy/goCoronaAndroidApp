@@ -10,4 +10,13 @@
         android:summary="@string/setting_night_mode_desc"
         android:title="@string/setting_night_mode" />
 
+    <ListPreference
+        android:defaultValue="@string/pref_app_language_english"
+        android:entries="@array/settings_app_language_options"
+        android:entryValues="@array/settings_app_language_values"
+        android:icon="@drawable/ic_translate_24"
+        android:key="@string/pref_key_app_language"
+        android:summary="@string/setting_app_language_desc"
+        android:title="@string/setting_app_language" />
+
 </androidx.preference.PreferenceScreen>

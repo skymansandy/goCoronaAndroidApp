@@ -16,8 +16,11 @@ interface CountryDataDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countryDbList: List<CountryEntity>?)
 
-    @Query("SELECT * FROM CountryData ORDER BY cases DESC")
+    @Query("SELECT * FROM CountryData")
     fun getStats(): Flow<List<CountryEntity>>
+
+    @Query("SELECT * FROM CountryData ORDER BY cases DESC")
+    fun getStatsSortedByCases(): Flow<List<CountryEntity>>
 
     @Query("SELECT * FROM CountryData WHERE countryCode = :countryCode")
     fun getCountry(countryCode: String): Flow<CountryEntity?>
