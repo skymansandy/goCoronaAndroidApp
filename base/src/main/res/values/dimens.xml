@@ -1,53 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="half_activity_margin">8dp</dimen>
-    <dimen name="activity_margin">16dp</dimen>
-    <dimen name="nav_drawer_width">320dp</dimen>
-    <dimen name="nav_drawer_header_height">240dp</dimen>
-    <dimen name="fab_size">@dimen/dp_64</dimen>
-    <dimen name="elevation_card_default">@dimen/dp_16</dimen>
-
-    <dimen name="dp_0_5">0.5dp</dimen>
     <dimen name="dp_1">1dp</dimen>
     <dimen name="dp_2">2dp</dimen>
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_12">12dp</dimen>
     <dimen name="dp_16">16dp</dimen>
-    <dimen name="dp_18">18dp</dimen>
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_24">24dp</dimen>
-    <dimen name="dp_32">32dp</dimen>
     <dimen name="dp_36">36dp</dimen>
     <dimen name="dp_40">40dp</dimen>
     <dimen name="dp_48">48dp</dimen>
     <dimen name="dp_64">64dp</dimen>
     <dimen name="dp_56">56dp</dimen>
     <dimen name="dp_80">80dp</dimen>
-    <dimen name="dp_84">84dp</dimen>
-    <dimen name="dp_92">92dp</dimen>
-    <dimen name="dp_96">96dp</dimen>
     <dimen name="dp_108">108dp</dimen>
-    <dimen name="dp_120">120dp</dimen>
-    <dimen name="dp_140">140dp</dimen>
     <dimen name="dp_160">160dp</dimen>
-    <dimen name="dp_180">180dp</dimen>
-    <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_240">240dp</dimen>
     <dimen name="dp_280">280dp</dimen>
-    <dimen name="dp_300">300dp</dimen>
 
-    <dimen name="sp_2">2sp</dimen>
-    <dimen name="sp_4">4sp</dimen>
-    <dimen name="sp_6">6sp</dimen>
     <dimen name="sp_10">10sp</dimen>
     <dimen name="sp_12">12sp</dimen>
-    <dimen name="sp_14">14sp</dimen>
     <dimen name="sp_16">16sp</dimen>
-    <dimen name="sp_20">20sp</dimen>
-    <dimen name="sp_24">24sp</dimen>
-    <dimen name="sp_34">34sp</dimen>
-    <dimen name="sp_45">45sp</dimen>
 
 </resources>

@@ -7,7 +7,6 @@
     <color name="color_row_bg">@color/color_primary</color>
     <color name="color_appbar">@color/black</color>
     <color name="color_row_text">@color/white</color>
-    <color name="color_bg">#FDFFFE</color>
     <color name="edittext_bg">@color/color_row_bg</color>
     <color name="color_search_text">#71778B</color>
     <color name="activity_background">@color/black</color>
