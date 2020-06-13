@@ -101,9 +101,6 @@ dependencies {
     //CircularImageView
     api "de.hdodenhof:circleimageview:$circularimageview"
 
-    //TextDrawable
-    api "com.amulyakhare:com.amulyakhare.textdrawable:$textdrawable"
-
     //Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit"
     api "com.squareup.retrofit2:retrofit-mock:$retrofit"

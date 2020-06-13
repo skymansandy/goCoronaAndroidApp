@@ -23,7 +23,7 @@ class AboutFragment(override val layoutId: Int = R.layout.fragment_about) :
     }
 
     private fun setupAbout() {
-        binding.civDp.load(AppConstant.Url.DP_URL)
+        binding.civDp.load(R.drawable.sandesh)
         binding.btnVisitBlog.setOnClickListener {
             AppUtil.launchUrl(activity, AppConstant.Url.BLOG_URL)
         }

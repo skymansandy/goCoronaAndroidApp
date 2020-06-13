@@ -46,6 +46,7 @@ abstract class BaseActivity<T : ViewDataBinding,
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleUtils.setupLocale(this, false)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
         with(vm) {

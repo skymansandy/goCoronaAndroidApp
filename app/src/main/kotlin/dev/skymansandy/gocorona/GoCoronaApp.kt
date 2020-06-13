@@ -14,7 +14,7 @@ class GoCoronaApp : BaseApplication() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         NightModeUtil.setupNightMode(this)
-        LocaleUtils.setupLocale(this)
+        LocaleUtils.setupLocale(this, false)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

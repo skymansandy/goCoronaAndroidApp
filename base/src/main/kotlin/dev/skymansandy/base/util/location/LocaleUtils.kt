@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
-import android.widget.Toast
 import androidx.preference.PreferenceManager
 import dev.skymansandy.base.R
 import dev.skymansandy.base.ui.base.BaseActivity
@@ -20,7 +19,7 @@ object LocaleUtils {
         }
     }
 
-    private fun updateConfig(activity: Activity) {
+    private fun updateConfig(activity: Activity, recreateActivity: Boolean = true) {
         sLocale?.let {
             val configuration = Configuration()
             configuration.setLocale(it)
@@ -28,14 +27,13 @@ object LocaleUtils {
                 configuration,
                 activity.baseContext.resources.displayMetrics
             )
-            if (activity is BaseActivity<*, *, *, *>) {
-                activity.recreate()
+            if (activity is BaseActivity<*, *, *, *> && recreateActivity) {
                 activity.recreate()
             }
         }
     }
 
-    fun setupLocale(context: Context) {
+    fun setupLocale(context: Context, recreateActivity: Boolean = true) {
         val localeStr = PreferenceManager.getDefaultSharedPreferences(context).getString(
             context.getString(R.string.pref_key_app_language),
             context.getString(R.string.pref_app_language_english)
@@ -43,12 +41,7 @@ object LocaleUtils {
         localeStr?.let {
             setLocale(Locale(it))
             if (context is Activity)
-                updateConfig(context)
-            Toast.makeText(
-                context,
-                context.resources.configuration.locale.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+                updateConfig(context, recreateActivity)
         }
     }
 

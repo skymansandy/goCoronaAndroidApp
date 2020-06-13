@@ -23,67 +23,68 @@ class GetIndiaDataForUiUseCase @Inject constructor(
             stateStat
                 .collect {
                     val dataSet = it
+                    if (!dataSet.isNullOrEmpty()) {
+                        lateinit var totalStat: StateEntity
 
-                    lateinit var totalStat: StateEntity
-
-                    val statesDataForUi = arrayListOf<CovidStat>()
-                    for (state in dataSet) {
-                        if ("Total".equals(state.name, ignoreCase = true)) {
-                            totalStat = state
-                        } else {
-                            statesDataForUi += CovidStat(
-                                code = state.code,
-                                name = state.name,
-                                confirmed = state.cases,
-                                active = state.active,
-                                recovered = state.recovered,
-                                deceased = state.deaths
-                            )
+                        val statesDataForUi = arrayListOf<CovidStat>()
+                        for (state in dataSet) {
+                            if ("Total".equals(state.name, ignoreCase = true)) {
+                                totalStat = state
+                            } else {
+                                statesDataForUi += CovidStat(
+                                    code = state.code,
+                                    name = state.name,
+                                    confirmed = state.cases,
+                                    active = state.active,
+                                    recovered = state.recovered,
+                                    deceased = state.deaths
+                                )
+                            }
                         }
+
+                        val confirmedStat =
+                            StatCard(
+                                totalStat.cases,
+                                totalStat.casesToday,
+                                arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
+                            )
+                        val activeStat =
+                            StatCard(
+                                totalStat.active,
+                                0,
+                                arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
+                            )
+                        val recoveredStat =
+                            StatCard(
+                                totalStat.recovered,
+                                totalStat.recoveredToday,
+                                arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
+                            )
+                        val deceasedStat =
+                            StatCard(
+                                totalStat.deaths,
+                                totalStat.deathsToday,
+                                arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
+                            )
+                        val maxScale = arrayListOf(
+                            confirmedStat.growthTrend.max()?.toFloat() ?: 1f,
+                            activeStat.growthTrend.max()?.toFloat() ?: 1f,
+                            recoveredStat.growthTrend.max()?.toFloat() ?: 1f,
+                            deceasedStat.growthTrend.max()?.toFloat() ?: 1f
+                        ).max() ?: 1f
+
+                        emit(
+                            HomeState.IndiaStats(
+                                lastUpdated = totalStat.lastUpdatedUiStr,
+                                confirmed = confirmedStat,
+                                active = activeStat,
+                                recovered = recoveredStat,
+                                deceased = deceasedStat,
+                                growthTrendMaxScale = maxScale,
+                                stats = statesDataForUi
+                            )
+                        )
                     }
-
-                    val confirmedStat =
-                        StatCard(
-                            totalStat.cases,
-                            totalStat.casesToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val activeStat =
-                        StatCard(
-                            totalStat.active,
-                            0,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val recoveredStat =
-                        StatCard(
-                            totalStat.recovered,
-                            totalStat.recoveredToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val deceasedStat =
-                        StatCard(
-                            totalStat.deaths,
-                            totalStat.deathsToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val maxScale = arrayListOf(
-                        confirmedStat.growthTrend.max()?.toFloat() ?: 1f,
-                        activeStat.growthTrend.max()?.toFloat() ?: 1f,
-                        recoveredStat.growthTrend.max()?.toFloat() ?: 1f,
-                        deceasedStat.growthTrend.max()?.toFloat() ?: 1f
-                    ).max() ?: 1f
-
-                    emit(
-                        HomeState.IndiaStats(
-                            lastUpdated = totalStat.lastUpdatedUiStr,
-                            confirmed = confirmedStat,
-                            active = activeStat,
-                            recovered = recoveredStat,
-                            deceased = deceasedStat,
-                            growthTrendMaxScale = maxScale,
-                            stats = statesDataForUi
-                        )
-                    )
                 }
         }
     }
