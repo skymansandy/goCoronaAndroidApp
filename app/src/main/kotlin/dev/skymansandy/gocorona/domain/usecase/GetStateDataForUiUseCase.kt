@@ -15,7 +15,7 @@ class GetStateDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(stateCode: String): Flow<StateDataState> {
-        return flow homeState@{
+        return flow {
             emit(StateDataState.Loading)
             val stateDetails = goCoronaRepository.getStateDetail(stateCode)
             val stateStats = goCoronaRepository.getDistrictDataForState(stateCode)

@@ -13,7 +13,7 @@ class GetDistrictDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(districtCode: String): Flow<DistrictDataState> {
-        return flow homeState@{
+        return flow {
             emit(DistrictDataState.Loading)
             val stateStat = goCoronaRepository.getDistrictData(districtCode)
             stateStat.collect {

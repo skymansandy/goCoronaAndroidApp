@@ -14,7 +14,7 @@ class GetWorldDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(): Flow<WorldState> {
-        return flow homeState@{
+        return flow {
             emit(WorldState.Loading)
             val worldDetails = goCoronaRepository.getWorldData()
             val countryStats = goCoronaRepository.getCountries()

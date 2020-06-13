@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
-    getIndiaDataForUiUseCase: GetIndiaDataForUiUseCase,
+    private val getIndiaDataForUiUseCase: GetIndiaDataForUiUseCase,
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<HomeState, HomeEvent>() {
 

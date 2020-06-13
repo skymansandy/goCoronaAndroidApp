@@ -21,9 +21,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.swipe.setOnRefreshListener {
-            vm.refreshStats()
-        }
+        binding.swipe.setOnRefreshListener { vm.refreshStats() }
     }
 
     override fun renderViewState(newState: HomeState) {

@@ -60,8 +60,4 @@ abstract class BaseViewModel<STATE, EVENT>
         }
         Timber.d("processing viewEvent: $viewEvent")
     }
-
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

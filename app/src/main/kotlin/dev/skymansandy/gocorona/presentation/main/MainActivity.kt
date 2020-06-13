@@ -30,10 +30,6 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
     }
 
-    override fun renderViewState(newState: Void) {
-
-    }
-
     override fun onBackPressed() {
         if (navHostFragment.isEmptyBackStack()) {
             if (pressedBackOnce) finish()
@@ -46,4 +42,6 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
             super.onBackPressed()
         }
     }
+
+    override fun renderViewState(newState: Void) {}
 }

@@ -15,7 +15,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(): Flow<HomeState> {
-        return flow homeState@{
+        return flow {
             emit(HomeState.Loading)
             val stateStat = goCoronaRepository.getStateStats()
             val testsStat = goCoronaRepository.getLatest90DaysCovidTests()

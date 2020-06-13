@@ -13,7 +13,7 @@ class GetOtherCountryDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(countryCode: String): Flow<CountryDataState> {
-        return flow homeState@{
+        return flow {
             emit(CountryDataState.Loading)
             val countriesStat = goCoronaRepository.getCountryData(countryCode)
             countriesStat.collect {
