@@ -17,7 +17,7 @@ import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 class CountryDataFragment(override val layoutId: Int = R.layout.fragment_country_data) :
     BaseFragment<FragmentCountryDataBinding, CountryDataState, CountryDataEvent, CountryDataViewModel>() {
 
-    private val covidRes by lazy { CovidResImpl(activity!!) }
+    private val covidRes by lazy { CovidResImpl(requireContext()) }
     private val args by navArgs<CountryDataFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

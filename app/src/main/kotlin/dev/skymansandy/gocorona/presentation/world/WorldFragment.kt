@@ -19,7 +19,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
     BaseFragment<FragmentWorldBinding, WorldState, WorldEvent, WorldViewModel>(),
     CovidStatClickListener {
 
-    private val covidRes by lazy { CovidResImpl(activity!!) }
+    private val covidRes by lazy { CovidResImpl(requireContext()) }
     private val statAdapter = CovidStatListAdapter(this, CovidStatListType.COUNTRY)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

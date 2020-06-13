@@ -15,7 +15,6 @@ android {
         targetSdkVersion versionTargetSdk
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -88,11 +87,8 @@ dependencies {
 
     //Room
     api "androidx.room:room-runtime:$room"
-    api "androidx.room:room-rxjava2:$room"
     api "androidx.room:room-ktx:$room"
-    api "androidx.paging:paging-runtime:$paging"
     kapt "androidx.room:room-compiler:$room"
-
 
     //Coroutines
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"

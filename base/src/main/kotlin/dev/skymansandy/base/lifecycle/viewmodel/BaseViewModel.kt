@@ -7,13 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.skymansandy.base.exception.NoObserverAttachedException
 import dev.skymansandy.base.lifecycle.event.SingleLiveEvent
-import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 
 abstract class BaseViewModel<STATE, EVENT>
     : ViewModel(), BaseViewModelContract<EVENT> {
-
-    private val disposables = CompositeDisposable()
 
     /**
      * MediatorLiveData for some internal processing of
@@ -65,7 +62,6 @@ abstract class BaseViewModel<STATE, EVENT>
     }
 
     override fun onCleared() {
-        disposables.dispose()
         super.onCleared()
     }
 }

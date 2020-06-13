@@ -16,7 +16,6 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -53,12 +52,11 @@ dependencies {
 
     kapt "com.google.dagger:dagger-compiler:$dagger"
     kapt "com.google.dagger:dagger-android-processor:$dagger"
+
     kapt "androidx.room:room-compiler:$room"
 
-    implementation crashlyticsDependencies.values()
-
     implementation project(':base')
-    implementation "me.grantland:autofittextview:$autofit"
+
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
     implementation "io.coil-kt:coil:$coil"
     implementation "com.github.blackfizz:eazegraph:$easegraph"
