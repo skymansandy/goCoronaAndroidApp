@@ -1,13 +1,7 @@
 package dev.skymansandy.gocorona.data.repository
 
-import dev.skymansandy.gocorona.data.source.db.dao.CountryDataDao
-import dev.skymansandy.gocorona.data.source.db.dao.DistrictDataDao
-import dev.skymansandy.gocorona.data.source.db.dao.StateDataDao
-import dev.skymansandy.gocorona.data.source.db.dao.WorldDataDao
-import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
-import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
-import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
+import dev.skymansandy.gocorona.data.source.db.dao.*
+import dev.skymansandy.gocorona.data.source.db.entity.*
 import dev.skymansandy.gocorona.data.source.remote.GoCoronaApi
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
@@ -19,61 +13,66 @@ import javax.inject.Inject
 
 class GoCoronaRepositoryImpl @Inject constructor(
     private val goCoronaApi: GoCoronaApi,
-    private val stateDataDao: StateDataDao,
-    private val worldDataDao: WorldDataDao,
-    private val countryDataDao: CountryDataDao,
-    private val districtDataDao: DistrictDataDao
+    private val stateDao: StateDao,
+    private val worldDao: WorldDao,
+    private val countryDao: CountryDao,
+    private val districtDao: DistrictDao,
+    private val covidTestDao: CovidTestDao
 ) : GoCoronaRepository {
 
     override fun getStateStats(): Flow<List<StateEntity>> {
-        return stateDataDao.getStats()
+        return stateDao.getStats()
     }
 
     override fun getCountries(sortedByCaseCount: Boolean): Flow<List<CountryEntity>> {
         return when (sortedByCaseCount) {
-            true -> countryDataDao.getStatsSortedByCases()
-            false -> countryDataDao.getStats()
+            true -> countryDao.getStatsSortedByCases()
+            false -> countryDao.getStats()
         }
     }
 
     override fun getFilteredCountries(searchQuery: String): Flow<List<CountryEntity>?> {
-        return countryDataDao.getFilteredCountries("%$searchQuery%")
+        return countryDao.getFilteredCountries("%$searchQuery%")
     }
 
     override fun getCountryData(countryCode: String): Flow<CountryEntity?> {
-        return countryDataDao.getCountry(countryCode)
+        return countryDao.getCountry(countryCode)
     }
 
     override fun getWorldData(): Flow<WorldEntity?> {
-        return worldDataDao.getWorldData()
+        return worldDao.getWorldData()
     }
 
     override fun getDistrictDataForState(stateCode: String): Flow<List<DistrictEntity>?> {
-        return districtDataDao.getDistrictsForState(stateCode)
+        return districtDao.getDistrictsForState(stateCode)
     }
 
     override fun getDistrictData(districtCode: String): Flow<DistrictEntity?> {
-        return districtDataDao.getDistrict(districtCode)
+        return districtDao.getDistrict(districtCode)
     }
 
     override fun getStateDetail(stateCode: String): Flow<StateEntity?> {
-        return stateDataDao.getState(stateCode)
+        return stateDao.getState(stateCode)
     }
 
     override suspend fun insertCountryApi(countryDbList: List<CountryEntity>?) {
-        countryDataDao.insertAll(countryDbList)
+        countryDao.insertAll(countryDbList)
     }
 
     override suspend fun insertDistricts(districtDbList: List<DistrictEntity>?) {
-        districtDataDao.insertAll(districtDbList)
+        districtDao.insertAll(districtDbList)
     }
 
     override suspend fun insertStates(stateDbList: List<StateEntity>) {
-        stateDataDao.insertAll(stateDbList)
+        stateDao.insertAll(stateDbList)
     }
 
     override suspend fun insertWorldData(worldEntity: WorldEntity) {
-        worldDataDao.insert(worldEntity)
+        worldDao.insert(worldEntity)
+    }
+
+    override suspend fun insertCovidTests(list: List<CovidTestEntity>?) {
+        covidTestDao.insertAll(list)
     }
 
     override fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>> {

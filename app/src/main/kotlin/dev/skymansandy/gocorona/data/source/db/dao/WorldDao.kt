@@ -8,7 +8,7 @@ import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface WorldDataDao {
+interface WorldDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(worldData: WorldEntity)
 

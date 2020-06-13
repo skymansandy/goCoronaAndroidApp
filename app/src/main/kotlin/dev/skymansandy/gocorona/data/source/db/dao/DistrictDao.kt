@@ -8,7 +8,7 @@ import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DistrictDataDao {
+interface DistrictDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(districtDbList: DistrictEntity)

@@ -10,14 +10,14 @@
     <androidx.cardview.widget.CardView
         style="@style/CardStyle"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_160"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         tools:ignore="ObsoleteLayoutParam"
         tools:layout_width="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/dp_16">
 
@@ -60,11 +60,13 @@
             <dev.skymansandy.gocorona.tools.customview.SnakeView
                 android:id="@+id/snake"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/dp_56"
+                android:visibility="gone"
                 app:animationDuration="1000"
                 app:minValue="-2"
                 app:strokeColor="@color/color_active"
-                app:strokeWidth="@dimen/dp_1" />
+                app:strokeWidth="@dimen/dp_1"
+                tools:visibility="visible" />
 
         </LinearLayout>
 

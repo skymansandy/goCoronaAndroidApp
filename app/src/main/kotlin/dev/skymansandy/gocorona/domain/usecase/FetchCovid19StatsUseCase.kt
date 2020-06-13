@@ -1,10 +1,7 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
-import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
-import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
+import dev.skymansandy.gocorona.data.source.db.entity.*
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
@@ -23,6 +20,39 @@ class FetchCovid19StatsUseCase @Inject constructor(
 ) {
 
     operator fun invoke() {
+        goCoronaRepository.fetchWorldData()
+            .enqueue(object : Callback<WorldDataResponse> {
+                override fun onResponse(
+                    call: Call<WorldDataResponse>,
+                    response: Response<WorldDataResponse>
+                ) {
+                    val worldData = response.body()!!
+                    CoroutineScope(Dispatchers.Default).launch {
+                        goCoronaRepository.insertWorldData(
+                            WorldEntity(
+                                cases = worldData.cases ?: 0,
+                                todayCases = worldData.todayCases ?: 0,
+                                deaths = worldData.deaths ?: 0,
+                                todayDeaths = worldData.todayDeaths ?: 0,
+                                recovered = worldData.recovered ?: 0,
+                                todayRecovered = worldData.todayRecovered ?: 0,
+                                active = worldData.active ?: 0,
+                                critical = worldData.critical ?: 0,
+                                tests = worldData.tests ?: 0,
+                                testsPerOneMillion = worldData.testsPerOneMillion,
+                                population = worldData.population ?: 0,
+                                updated = System.currentTimeMillis()
+                            )
+                        )
+                        Timber.tag("Tag").d("inserted World data")
+                    }
+                }
+
+                override fun onFailure(call: Call<WorldDataResponse>, t: Throwable) {
+                    Timber.tag("Tag").d(t.localizedMessage)
+                }
+            })
+
         goCoronaRepository.fetchCountryWiseData()
             .enqueue(object : Callback<List<CountryWiseDataResponse>> {
                 override fun onResponse(
@@ -65,6 +95,56 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 }
             })
 
+        goCoronaRepository.fetchStatesData()
+            .enqueue(object : Callback<StatesDataResponse> {
+                override fun onResponse(
+                    call: Call<StatesDataResponse>,
+                    response: Response<StatesDataResponse>
+                ) {
+                    val statesResponse = response.body()!!
+                    val stateDbList = statesResponse.statewise.map {
+                        val timeMillis = try {
+                            System.currentTimeMillis()
+                        } catch (t: Throwable) {
+                            System.currentTimeMillis()
+                        }
+                        StateEntity(
+                            code = it.statecode,
+                            name = it.state,
+                            active = it.active ?: 0,
+                            cases = it.confirmed ?: 0,
+                            casesToday = it.deltaconfirmed ?: 0,
+                            deaths = it.deaths ?: 0,
+                            deathsToday = it.deltadeaths ?: 0,
+                            recovered = it.recovered ?: 0,
+                            recoveredToday = it.deltarecovered ?: 0,
+                            migratedToOther = it.migratedother ?: 0,
+                            updated = timeMillis
+                        )
+                    }
+
+                    val testsDbList = statesResponse.cases_time_series.map {
+                        CovidTestEntity(
+                            date = it.date,
+                            totalConfirmed = it.totalconfirmed ?: 0,
+                            totalDeceased = it.totaldeceased ?: 0,
+                            totalRecovered = it.totalrecovered ?: 0
+                        )
+                    }
+
+                    CoroutineScope(Dispatchers.Default).launch {
+                        goCoronaRepository.insertStates(stateDbList)
+                        goCoronaRepository.insertCovidTests(testsDbList)
+                        Timber.tag("Tag").d("inserted ${stateDbList.size} states")
+                        Timber.tag("Tag").d("inserted ${testsDbList.size} tests")
+                    }
+                }
+
+                override fun onFailure(call: Call<StatesDataResponse>, t: Throwable) {
+                    Timber.tag("Tag").d(t.localizedMessage)
+                }
+            })
+
         goCoronaRepository.fetchDistrictData()
             .enqueue(object : Callback<List<DistrictDataResponse>> {
                 override fun onResponse(
@@ -102,77 +182,6 @@ class FetchCovid19StatsUseCase @Inject constructor(
                 }
 
                 override fun onFailure(call: Call<List<DistrictDataResponse>>, t: Throwable) {
-                    Timber.tag("Tag").d(t.localizedMessage)
-                }
-            })
-
-        goCoronaRepository.fetchStatesData()
-            .enqueue(object : Callback<StatesDataResponse> {
-                override fun onResponse(
-                    call: Call<StatesDataResponse>,
-                    response: Response<StatesDataResponse>
-                ) {
-                    val statesResponse = response.body()!!
-                    val stateDbList = statesResponse.statewise.map {
-                        val timeMillis = try {
-                            System.currentTimeMillis()
-                        } catch (t: Throwable) {
-                            System.currentTimeMillis()
-                        }
-                        StateEntity(
-                            code = it.statecode,
-                            name = it.state,
-                            active = it.active ?: 0,
-                            cases = it.confirmed ?: 0,
-                            casesToday = it.deltaconfirmed ?: 0,
-                            deaths = it.deaths ?: 0,
-                            deathsToday = it.deltadeaths ?: 0,
-                            recovered = it.recovered ?: 0,
-                            recoveredToday = it.deltarecovered ?: 0,
-                            migratedToOther = it.migratedother ?: 0,
-                            updated = timeMillis
-                        )
-                    }
-                    CoroutineScope(Dispatchers.Default).launch {
-                        goCoronaRepository.insertStates(stateDbList)
-                        Timber.tag("Tag").d("inserted ${stateDbList.size} states")
-                    }
-                }
-
-                override fun onFailure(call: Call<StatesDataResponse>, t: Throwable) {
-                    Timber.tag("Tag").d(t.localizedMessage)
-                }
-            })
-
-        goCoronaRepository.fetchWorldData()
-            .enqueue(object : Callback<WorldDataResponse> {
-                override fun onResponse(
-                    call: Call<WorldDataResponse>,
-                    response: Response<WorldDataResponse>
-                ) {
-                    val worldData = response.body()!!
-                    CoroutineScope(Dispatchers.Default).launch {
-                        goCoronaRepository.insertWorldData(
-                            WorldEntity(
-                                cases = worldData.cases ?: 0,
-                                todayCases = worldData.todayCases ?: 0,
-                                deaths = worldData.deaths ?: 0,
-                                todayDeaths = worldData.todayDeaths ?: 0,
-                                recovered = worldData.recovered ?: 0,
-                                todayRecovered = worldData.todayRecovered ?: 0,
-                                active = worldData.active ?: 0,
-                                critical = worldData.critical ?: 0,
-                                tests = worldData.tests ?: 0,
-                                testsPerOneMillion = worldData.testsPerOneMillion,
-                                population = worldData.population ?: 0,
-                                updated = System.currentTimeMillis()
-                            )
-                        )
-                        Timber.tag("Tag").d("inserted World data")
-                    }
-                }
-
-                override fun onFailure(call: Call<WorldDataResponse>, t: Throwable) {
                     Timber.tag("Tag").d(t.localizedMessage)
                 }
             })

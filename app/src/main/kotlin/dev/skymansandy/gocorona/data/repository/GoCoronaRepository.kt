@@ -1,9 +1,6 @@
 package dev.skymansandy.gocorona.data.repository
 
-import dev.skymansandy.gocorona.data.source.db.entity.CountryEntity
-import dev.skymansandy.gocorona.data.source.db.entity.DistrictEntity
-import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.data.source.db.entity.WorldEntity
+import dev.skymansandy.gocorona.data.source.db.entity.*
 import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
@@ -27,6 +24,7 @@ interface GoCoronaRepository {
     suspend fun insertDistricts(districtDbList: List<DistrictEntity>?)
     suspend fun insertStates(stateDbList: List<StateEntity>)
     suspend fun insertWorldData(worldEntity: WorldEntity)
+    suspend fun insertCovidTests(list: List<CovidTestEntity>?)
 
     //Api
     fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>>
