@@ -60,4 +60,12 @@ object AppUtil {
             }
         }
     }
+
+    fun launchInChromeOrDefault(context: Context?, url: String, toolbarColor: Int = 0) {
+        try {
+            launchUrlInChromeTab(context, url, toolbarColor)
+        } catch (e: Exception) {
+            launchUrl(context, url)
+        }
+    }
 }

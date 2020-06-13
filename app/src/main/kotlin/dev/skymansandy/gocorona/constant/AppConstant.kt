@@ -4,7 +4,7 @@ object AppConstant {
 
     object Url {
         const val BLOG_URL = "https://skymansandy.dev/"
-        const val COVID_19_INDIA = "https://covidindia.org/"
+        const val COVID_19_INDIA = "https://covid19india.org/"
         const val CORONA_LMAO_NINJA = "https://corona.lmao.ninja/"
         const val GRAPH_LIBRARY = "https://github.com/txusballesteros/snake"
         const val PIE_CHART_LIBRARY = "https://github.com/blackfizz/EazeGraph"

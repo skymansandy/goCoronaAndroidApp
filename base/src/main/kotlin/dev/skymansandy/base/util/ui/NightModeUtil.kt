@@ -23,7 +23,7 @@ object NightModeUtil {
 }
 
 enum class NightModeType(val value: Int) {
-    AUTO(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY),
+    AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
     ON(AppCompatDelegate.MODE_NIGHT_YES),
     OFF(AppCompatDelegate.MODE_NIGHT_NO)
 }

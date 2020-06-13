@@ -13,6 +13,6 @@ interface CovidTestDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(covidTests: List<CovidTestEntity>?)
 
-    @Query("SELECT * FROM CovidTest ORDER BY totalConfirmed DESC LIMIT 10")
+    @Query("SELECT * FROM CovidTest ORDER BY totalConfirmed DESC LIMIT 20")
     fun getLast90DaysStats(): Flow<List<CovidTestEntity>?>
 }

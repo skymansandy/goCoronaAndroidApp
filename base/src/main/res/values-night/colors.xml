@@ -2,5 +2,6 @@
 <resources>
     <color name="color_primary_dark">@color/black</color>
     <color name="color_dark">@color/white</color>
+    <color name="color_light">@color/black</color>
 
 </resources>
