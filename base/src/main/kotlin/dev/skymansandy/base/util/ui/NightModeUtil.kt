@@ -9,7 +9,7 @@ import java.util.*
 
 object NightModeUtil {
 
-    fun setNightMode(context: Context) {
+    fun setupNightMode(context: Context) {
         PreferenceManager.getDefaultSharedPreferences(context).getString(
             context.getString(R.string.pref_key_night),
             context.getString(R.string.pref_night_auto)

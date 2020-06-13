@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">गो-कोरोना ट्रैकर</string>
+    <string name="confirmed">संपूर्ण</string>
+    <string name="active">एक्टिव</string>
+    <string name="recovered">बरामद</string>
+    <string name="deceased">मृतक</string>
+    <string name="state_ut">राज्य / केन्द्र शासित प्रदेश</string>
+    <string name="last_synced">सिंक किया गया</string>
+    <string name="district">जिला</string>
+    <string name="worldwide">दुनिया भर</string>
+    <string name="india">भारत</string>
+    <string name="search_country">देश खोज</string>
+    <string name="choose_country">देश चुनें</string>
+    <string name="country">देश</string>
+    <string name="search">खोज</string>
+    <string name="active_cases">एक्टिव केस</string>
+    <string name="press_back_again_to_exit">बाहर निकलने के लिए फिर से दबाएं!</string>
+    <string name="night_mode">रात्री स्वरुप</string>
+    <string name="setting_night_mode">रात्री स्वरुप</string>
+    <string name="setting_night_mode_desc">थीम चुनें</string>
+    <string name="setting_app_language">ऐप भाषा</string>
+    <string name="setting_app_language_desc">भाषा चुनें</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="about">ऐप के बारे में</string>
+    <string name="about_developer">डेवलपर के बारे में</string>
+    <string name="health">स्वास्थ्य</string>
+    <string name="credits">क्रेडिट</string>
+    <string name="visit_my_blog">मेरे ब्लॉग पर जाएँ</string>
+    <string name="about_me_desc">सन्देश बालिगा पी.\nगीक, एक्सप्लोरर और अधिक!</string>
+    <string name="india_data">भारत डेटा</string>
+    <string name="world_data">विश्व डेटा</string>
+    <string name="graph_library">ग्राफ लाइब्रेरी</string>
+    <string name="piechart_library">पाईचार्ट लाइब्रेरी</string>
+</resources>

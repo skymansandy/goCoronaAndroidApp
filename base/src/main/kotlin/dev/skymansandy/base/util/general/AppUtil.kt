@@ -4,7 +4,9 @@ import android.Manifest.permission.CALL_PHONE
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.annotation.RequiresPermission
+import dev.skymansandy.base.R
 
 
 object AppUtil {
@@ -19,6 +21,23 @@ object AppUtil {
             val callIntent = Intent(Intent.ACTION_DIAL)
             callIntent.data = Uri.parse("tel:$phoneNum")
             context.startActivity(callIntent)
+        }
+    }
+
+    fun launchUrl(context: Context?, url: String) {
+        context?.let {
+            try {
+                val browserIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                context.startActivity(browserIntent)
+            } catch (t: Throwable) {
+                t.printStackTrace()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.something_went_wrong),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

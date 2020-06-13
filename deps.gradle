@@ -47,6 +47,7 @@ ext.swiperefreshlayout = "1.0.0"
 ext.coil = "0.11.0"
 ext.easegraph = "1.2.2"
 ext.preference = "1.1.1"
+ext.customtab = "1.2.0"
 
 //Google
 ext.googleservices = "4.3.3"

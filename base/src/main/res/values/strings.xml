@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Night Mode related-->
     <string name="pref_key_night" translatable="false">key_night_mode</string>
@@ -21,12 +21,12 @@
 
     <!-- App Language related-->
     <string name="pref_key_app_language" translatable="false">key_app_language</string>
-    <string name="pref_app_language_english" translatable="false">en_US</string>
-    <string name="pref_app_language_kannada" translatable="false">kn_IN</string>
-    <string name="pref_app_language_hindi" translatable="false">hi_IN</string>
-    <string name="app_language_english">English</string>
-    <string name="app_language_kannada">Kannada</string>
-    <string name="app_language_hindi">Hindi</string>
+    <string name="pref_app_language_english" translatable="false">en</string>
+    <string name="pref_app_language_kannada" translatable="false">kn</string>
+    <string name="pref_app_language_hindi" translatable="false">hi</string>
+    <string name="app_language_english" tools:ignore="MissingTranslation">English</string>
+    <string name="app_language_kannada" tools:ignore="MissingTranslation">ಕನ್ನಡ</string>
+    <string name="app_language_hindi" tools:ignore="MissingTranslation">हिन्दी</string>
     <string-array name="settings_app_language_options">
         <item>@string/app_language_english</item>
         <item>@string/app_language_kannada</item>
@@ -37,5 +37,7 @@
         <item>@string/pref_app_language_kannada</item>
         <item>@string/pref_app_language_hindi</item>
     </string-array>
+
+    <string name="something_went_wrong">Something went wrong!</string>
 
 </resources>

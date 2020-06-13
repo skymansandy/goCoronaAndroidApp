@@ -110,25 +110,37 @@
                     android:id="@+id/tv_credit_india_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="India Data: covid19india.org" />
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:autoLink="all"
+                    android:text="@string/india_data"
+                    tools:text="India Data: covid19india.org" />
 
                 <TextView
                     android:id="@+id/tv_credit_world_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="World Data: corona.lmao.ninja" />
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:autoLink="all"
+                    android:text="@string/world_data"
+                    tools:text="World Data: corona.lmao.ninja" />
 
                 <TextView
                     android:id="@+id/tv_credit_graph_library"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Graph Library: github.com/txusballesteros/snake" />
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:autoLink="all"
+                    android:text="@string/graph_library"
+                    tools:text="Graph Library: github.com/txusballesteros/snake" />
 
                 <TextView
                     android:id="@+id/tv_credit_pie_chart_library"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PieChart Library: github.com/blackfizz/EazeGraph" />
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:autoLink="all"
+                    android:text="@string/piechart_library"
+                    tools:text="PieChart Library: github.com/blackfizz/EazeGraph" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

@@ -5,7 +5,7 @@
     <string name="recovered">Recovered</string>
     <string name="deceased">Deceased</string>
     <string name="state_ut">State/UT</string>
-    <string name="last_synced">Last synced </string>
+    <string name="last_synced">Last synced</string>
     <string name="district">District</string>
     <string name="worldwide">Worldwide</string>
     <string name="india">India</string>
@@ -27,4 +27,8 @@
     <string name="credits">Credits</string>
     <string name="visit_my_blog">Visit my blog</string>
     <string name="about_me_desc">Sandesh Baliga P.\nGeek, Explorer &amp; more!</string>
+    <string name="india_data">India Data</string>
+    <string name="world_data">World Data</string>
+    <string name="graph_library">Graph Library</string>
+    <string name="piechart_library">PieChart Library</string>
 </resources>

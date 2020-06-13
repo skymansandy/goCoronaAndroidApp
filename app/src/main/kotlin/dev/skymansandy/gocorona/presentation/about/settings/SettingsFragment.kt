@@ -3,10 +3,10 @@ package dev.skymansandy.gocorona.presentation.about.settings
 import android.app.UiModeManager
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.ListPreference
 import androidx.preference.PreferenceFragmentCompat
+import dev.skymansandy.base.util.location.LocaleUtils
 import dev.skymansandy.gocorona.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
@@ -34,7 +34,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
             )
         }
 
-        appLanguageListPref?.setOnPreferenceChangeListener { _, newValue ->
+        appLanguageListPref?.setOnPreferenceChangeListener { preference, newValue ->
             updateLanguage(newValue.toString())
         }
     }
@@ -45,8 +45,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
         return true
     }
 
-    private fun updateLanguage(localeStr: String): Boolean {
-        Toast.makeText(activity, localeStr, Toast.LENGTH_SHORT).show()
+    private fun updateLanguage(localeString: String): Boolean {
+        activity?.let {
+            LocaleUtils.updateAppLanguage(it, localeString)
+        }
         return true
     }
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="night_mode_auto">ऑटो</string>
+    <string name="night_mode_on">रात्री मोड</string>
+    <string name="night_mode_off">दिन मोड</string>
+
+    <string name="something_went_wrong">कुछ गलत हो गया!</string>
+</resources>
