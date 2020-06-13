@@ -19,7 +19,7 @@ fun TextView.showNumber(number: Int) {
 fun TextView.scanForBigTextAndWrapNextLine(): Boolean {
     val linearLayout = parent as? LinearLayout?
     return linearLayout?.let {
-        val isLargeText = text.toString().length > 7
+        val isLargeText = text.toString().length >= 7
         if (isLargeText) {
             it.orientation = LinearLayout.VERTICAL
         }
@@ -57,7 +57,7 @@ fun ImageView.loadFlag(flagUrl: String?) {
     flagUrl?.let {
         load(it) {
             crossfade(true)
-            placeholder(R.mipmap.ic_launcher)
+            placeholder(R.color.gray)
         }
     }
 }
@@ -66,6 +66,6 @@ fun ImageView.loadFlag(flagUrl: String?) {
 fun ImageView.loadFlagRes(@DrawableRes src: Int) {
     load(src) {
         crossfade(true)
-        placeholder(R.mipmap.ic_launcher)
+        placeholder(R.color.gray)
     }
 }
