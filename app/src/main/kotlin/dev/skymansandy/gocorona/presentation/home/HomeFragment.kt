@@ -46,19 +46,27 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                     getString(R.string.state_ut)
                 )
                 with(binding.statsIndia) {
-                    tvActiveCount.text =
-                        NumberFormat.getInstance().format(newState.active.count)
+                    tvActiveCount.text = NumberFormat.getInstance().format(newState.active)
                     statCardConfirmed.showStatCard(
-                        newState.confirmed, getString(R.string.confirmed),
-                        covidRes.confirmedColor, newState.growthTrendMaxScale
+                        getString(R.string.confirmed),
+                        covidRes.confirmedColor,
+                        newState.confirmed,
+                        newState.confirmedToday,
+                        newState.trendConfirmedCases
                     )
                     statCardRecovered.showStatCard(
-                        newState.recovered, getString(R.string.recovered),
-                        covidRes.recoveredColor, newState.growthTrendMaxScale
+                        getString(R.string.recovered),
+                        covidRes.recoveredColor,
+                        newState.recovered,
+                        newState.recoveredToday,
+                        newState.trendRecoveredCases
                     )
                     statCardDeceased.showStatCard(
-                        newState.deceased, getString(R.string.deceased),
-                        covidRes.deceasedColor, newState.growthTrendMaxScale
+                        getString(R.string.deceased),
+                        covidRes.deceasedColor,
+                        newState.deaths,
+                        newState.deathsToday,
+                        newState.trendDeceasedCases
                     )
                     layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
                         View.GONE
@@ -72,24 +80,28 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     }
 
     private fun LayoutStatCardBinding.showStatCard(
-        statCard: StatCard,
         title: String,
         color: Int,
-        growthTrendMaxScale: Float
+        count: Int,
+        delta: Int,
+        trendArr: List<Float>
     ) {
-        snake.clear()
-        snake.setMaxValue(growthTrendMaxScale)
-        snake.setStrokeColor(color)
-        snake.visibility = if (growthTrendMaxScale >= 0) {
-            statCard.growthTrend.map { snake.addValue(it.toFloat()) }
-            View.VISIBLE
-        } else View.GONE
-
         tvTitle.text = title
-        tvCount.showNumber(statCard.count)
-        showDelta(covidRes, tvDelta, statCard.deltaCount)
+        tvCount.showNumber(count)
+        showDelta(covidRes, tvDelta, delta)
         paintTextView(tvCount, color)
         paintTextView(tvDelta, color)
+
+        snake.apply {
+            clear()
+            setStrokeColor(color)
+            setMinValue(trendArr.min() ?: 0f)
+            setMaxValue(trendArr.max() ?: 0f)
+            visibility = if (!trendArr.isNullOrEmpty()) {
+                trendArr.map { addValue(it) }
+                View.VISIBLE
+            } else View.GONE
+        }
     }
 
     private fun paintTextView(textView: TextView, color: Int) {

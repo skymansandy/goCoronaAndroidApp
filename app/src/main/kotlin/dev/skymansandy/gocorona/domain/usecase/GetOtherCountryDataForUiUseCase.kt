@@ -15,7 +15,6 @@ class GetOtherCountryDataForUiUseCase @Inject constructor(
     operator fun invoke(countryCode: String): Flow<CountryDataState> {
         return flow homeState@{
             emit(CountryDataState.Loading)
-            delay(1000)
             val countriesStat = goCoronaRepository.getCountryData(countryCode)
             countriesStat.collect {
                 it?.let {

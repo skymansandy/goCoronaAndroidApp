@@ -19,6 +19,7 @@ interface GoCoronaRepository {
     fun getDistrictDataForState(stateCode: String): Flow<List<DistrictEntity>?>
     fun getDistrictData(districtCode: String): Flow<DistrictEntity?>
     fun getStateDetail(stateCode: String): Flow<StateEntity?>
+    fun getLatest90DaysCovidTests(): Flow<List<CovidTestEntity>?>
 
     suspend fun insertCountryApi(countryDbList: List<CountryEntity>?)
     suspend fun insertDistricts(districtDbList: List<DistrictEntity>?)

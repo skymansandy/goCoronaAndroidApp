@@ -5,21 +5,20 @@ import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
 sealed class HomeState {
     data class IndiaStats(
         val lastUpdated: String,
-        val confirmed: StatCard,
-        val active: StatCard,
-        val recovered: StatCard,
-        val deceased: StatCard,
-        val growthTrendMaxScale: Float,
-        val stats: List<CovidStat>?
+        val active: Int,
+        val confirmed: Int,
+        val confirmedToday: Int,
+        val recovered: Int,
+        val recoveredToday: Int,
+        val deaths: Int,
+        val deathsToday: Int,
+        val stats: List<CovidStat>?,
+        var trendConfirmedCases: List<Float> = arrayListOf(0f, 0f),
+        var trendRecoveredCases: List<Float> = arrayListOf(0f, 0f),
+        var trendDeceasedCases: List<Float> = arrayListOf(0f, 0f)
     ) : HomeState()
 
     object Loading : HomeState()
 }
 
 sealed class HomeEvent
-
-data class StatCard(
-    var count: Int = 0,
-    var deltaCount: Int = 0,
-    var growthTrend: List<Int> = arrayListOf(0, 0)
-)

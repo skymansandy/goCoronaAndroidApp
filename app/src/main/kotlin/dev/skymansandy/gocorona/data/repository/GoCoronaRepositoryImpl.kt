@@ -55,6 +55,10 @@ class GoCoronaRepositoryImpl @Inject constructor(
         return stateDao.getState(stateCode)
     }
 
+    override fun getLatest90DaysCovidTests(): Flow<List<CovidTestEntity>?> {
+        return covidTestDao.getLast90DaysStats()
+    }
+
     override suspend fun insertCountryApi(countryDbList: List<CountryEntity>?) {
         countryDao.insertAll(countryDbList)
     }

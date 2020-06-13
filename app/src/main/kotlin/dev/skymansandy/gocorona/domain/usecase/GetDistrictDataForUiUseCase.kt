@@ -15,7 +15,6 @@ class GetDistrictDataForUiUseCase @Inject constructor(
     operator fun invoke(districtCode: String): Flow<DistrictDataState> {
         return flow homeState@{
             emit(DistrictDataState.Loading)
-            delay(1000)
             val stateStat = goCoronaRepository.getDistrictData(districtCode)
             stateStat.collect {
                 it?.let {
