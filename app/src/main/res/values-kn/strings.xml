@@ -32,4 +32,12 @@
     <string name="world_data">ವಿಶ್ವ ಡೇಟಾ</string>
     <string name="graph_library">ಗ್ರಾಫ್ ಲೈಬ್ರರಿ</string>
     <string name="piechart_library">ಪೈಚಾರ್ಟ್ ಲೈಬ್ರರಿ</string>
+    <string name="health_tips">ಆರೋಗ್ಯ ಸಲಹೆಗಳು</string>
+    <string name="symptoms">ಲಕ್ಷಣಗಳು</string>
+    <string name="symptoms_desc">COVID-19 ವೈರಸ್ ವಿಭಿನ್ನ ಜನರ ಮೇಲೆ ವಿಭಿನ್ನ ರೀತಿಯಲ್ಲಿ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ. ಇನ್ನಷ್ಟು ಪರಿಶೀಲಿಸಿ!</string>
+    <string name="preventive_measures">ನಿರೋಧಕ ಕ್ರಮಗಳು</string>
+    <string name="preventive_measures_desc">ಸೋಂಕನ್ನು ಹೇಗೆ ತಡೆಗಟ್ಟುವುದು ಮತ್ತು COVID-19 ರ ಪ್ರಸರಣವನ್ನು ನಿಧಾನಗೊಳಿಸುವುದು ಹೇಗೆ ಎಂದು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="advice_from_who">WHO ನಿಂದ ಸಲಹೆ</string>
+    <string name="myths">COVID-19 ಮೂಢನಂಬಿಕೆಗಳು</string>
+    <string name="myths_desc">COVID-19 ಬಗ್ಗೆ ಸಾಮಾನ್ಯ ತಪ್ಪು ಕಲ್ಪನೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ</string>
 </resources>

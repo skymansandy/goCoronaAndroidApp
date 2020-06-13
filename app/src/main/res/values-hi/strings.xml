@@ -32,4 +32,12 @@
     <string name="world_data">विश्व डेटा</string>
     <string name="graph_library">ग्राफ लाइब्रेरी</string>
     <string name="piechart_library">पाईचार्ट लाइब्रेरी</string>
+    <string name="health_tips">स्वास्थ्य सुझाव</string>
+    <string name="symptoms">लक्षण</string>
+    <string name="symptoms_desc">COVID-19 वायरस अलग-अलग लोगों को अलग-अलग तरीके से प्रभावित करता है। और देखें!</string>
+    <string name="preventive_measures">निवारक उपाय</string>
+    <string name="preventive_measures_desc">जाँच करें कि संक्रमण को कैसे रोका जाए और COVID-19 के संचरण को धीमा किया जाए</string>
+    <string name="advice_from_who">WHO से सलाह</string>
+    <string name="myths">कल्पना बहस</string>
+    <string name="myths_desc">COVID-19 के बारे में आम भ्रांतियों के बारे में जानें</string>
 </resources>

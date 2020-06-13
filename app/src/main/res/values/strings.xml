@@ -31,4 +31,12 @@
     <string name="world_data">World Data</string>
     <string name="graph_library">Graph Library</string>
     <string name="piechart_library">PieChart Library</string>
+    <string name="health_tips">Health Tips</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="symptoms_desc">COVID-19 Virus affects different people in different ways. Check out More!</string>
+    <string name="preventive_measures">Preventive measures</string>
+    <string name="preventive_measures_desc">Check how to prevent infection and to slow down transmission of COVID-19</string>
+    <string name="advice_from_who">Advice from WHO</string>
+    <string name="myths">Myths Debunked</string>
+    <string name="myths_desc">Learn about common misconceptions about the COVID-19</string>
 </resources>
