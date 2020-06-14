@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_banner"
-        android:layout_marginTop="-135dp"
         android:orientation="vertical"
         android:visibility="gone"
         tools:ignore="ObsoleteLayoutParam"

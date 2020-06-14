@@ -22,21 +22,15 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.core.widget.NestedScrollView
+                <fragment
+                    android:id="@+id/nav_host_main"
+                    android:name="androidx.navigation.fragment.NavHostFragment"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:fillViewport="true">
-
-                    <fragment
-                        android:id="@+id/nav_host_main"
-                        android:name="androidx.navigation.fragment.NavHostFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:defaultNavHost="true"
-                        app:layout_behavior="dev.skymansandy.base.ui.behaviour.MoveUpwardBehavior"
-                        app:navGraph="@navigation/navigation_main" />
-                </androidx.core.widget.NestedScrollView>
+                    app:defaultNavHost="true"
+                    app:layout_behavior="dev.skymansandy.base.ui.behaviour.MoveUpwardBehavior"
+                    app:navGraph="@navigation/navigation_main" />
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/bottom_nav_view"

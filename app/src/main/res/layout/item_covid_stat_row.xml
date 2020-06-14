@@ -14,7 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
         android:background="?selectableItemBackground"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_4">
 
         <Space
             android:layout_width="@dimen/dp_2"

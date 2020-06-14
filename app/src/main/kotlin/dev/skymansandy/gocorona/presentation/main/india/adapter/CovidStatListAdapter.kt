@@ -19,8 +19,9 @@ class CovidStatListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatRowViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCovidStatRowBinding.inflate(inflater, parent, false)
+        val holder = StatRowViewHolder(binding)
         binding.root.setOnClickListener {
-            binding.stat?.let {
+            getItem(holder.adapterPosition)?.let {
                 when (covidStatListType) {
                     CovidStatListType.DISTRICT -> covidStatClickListener.onDistrictClicked(it)
                     CovidStatListType.STATE -> covidStatClickListener.onStateClicked(it)
@@ -28,9 +29,7 @@ class CovidStatListAdapter(
                 }
             }
         }
-        return StatRowViewHolder(
-            binding
-        )
+        return holder
     }
 
     override fun onBindViewHolder(holder: StatRowViewHolder, position: Int) {
@@ -43,9 +42,7 @@ class CovidStatListAdapter(
  */
 interface CovidStatClickListener {
     fun onCountryClicked(covidStat: CovidStat)
-
     fun onStateClicked(covidStat: CovidStat)
-
     fun onDistrictClicked(covidStat: CovidStat)
 }
 
@@ -57,7 +54,7 @@ class StatRowViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(covidStat: CovidStat?) {
-        binding.stat = covidStat
+//        binding.stat = covidStat
         covidStat?.let {
             val numberFormat = NumberFormat.getInstance()
             binding.tvTitle.text = it.name
@@ -89,6 +86,4 @@ data class CovidStat(
     val deceased: Int = 0
 ) : Parcelable
 
-enum class CovidStatListType {
-    DISTRICT, STATE, COUNTRY
-}
+enum class CovidStatListType { DISTRICT, STATE, COUNTRY }
