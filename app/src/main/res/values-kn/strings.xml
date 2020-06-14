@@ -43,5 +43,6 @@
     <string name="source_corona_ninja">ಮೂಲ: corona.ninja.lmao</string>
     <string name="check_internet_connection">ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ!</string>
     <string name="syncing_latest_data">ಇತ್ತೀಚಿನ ಡೇಟಾವನ್ನು ಸಿಂಕ್ ಮಾಡಲಾಗುತ್ತಿದೆ…</string>
+    <string name="synced_successfully">ಯಶಸ್ವಿಯಾಗಿ ಸಿಂಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <string name="couldnt_sync_data">ಡೇಟಾವನ್ನು ಸಿಂಕ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ!</string>
 </resources>
