@@ -10,7 +10,7 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.ActivityMainBinding
 
 class MainActivity(override val layoutId: Int = R.layout.activity_main) :
-    BaseActivity<ActivityMainBinding, Void, Void, MainViewModel>() {
+    BaseActivity<ActivityMainBinding, MainState, Void, MainViewModel>() {
 
     override val navControllerId = R.id.nav_host_main
     override val snackBarView: View
@@ -47,5 +47,14 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         }
     }
 
-    override fun renderViewState(newState: Void) {}
+    override fun renderViewState(newState: MainState) {
+        when (newState) {
+            is MainState.Loading -> {
+                vm.showSnackBar("Loading")
+            }
+            is MainState.Loaded -> {
+                vm.showSnackBar("Loaded")
+            }
+        }
+    }
 }

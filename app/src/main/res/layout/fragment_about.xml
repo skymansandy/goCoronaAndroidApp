@@ -9,9 +9,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        tools:background="@color/activity_background">
 
         <LinearLayout
             android:layout_width="match_parent"

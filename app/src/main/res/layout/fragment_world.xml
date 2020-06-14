@@ -10,8 +10,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:background="@color/activity_background">
 
         <RelativeLayout
             android:id="@+id/layout_banner"
