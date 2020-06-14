@@ -20,10 +20,10 @@ This app loads data from 2 API providers (covid19india.org for India data, coron
 - Offline support
 
 ## ✨ Screenshots
-| Main Screen | Statistics |  Preventions |
+| India Overview | World Overview | Settings |
 |:-:|:-:|:-:|
 | ![Fist](media/screen_1.jpg?raw=true) | ![3](media/screen_2.jpg?raw=true) | ![3](media/screen_3.jpg?raw=true) |
-| Main Screen Dark | Statistics Dark |  FAQ |
+| India Overview Dark | World Overview Dark |  Settings Dark |
 | ![4](media/screen_dark_1.jpg?raw=true) | ![5](media/screen_dark_2.jpg?raw=true) | ![6](media/screen_dark_3.jpg?raw=true) |
 
 ## Tech Stack
