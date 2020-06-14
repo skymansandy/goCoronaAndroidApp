@@ -22,7 +22,8 @@ class GetIndiaDataForUiUseCase @Inject constructor(
             stateStat.combine(testsStat) { states, tests ->
                 tests?.let {
                     if (!states.isNullOrEmpty()) {
-                        lateinit var totalStat: StateEntity
+                        var totalStat: StateEntity? = null
+
                         val statesDataForUi = arrayListOf<CovidStat>()
                         for (state in states) {
                             if ("Total".equals(state.name, ignoreCase = true)) {
@@ -39,34 +40,36 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                             }
                         }
 
-                        val trendConfirmedArr = arrayListOf<Float>()
-                        val trendRecoveredArr = arrayListOf<Float>()
-                        val trendDeceasedArr = arrayListOf<Float>()
+                        totalStat?.let {
+                            val trendConfirmedArr = arrayListOf<Float>()
+                            val trendRecoveredArr = arrayListOf<Float>()
+                            val trendDeceasedArr = arrayListOf<Float>()
 
-                        if (!tests.isNullOrEmpty()) {
-                            tests.reversed().map {
-                                trendConfirmedArr += it.totalConfirmed.toFloat()
-                                trendRecoveredArr += it.totalRecovered.toFloat()
-                                trendDeceasedArr += it.totalDeceased.toFloat()
+                            if (!tests.isNullOrEmpty()) {
+                                tests.reversed().map {
+                                    trendConfirmedArr += it.totalConfirmed.toFloat()
+                                    trendRecoveredArr += it.totalRecovered.toFloat()
+                                    trendDeceasedArr += it.totalDeceased.toFloat()
+                                }
                             }
-                        }
 
-                        emit(
-                            IndiaState.IndiaStats(
-                                lastUpdated = totalStat.lastUpdatedUiStr,
-                                active = totalStat.active,
-                                confirmed = totalStat.cases,
-                                confirmedToday = totalStat.casesToday,
-                                recovered = totalStat.recovered,
-                                recoveredToday = totalStat.recoveredToday,
-                                deceased = totalStat.deceased,
-                                deceasedToday = totalStat.deceasedToday,
-                                stats = statesDataForUi,
-                                trendConfirmedCases = trendConfirmedArr,
-                                trendRecoveredCases = trendRecoveredArr,
-                                trendDeceasedCases = trendDeceasedArr
+                            emit(
+                                IndiaState.IndiaStats(
+                                    lastUpdated = totalStat.lastUpdatedUiStr,
+                                    active = totalStat.active,
+                                    confirmed = totalStat.cases,
+                                    confirmedToday = totalStat.casesToday,
+                                    recovered = totalStat.recovered,
+                                    recoveredToday = totalStat.recoveredToday,
+                                    deceased = totalStat.deceased,
+                                    deceasedToday = totalStat.deceasedToday,
+                                    stats = statesDataForUi,
+                                    trendConfirmedCases = trendConfirmedArr,
+                                    trendRecoveredCases = trendRecoveredArr,
+                                    trendDeceasedCases = trendDeceasedArr
+                                )
                             )
-                        )
+                        }
                     }
                 }
             }.collect()
