@@ -2,7 +2,7 @@
 <resources>
 
     <style name="AppTheme.TransparentNavBar" parent="AppTheme">
-        <item name="android:navigationBarColor">@color/color_primary_dark</item>
+        <item name="android:navigationBarColor">@color/color_row_bg</item>
     </style>
 
     <style name="AppTheme.SearchEditText">

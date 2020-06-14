@@ -24,8 +24,6 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getWorldOverView()
-
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
         }
@@ -51,7 +49,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                 binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
-            is WorldState.WorldStats -> {
+            is WorldState.WorldDetails -> {
                 binding.swipe.isRefreshing = false
                 binding.statsWorld.layoutStats.visibility = View.VISIBLE
                 binding.layoutStatList.root.visibility = View.VISIBLE

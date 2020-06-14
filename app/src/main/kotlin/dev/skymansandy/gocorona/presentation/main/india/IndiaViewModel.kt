@@ -13,7 +13,7 @@ class IndiaViewModel @Inject constructor(
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<IndiaState, IndiaEvent>() {
 
-    fun getIndiaOverView(){
+    init {
         viewModelScope.launch {
             getIndiaDataForUiUseCase().collect {
                 viewState = it

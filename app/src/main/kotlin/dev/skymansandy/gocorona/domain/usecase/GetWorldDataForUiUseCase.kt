@@ -32,9 +32,8 @@ class GetWorldDataForUiUseCase @Inject constructor(
                                 deceased = district.deceased
                             )
                         }
-
                         emit(
-                            WorldState.WorldStats(
+                            WorldState.WorldDetails(
                                 lastUpdated = details.lastUpdatedUiStr,
                                 active = details.active,
                                 confirmed = details.cases,

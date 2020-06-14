@@ -3,7 +3,7 @@ package dev.skymansandy.gocorona.presentation.main.world
 import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 
 sealed class WorldState {
-    data class WorldStats(
+    data class WorldDetails(
         val lastUpdated: String,
         val active: Int,
         val confirmed: Int,

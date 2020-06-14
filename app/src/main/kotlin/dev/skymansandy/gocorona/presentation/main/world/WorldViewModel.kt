@@ -13,7 +13,7 @@ class WorldViewModel @Inject constructor(
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
 ) : BaseViewModel<WorldState, WorldEvent>() {
 
-    fun getWorldOverView() {
+    init {
         viewModelScope.launch {
             getWorldDataForUiUseCase().collect {
                 viewState = it

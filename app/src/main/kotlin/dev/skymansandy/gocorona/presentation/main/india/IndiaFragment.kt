@@ -21,8 +21,6 @@ class IndiaFragment(override val layoutId: Int = R.layout.fragment_india) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getIndiaOverView()
-
         binding.swipe.setOnRefreshListener { vm.refreshStats() }
     }
 
