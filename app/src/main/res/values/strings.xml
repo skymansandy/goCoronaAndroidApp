@@ -22,7 +22,6 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="about_developer">About Developer</string>
-    <string name="health">Health</string>
     <string name="credits">Credits</string>
     <string name="visit_my_blog">Visit my blog</string>
     <string name="about_me_desc">Sandesh Baliga P.\nGeek, Explorer &amp; more!</string>
@@ -30,7 +29,6 @@
     <string name="world_data">World Data</string>
     <string name="graph_library">Graph Library</string>
     <string name="piechart_library">PieChart Library</string>
-    <string name="health_tips">Health Tips</string>
     <string name="symptoms">Symptoms</string>
     <string name="symptoms_desc">COVID-19 Virus affects different people in different ways. Check out More!</string>
     <string name="preventive_measures">Preventive measures</string>
@@ -38,4 +36,6 @@
     <string name="advice_from_who">Advice from WHO</string>
     <string name="myths">Myths Debunked</string>
     <string name="myths_desc">Learn about common misconceptions about the COVID-19</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="disclaimer_desc">Please note that all data shown here are from the COVID APIs. It may not be exactly realtime data.</string>
 </resources>

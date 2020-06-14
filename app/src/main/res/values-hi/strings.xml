@@ -23,7 +23,6 @@
     <string name="settings">सेटिंग्स</string>
     <string name="about">ऐप के बारे में</string>
     <string name="about_developer">डेवलपर के बारे में</string>
-    <string name="health">स्वास्थ्य</string>
     <string name="credits">क्रेडिट</string>
     <string name="visit_my_blog">मेरे ब्लॉग पर जाएँ</string>
     <string name="about_me_desc">सन्देश बालिगा पी.\nगीक, एक्सप्लोरर और अधिक!</string>
@@ -31,7 +30,6 @@
     <string name="world_data">विश्व डेटा</string>
     <string name="graph_library">ग्राफ लाइब्रेरी</string>
     <string name="piechart_library">पाईचार्ट लाइब्रेरी</string>
-    <string name="health_tips">स्वास्थ्य सुझाव</string>
     <string name="symptoms">लक्षण</string>
     <string name="symptoms_desc">COVID-19 वायरस अलग-अलग लोगों को अलग-अलग तरीके से प्रभावित करता है। और देखें!</string>
     <string name="preventive_measures">निवारक उपाय</string>
@@ -39,4 +37,6 @@
     <string name="advice_from_who">WHO से सलाह</string>
     <string name="myths">कल्पना बहस</string>
     <string name="myths_desc">COVID-19 के बारे में आम भ्रांतियों के बारे में जानें</string>
+    <string name="disclaimer">अस्वीकरण</string>
+    <string name="disclaimer_desc">कृपया ध्यान दें कि यहां दिखाए गए सभी डेटा COVID API से हैं। यह बिल्कुल वास्तविक समय डेटा नहीं हो सकता है।</string>
 </resources>

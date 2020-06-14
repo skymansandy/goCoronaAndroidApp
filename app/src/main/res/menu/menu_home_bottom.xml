@@ -12,12 +12,6 @@
         android:title="@string/worldwide" />
 
     <item
-        android:id="@+id/healthFragment"
-        android:icon="@drawable/ic_fitness_24"
-        android:title="@string/health"
-        android:visible="false" />
-
-    <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_info_24"
         android:title="@string/about" />

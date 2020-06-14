@@ -7,7 +7,6 @@ import dev.skymansandy.gocorona.presentation.about.AboutFragment
 import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryBottomSheet
 import dev.skymansandy.gocorona.presentation.countrydata.CountryDataFragment
 import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataFragment
-import dev.skymansandy.gocorona.presentation.health.HealthFragment
 import dev.skymansandy.gocorona.presentation.home.HomeFragment
 import dev.skymansandy.gocorona.presentation.main.MainActivity
 import dev.skymansandy.gocorona.presentation.splash.SplashActivity
@@ -43,9 +42,6 @@ abstract class UiInjectorModule {
 
     @ContributesAndroidInjector
     abstract fun contributeNewsFragment(): WorldFragment
-
-    @ContributesAndroidInjector
-    abstract fun contributeHealthFragment(): HealthFragment
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): AboutFragment
