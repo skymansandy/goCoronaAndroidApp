@@ -101,7 +101,9 @@
             layout="@layout/layout_stat_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_16" />
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_16" />
 
     </LinearLayout>
 </layout>
