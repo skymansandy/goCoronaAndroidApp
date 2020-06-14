@@ -14,6 +14,8 @@ fun LayoutStatListBinding.setup(
     title: String
 ) {
     statList.adapter = covidStatListAdapter
+    statList.setHasFixedSize(true)
+
     statListHeader.tvTitle.text = title
     statListHeader.tvTitle.setTypeface(null, Typeface.BOLD)
 
