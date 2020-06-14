@@ -8,10 +8,10 @@ import dev.skymansandy.base.di.ViewModelKey
 import dev.skymansandy.gocorona.presentation.main.MainViewModel
 import dev.skymansandy.gocorona.presentation.main.about.AboutViewModel
 import dev.skymansandy.gocorona.presentation.main.choosecountry.ChooseCountryViewModel
-import dev.skymansandy.gocorona.presentation.main.countrydata.CountryDataViewModel
-import dev.skymansandy.gocorona.presentation.main.districtdata.DistrictDataViewModel
-import dev.skymansandy.gocorona.presentation.main.home.HomeViewModel
-import dev.skymansandy.gocorona.presentation.main.statedata.StateDataViewModel
+import dev.skymansandy.gocorona.presentation.main.world.country.CountryDataViewModel
+import dev.skymansandy.gocorona.presentation.main.india.district.DistrictDataViewModel
+import dev.skymansandy.gocorona.presentation.main.india.IndiaViewModel
+import dev.skymansandy.gocorona.presentation.main.india.state.StateDataViewModel
 import dev.skymansandy.gocorona.presentation.main.world.WorldViewModel
 import dev.skymansandy.gocorona.presentation.splash.SplashViewModel
 
@@ -30,8 +30,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeViewModel(vm: HomeViewModel): ViewModel
+    @ViewModelKey(IndiaViewModel::class)
+    abstract fun bindHomeViewModel(vm: IndiaViewModel): ViewModel
 
     @Binds
     @IntoMap

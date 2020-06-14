@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.countrydata
+package dev.skymansandy.gocorona.presentation.main.world.country
 
 sealed class CountryDataState {
     data class CountryStats(

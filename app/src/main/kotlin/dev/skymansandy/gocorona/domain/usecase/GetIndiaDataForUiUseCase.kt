@@ -2,8 +2,8 @@ package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.presentation.main.home.HomeState
-import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.IndiaState
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
@@ -14,9 +14,9 @@ class GetIndiaDataForUiUseCase @Inject constructor(
     private val goCoronaRepository: GoCoronaRepository
 ) {
 
-    operator fun invoke(): Flow<HomeState> {
+    operator fun invoke(): Flow<IndiaState> {
         return flow {
-            emit(HomeState.Loading)
+            emit(IndiaState.Loading)
             val stateStat = goCoronaRepository.getStateStats()
             val testsStat = goCoronaRepository.getLatest90DaysCovidTests()
             stateStat.combine(testsStat) { states, tests ->
@@ -52,7 +52,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                         }
 
                         emit(
-                            HomeState.IndiaStats(
+                            IndiaState.IndiaStats(
                                 lastUpdated = totalStat.lastUpdatedUiStr,
                                 active = totalStat.active,
                                 confirmed = totalStat.cases,

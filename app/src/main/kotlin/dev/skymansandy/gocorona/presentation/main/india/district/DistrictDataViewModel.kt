@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.districtdata
+package dev.skymansandy.gocorona.presentation.main.india.district
 
 import androidx.lifecycle.viewModelScope
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel

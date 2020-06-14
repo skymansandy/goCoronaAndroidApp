@@ -1,6 +1,6 @@
 package dev.skymansandy.gocorona.presentation.main.world
 
-import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 
 sealed class WorldState {
     data class WorldStats(

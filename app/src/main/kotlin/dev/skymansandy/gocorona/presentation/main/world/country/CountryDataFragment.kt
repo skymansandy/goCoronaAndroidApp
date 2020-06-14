@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.countrydata
+package dev.skymansandy.gocorona.presentation.main.world.country
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentCountryDataBinding
-import dev.skymansandy.gocorona.presentation.main.home.adapter.showDelta
+import dev.skymansandy.gocorona.presentation.main.india.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine

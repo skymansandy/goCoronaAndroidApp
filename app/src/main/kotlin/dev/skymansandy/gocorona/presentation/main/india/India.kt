@@ -1,8 +1,8 @@
-package dev.skymansandy.gocorona.presentation.main.home
+package dev.skymansandy.gocorona.presentation.main.india
 
-import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 
-sealed class HomeState {
+sealed class IndiaState {
     data class IndiaStats(
         val lastUpdated: String,
         val active: Int,
@@ -16,9 +16,9 @@ sealed class HomeState {
         var trendConfirmedCases: List<Float> = arrayListOf(0f, 0f),
         var trendRecoveredCases: List<Float> = arrayListOf(0f, 0f),
         var trendDeceasedCases: List<Float> = arrayListOf(0f, 0f)
-    ) : HomeState()
+    ) : IndiaState()
 
-    object Loading : HomeState()
+    object Loading : IndiaState()
 }
 
-sealed class HomeEvent
+sealed class IndiaEvent

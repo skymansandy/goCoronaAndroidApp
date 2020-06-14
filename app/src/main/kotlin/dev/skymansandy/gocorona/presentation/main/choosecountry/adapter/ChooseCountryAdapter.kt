@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.skymansandy.gocorona.databinding.ItemCountryBinding
-import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 import javax.inject.Inject
 
 class CountryItemAdapter(

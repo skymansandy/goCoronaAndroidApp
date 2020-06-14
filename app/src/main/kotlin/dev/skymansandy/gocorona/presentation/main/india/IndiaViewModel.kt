@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.home
+package dev.skymansandy.gocorona.presentation.main.india
 
 import androidx.lifecycle.viewModelScope
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
@@ -8,12 +8,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class IndiaViewModel @Inject constructor(
     private val getIndiaDataForUiUseCase: GetIndiaDataForUiUseCase,
     private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
-) : BaseViewModel<HomeState, HomeEvent>() {
+) : BaseViewModel<IndiaState, IndiaEvent>() {
 
-    init {
+    fun getIndiaOverView(){
         viewModelScope.launch {
             getIndiaDataForUiUseCase().collect {
                 viewState = it

@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.home.adapter
+package dev.skymansandy.gocorona.presentation.main.india.adapter
 
 import android.graphics.Typeface
 import android.view.View

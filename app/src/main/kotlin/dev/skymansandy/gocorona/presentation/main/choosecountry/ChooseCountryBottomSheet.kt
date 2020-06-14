@@ -9,7 +9,7 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentChooseCountryBinding
 import dev.skymansandy.gocorona.presentation.main.choosecountry.adapter.CountryClickListener
 import dev.skymansandy.gocorona.presentation.main.choosecountry.adapter.CountryItemAdapter
-import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 import kotlinx.coroutines.*
 
 class ChooseCountryBottomSheet(override val layoutId: Int = R.layout.fragment_choose_country) :

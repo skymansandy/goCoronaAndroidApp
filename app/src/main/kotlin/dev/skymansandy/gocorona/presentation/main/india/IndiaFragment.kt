@@ -1,19 +1,19 @@
-package dev.skymansandy.gocorona.presentation.main.home
+package dev.skymansandy.gocorona.presentation.main.india
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
-import dev.skymansandy.gocorona.databinding.FragmentHomeBinding
+import dev.skymansandy.gocorona.databinding.FragmentIndiaBinding
 import dev.skymansandy.gocorona.databinding.LayoutStatCardBinding
-import dev.skymansandy.gocorona.presentation.main.home.adapter.*
+import dev.skymansandy.gocorona.presentation.main.india.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 import java.text.NumberFormat
 
-class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
-    BaseFragment<FragmentHomeBinding, HomeState, HomeEvent, HomeViewModel>(),
+class IndiaFragment(override val layoutId: Int = R.layout.fragment_india) :
+    BaseFragment<FragmentIndiaBinding, IndiaState, IndiaEvent, IndiaViewModel>(),
     CovidStatClickListener {
 
     private val covidRes by lazy { CovidResImpl(requireContext()) }
@@ -21,20 +21,22 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        vm.getIndiaOverView()
+
         binding.swipe.setOnRefreshListener { vm.refreshStats() }
     }
 
-    override fun renderViewState(newState: HomeState) {
+    override fun renderViewState(newState: IndiaState) {
         binding.swipe.isRefreshing = false
         binding.layoutLoading.visibility = View.GONE
         binding.statsIndia.root.visibility = View.GONE
 
         when (newState) {
-            is HomeState.Loading -> {
+            is IndiaState.Loading -> {
                 binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
-            is HomeState.IndiaStats -> {
+            is IndiaState.IndiaStats -> {
                 binding.statsIndia.layoutStats.visibility = View.VISIBLE
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
@@ -112,7 +114,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     override fun onDistrictClicked(covidStat: CovidStat) = TODO()
     override fun onStateClicked(covidStat: CovidStat) {
         navController.navigate(
-            HomeFragmentDirections.actionHomeFragmentToStateDataFragment(
+            IndiaFragmentDirections.actionHomeFragmentToStateDataFragment(
                 covidStat
             )
         )

@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.districtdata
+package dev.skymansandy.gocorona.presentation.main.india.district
 
 sealed class DistrictDataState {
     data class DistrictStats(

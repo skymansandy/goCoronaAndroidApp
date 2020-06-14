@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.home.adapter
+package dev.skymansandy.gocorona.presentation.main.india.adapter
 
 import android.os.Parcelable
 import android.view.LayoutInflater

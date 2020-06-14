@@ -1,4 +1,4 @@
-package dev.skymansandy.gocorona.presentation.main.countrydata
+package dev.skymansandy.gocorona.presentation.main.world.country
 
 import androidx.lifecycle.viewModelScope
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel

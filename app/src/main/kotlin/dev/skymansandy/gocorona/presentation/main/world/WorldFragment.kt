@@ -8,7 +8,7 @@ import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentWorldBinding
 import dev.skymansandy.gocorona.presentation.main.choosecountry.ChooseCountryBottomSheet
 import dev.skymansandy.gocorona.presentation.main.choosecountry.adapter.CountryClickListener
-import dev.skymansandy.gocorona.presentation.main.home.adapter.*
+import dev.skymansandy.gocorona.presentation.main.india.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
@@ -24,6 +24,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        vm.getWorldOverView()
 
         binding.swipe.setOnRefreshListener {
             vm.refreshStats()
