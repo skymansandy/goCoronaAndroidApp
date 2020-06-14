@@ -14,7 +14,7 @@ class CovidStatDataSource(val provider: CovidStatListProvider) :
         callback: LoadInitialCallback<Int, CovidStat>
     ) {
         val list = provider.getStringList(0, params.requestedLoadSize)
-        callback.onResult(list, 1, 2)
+        callback.onResult(list, null, 1)
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CovidStat>) {
