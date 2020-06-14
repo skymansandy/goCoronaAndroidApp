@@ -25,18 +25,14 @@ class DistrictDataFragment(override val layoutId: Int = R.layout.fragment_distri
         vm.getDistrictData(args.district.code)
 
         binding.tvPlace.text = args.district.name
-        binding.swipe.setOnRefreshListener {
-            vm.refreshStats()
-        }
     }
 
     override fun renderViewState(newState: DistrictDataState) {
-        binding.swipe.isRefreshing = false
         binding.statsNonIndia.root.visibility = View.GONE
 
         when (newState) {
             is DistrictDataState.Loading -> {
-                binding.swipe.isRefreshing = true
+                //TODO
             }
             is DistrictDataState.DistrictStats -> {
                 binding.statsNonIndia.root.visibility = View.VISIBLE

@@ -3,6 +3,7 @@ package dev.skymansandy.gocorona.presentation.main.india
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.paging.PagedList
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentIndiaBinding
@@ -11,6 +12,7 @@ import dev.skymansandy.gocorona.presentation.main.india.adapter.*
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
 import java.text.NumberFormat
+import javax.inject.Inject
 
 class IndiaFragment(override val layoutId: Int = R.layout.fragment_india) :
     BaseFragment<FragmentIndiaBinding, IndiaState, IndiaEvent, IndiaViewModel>(),
@@ -19,19 +21,19 @@ class IndiaFragment(override val layoutId: Int = R.layout.fragment_india) :
     private val covidRes by lazy { CovidResImpl(requireContext()) }
     private val statAdapter = CovidStatListAdapter(this, CovidStatListType.STATE)
 
+    @Inject
+    lateinit var pageConfig: PagedList.Config
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.swipe.setOnRefreshListener { vm.refreshStats() }
     }
 
     override fun renderViewState(newState: IndiaState) {
-        binding.swipe.isRefreshing = false
         binding.layoutLoading.visibility = View.GONE
         binding.statsIndia.root.visibility = View.GONE
 
         when (newState) {
             is IndiaState.Loading -> {
-                binding.swipe.isRefreshing = true
                 binding.layoutLoading.visibility = View.VISIBLE
             }
             is IndiaState.IndiaStats -> {
@@ -69,7 +71,8 @@ class IndiaFragment(override val layoutId: Int = R.layout.fragment_india) :
                     layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
                         View.GONE
                     } else {
-                        statAdapter.submitList(newState.stats)
+                        val pagedStrings = getPagedList(newState.stats, pageConfig)
+                        statAdapter.submitList(pagedStrings)
                         View.VISIBLE
                     }
                 }

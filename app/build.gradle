@@ -60,4 +60,5 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
     implementation "io.coil-kt:coil:$coil"
     implementation "com.github.blackfizz:eazegraph:$easegraph"
+    implementation "androidx.paging:paging-runtime-ktx:$paging"
 }

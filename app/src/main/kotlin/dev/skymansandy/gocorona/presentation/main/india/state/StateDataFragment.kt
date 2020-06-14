@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
+import androidx.paging.PagedList
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.FragmentStateDataBinding
@@ -13,6 +14,7 @@ import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
 import dev.skymansandy.gocorona.tools.coviduitools.extension.setOrientation
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
+import javax.inject.Inject
 
 class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_data) :
     BaseFragment<FragmentStateDataBinding, StateDataState, StateDataEvent, StateDataViewModel>(),
@@ -22,24 +24,23 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
     private val statAdapter = CovidStatListAdapter(this, CovidStatListType.DISTRICT)
     private val args by navArgs<StateDataFragmentArgs>()
 
+    @Inject
+    lateinit var pageConfig: PagedList.Config
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vm.getStateData(args.state.code)
 
         binding.tvPlace.text = args.state.name
-        binding.swipe.setOnRefreshListener {
-            vm.refreshStats()
-        }
     }
 
     override fun renderViewState(newState: StateDataState) {
-        binding.swipe.isRefreshing = false
         binding.statsNonIndia.root.visibility = View.GONE
         binding.layoutStatList.root.visibility = View.GONE
 
         when (newState) {
             is StateDataState.Loading -> {
-                binding.swipe.isRefreshing = true
+                //TODO
             }
             is StateDataState.StateStats -> {
                 binding.statsNonIndia.root.visibility = View.VISIBLE
@@ -73,7 +74,8 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                 binding.layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
                     View.GONE
                 } else {
-                    statAdapter.submitList(newState.stats)
+                    val pagedStrings = getPagedList(newState.stats, pageConfig)
+                    statAdapter.submitList(pagedStrings)
                     View.VISIBLE
                 }
             }

@@ -15,5 +15,4 @@ class FetchCovid19StatsUseCase @Inject constructor(
         fetchStatesDataUseCase()
         fetchDistrictsDataUseCase()
     }
-
 }

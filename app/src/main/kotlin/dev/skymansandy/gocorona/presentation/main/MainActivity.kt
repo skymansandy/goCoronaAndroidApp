@@ -28,6 +28,10 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+        binding.swipe.setOnRefreshListener {
+            vm.refreshStats()
+            binding.swipe.isRefreshing = false
+        }
     }
 
     override fun onBackPressed() {

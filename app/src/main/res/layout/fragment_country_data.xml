@@ -6,101 +6,87 @@
 
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background">
+        android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
+        <RelativeLayout
+            android:id="@+id/layout_banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="@dimen/dp_280"
+            android:background="@color/banner_color">
 
-            <RelativeLayout
+            <ImageView
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="-16dp"
+                android:rotation="27"
+                android:src="@drawable/covid2" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/covid2" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_108"
+                android:layout_height="@dimen/dp_108"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-24dp"
+                android:rotation="173"
+                android:src="@drawable/covid2" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="@dimen/dp_240"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_24">
 
-                <RelativeLayout
-                    android:id="@+id/layout_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_280"
-                    android:background="@color/banner_color">
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/white" />
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_64"
-                        android:layout_height="@dimen/dp_64"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="@dimen/dp_24"
-                        android:layout_marginEnd="-16dp"
-                        android:rotation="27"
-                        android:src="@drawable/covid2" />
+                <TextView
+                    android:id="@+id/tv_place"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="?selectableItemBackground"
+                    android:text="USA"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_64"
-                        android:layout_height="@dimen/dp_64"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="@dimen/dp_24"
-                        android:layout_marginEnd="12dp"
-                        android:src="@drawable/covid2" />
+                <TextView
+                    android:id="@+id/tv_last_updated"
+                    style="@style/TextAppearance.MaterialComponents.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    tools:text="Last updated 1 hour ago" />
 
-                    <ImageView
-                        android:layout_width="@dimen/dp_108"
-                        android:layout_height="@dimen/dp_108"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="-24dp"
-                        android:rotation="173"
-                        android:src="@drawable/covid2" />
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_240"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dp_24">
+        </RelativeLayout>
 
-                        <TextView
-                            style="@style/TextAppearance.MaterialComponents.Body1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textColor="@color/white" />
+        <include
+            android:id="@+id/statsNonIndia"
+            layout="@layout/stats_non_india"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
-                        <TextView
-                            android:id="@+id/tv_place"
-                            style="@style/TextAppearance.MaterialComponents.Headline5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_8"
-                            android:background="?selectableItemBackground"
-                            android:text="USA"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tv_last_updated"
-                            style="@style/TextAppearance.MaterialComponents.Body2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            tools:text="Last updated 1 hour ago" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-                <include
-                    android:id="@+id/statsNonIndia"
-                    layout="@layout/stats_non_india"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-            </RelativeLayout>
-
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </RelativeLayout>
 
 </layout>

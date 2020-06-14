@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class StateDataViewModel @Inject constructor(
-    private val getStateDataForUiUseCase: GetStateDataForUiUseCase,
-    private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
+    private val getStateDataForUiUseCase: GetStateDataForUiUseCase
 ) : BaseViewModel<StateDataState, StateDataEvent>() {
 
     fun getStateData(code: String) {
@@ -19,9 +18,5 @@ class StateDataViewModel @Inject constructor(
                 viewState = it
             }
         }
-    }
-
-    fun refreshStats() {
-        fetchCovid19StatsUseCase()
     }
 }

@@ -9,13 +9,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DistrictDataViewModel @Inject constructor(
-    private val getDistrictDataForUiUseCase: GetDistrictDataForUiUseCase,
-    private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
+    private val getDistrictDataForUiUseCase: GetDistrictDataForUiUseCase
 ) : BaseViewModel<DistrictDataState, DistrictDataEvent>() {
-
-    fun refreshStats() {
-        fetchCovid19StatsUseCase()
-    }
 
     fun getDistrictData(code: String) {
         viewModelScope.launch {

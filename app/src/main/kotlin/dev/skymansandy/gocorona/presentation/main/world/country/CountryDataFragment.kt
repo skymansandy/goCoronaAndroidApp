@@ -25,18 +25,14 @@ class CountryDataFragment(override val layoutId: Int = R.layout.fragment_country
         vm.getDistrictData(args.country.code)
 
         binding.tvPlace.text = args.country.name
-        binding.swipe.setOnRefreshListener {
-            vm.refreshStats()
-        }
     }
 
     override fun renderViewState(newState: CountryDataState) {
-        binding.swipe.isRefreshing = false
         binding.statsNonIndia.root.visibility = View.GONE
 
         when (newState) {
             is CountryDataState.Loading -> {
-                binding.swipe.isRefreshing = true
+                //TODO
             }
             is CountryDataState.CountryStats -> {
                 binding.statsNonIndia.root.visibility = View.VISIBLE

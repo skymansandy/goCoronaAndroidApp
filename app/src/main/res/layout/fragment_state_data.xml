@@ -6,113 +6,99 @@
 
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/activity_background">
+        android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
+        <RelativeLayout
+            android:id="@+id/layout_banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="@dimen/dp_280"
+            android:background="@color/banner_color">
 
-            <RelativeLayout
+            <ImageView
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="-16dp"
+                android:rotation="27"
+                android:src="@drawable/covid2" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_64"
+                android:layout_height="@dimen/dp_64"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/covid2" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_108"
+                android:layout_height="@dimen/dp_108"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="-24dp"
+                android:rotation="173"
+                android:src="@drawable/covid2" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="@dimen/dp_240"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_24">
 
-                <RelativeLayout
-                    android:id="@+id/layout_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_280"
-                    android:background="@color/banner_color">
-
-                    <ImageView
-                        android:layout_width="@dimen/dp_64"
-                        android:layout_height="@dimen/dp_64"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="@dimen/dp_24"
-                        android:layout_marginEnd="-16dp"
-                        android:rotation="27"
-                        android:src="@drawable/covid2" />
-
-                    <ImageView
-                        android:layout_width="@dimen/dp_64"
-                        android:layout_height="@dimen/dp_64"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginTop="@dimen/dp_24"
-                        android:layout_marginEnd="12dp"
-                        android:src="@drawable/covid2" />
-
-                    <ImageView
-                        android:layout_width="@dimen/dp_108"
-                        android:layout_height="@dimen/dp_108"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="-24dp"
-                        android:rotation="173"
-                        android:src="@drawable/covid2" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_240"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dp_24">
-
-                        <TextView
-                            style="@style/TextAppearance.MaterialComponents.Body1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/app_name"
-                            android:textColor="@color/white" />
-
-                        <TextView
-                            android:id="@+id/tv_place"
-                            style="@style/TextAppearance.MaterialComponents.Headline5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/dp_8"
-                            android:background="?selectableItemBackground"
-                            android:drawablePadding="@dimen/dp_8"
-                            android:drawableTint="@color/white"
-                            android:text="Karnataka"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tv_last_updated"
-                            style="@style/TextAppearance.MaterialComponents.Body2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:textColor="@color/white"
-                            tools:text="Last updated 1 hour ago" />
-
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-                <include
-                    android:id="@+id/statsNonIndia"
-                    layout="@layout/stats_non_india"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-                <include
-                    android:id="@+id/layout_stat_list"
-                    layout="@layout/layout_stat_list"
-                    android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/statsNonIndia"
-                    android:layout_marginStart="@dimen/dp_16"
-                    android:layout_marginEnd="@dimen/dp_16"
-                    android:layout_marginBottom="@dimen/dp_16" />
+                    android:text="@string/app_name"
+                    android:textColor="@color/white" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_place"
+                    style="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:background="?selectableItemBackground"
+                    android:drawablePadding="@dimen/dp_8"
+                    android:drawableTint="@color/white"
+                    android:text="Karnataka"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <TextView
+                    android:id="@+id/tv_last_updated"
+                    style="@style/TextAppearance.MaterialComponents.Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    tools:text="Last updated 1 hour ago" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/statsNonIndia"
+            layout="@layout/stats_non_india"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <include
+            android:id="@+id/layout_stat_list"
+            layout="@layout/layout_stat_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/statsNonIndia"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16" />
+
+    </RelativeLayout>
 
 </layout>

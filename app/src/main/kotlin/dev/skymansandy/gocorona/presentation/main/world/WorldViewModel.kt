@@ -9,8 +9,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class WorldViewModel @Inject constructor(
-    private val getWorldDataForUiUseCase: GetWorldDataForUiUseCase,
-    private val fetchCovid19StatsUseCase: FetchCovid19StatsUseCase
+    private val getWorldDataForUiUseCase: GetWorldDataForUiUseCase
 ) : BaseViewModel<WorldState, WorldEvent>() {
 
     init {
@@ -19,9 +18,5 @@ class WorldViewModel @Inject constructor(
                 viewState = it
             }
         }
-    }
-
-    fun refreshStats() {
-        fetchCovid19StatsUseCase()
     }
 }
