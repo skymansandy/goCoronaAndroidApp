@@ -3,10 +3,12 @@ package dev.skymansandy.gocorona.domain.usecase
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 import dev.skymansandy.gocorona.presentation.main.world.WorldState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetWorldDataForUiUseCase @Inject constructor(
@@ -22,15 +24,17 @@ class GetWorldDataForUiUseCase @Inject constructor(
                 details?.let {
                     stat.let { countries ->
                         val countryDataStats = arrayListOf<CovidStat>()
-                        for (district in countries) {
-                            countryDataStats += CovidStat(
-                                code = district.countryCode,
-                                name = district.name,
-                                confirmed = district.cases,
-                                active = district.active,
-                                recovered = district.recovered,
-                                deceased = district.deceased
-                            )
+                        withContext(Dispatchers.Default) {
+                            for (district in countries) {
+                                countryDataStats += CovidStat(
+                                    code = district.countryCode,
+                                    name = district.name,
+                                    confirmed = district.cases,
+                                    active = district.active,
+                                    recovered = district.recovered,
+                                    deceased = district.deceased
+                                )
+                            }
                         }
                         emit(
                             WorldState.WorldDetails(
