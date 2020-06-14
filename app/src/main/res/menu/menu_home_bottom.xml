@@ -4,20 +4,15 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="India" />
+        android:title="@string/india" />
 
     <item
         android:id="@+id/worldFragment"
         android:icon="@drawable/ic_globe"
-        android:title="Worldwide" />
-
-    <item
-        android:id="@+id/healthFragment"
-        android:icon="@drawable/ic_fitness_24"
-        android:title="Health" />
+        android:title="@string/worldwide" />
 
     <item
         android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_info_24"
-        android:title="Settings" />
+        android:title="@string/about" />
 </menu>

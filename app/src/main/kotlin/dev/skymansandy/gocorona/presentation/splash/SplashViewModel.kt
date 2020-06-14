@@ -3,7 +3,7 @@ package dev.skymansandy.gocorona.presentation.splash
 import android.os.Handler
 import dev.skymansandy.base.lifecycle.event.SingleLiveEvent
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
-import dev.skymansandy.gocorona.domain.usecase.FetchCovid19StatsUseCase
+import dev.skymansandy.gocorona.domain.usecase.api.FetchCovid19StatsUseCase
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(

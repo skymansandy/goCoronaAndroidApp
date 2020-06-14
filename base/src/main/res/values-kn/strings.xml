@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="night_mode_auto">ಆಟೋ</string>
+    <string name="night_mode_on">ರಾತ್ರಿ ಮೋಡ್</string>
+    <string name="night_mode_off">ದಿನದ ಮೋಡ್</string>
+
+    <string name="something_went_wrong">ಏನೋ ತಪ್ಪಾಗಿದೆ, ಕ್ಷಮಿಸಿ!</string>
+</resources>

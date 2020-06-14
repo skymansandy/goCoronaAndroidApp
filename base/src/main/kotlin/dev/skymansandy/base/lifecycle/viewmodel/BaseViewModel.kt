@@ -7,13 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dev.skymansandy.base.exception.NoObserverAttachedException
 import dev.skymansandy.base.lifecycle.event.SingleLiveEvent
-import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 
 abstract class BaseViewModel<STATE, EVENT>
     : ViewModel(), BaseViewModelContract<EVENT> {
-
-    private val disposables = CompositeDisposable()
 
     /**
      * MediatorLiveData for some internal processing of
@@ -62,10 +59,5 @@ abstract class BaseViewModel<STATE, EVENT>
             throw NoObserverAttachedException("No observer attached. In case of custom View \"startObserving()\" function needs to be called manually.")
         }
         Timber.d("processing viewEvent: $viewEvent")
-    }
-
-    override fun onCleared() {
-        disposables.dispose()
-        super.onCleared()
     }
 }

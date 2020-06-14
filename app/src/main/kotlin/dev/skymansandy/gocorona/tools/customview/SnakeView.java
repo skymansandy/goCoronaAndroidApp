@@ -21,10 +21,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import dev.skymansandy.gocorona.R;
 
 public class SnakeView extends View {
-    private final static int DEFAULT_MAXIMUM_NUMBER_OF_VALUES_FOR_DESIGNER = 3;
-    private final static int DEFAULT_MAXIMUM_NUMBER_OF_VALUES_FOR_RUNTIME = 10;
-    private final static int DEFAULT_STROKE_COLOR = 0xff78c257;
-    private final static int DEFAULT_STROKE_WIDTH_IN_DP = 3;
     public static final int DEFAULT_ANIMATION_DURATION = 200;
     public static final float BEZIER_FINE_FIT = 0.5f;
     public static final int DEF_STYLE_ATTR = 0;
@@ -32,7 +28,10 @@ public class SnakeView extends View {
     public static final float DEFAULT_MIN_VALUE = 0f;
     public static final float DEFAULT_MAX_VALUE = 1f;
     public static final int MINIMUM_NUMBER_OF_VALUES = 3;
-
+    private final static int DEFAULT_MAXIMUM_NUMBER_OF_VALUES_FOR_DESIGNER = 3;
+    private final static int DEFAULT_MAXIMUM_NUMBER_OF_VALUES_FOR_RUNTIME = 10;
+    private final static int DEFAULT_STROKE_COLOR = 0xff78c257;
+    private final static int DEFAULT_STROKE_WIDTH_IN_DP = 3;
     private int maximumNumberOfValues = DEFAULT_MAXIMUM_NUMBER_OF_VALUES_FOR_RUNTIME;
     private int strokeColor = DEFAULT_STROKE_COLOR;
     private int strokeWidth = DEFAULT_STROKE_WIDTH_IN_DP;
@@ -47,6 +46,30 @@ public class SnakeView extends View {
     private float scaleInY = 0f;
     private float minValue = DEFAULT_MIN_VALUE;
     private float maxValue = DEFAULT_MAX_VALUE;
+
+    public SnakeView(Context context) {
+        super(context);
+        initializeView();
+    }
+
+    public SnakeView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        configureAttributes(attrs);
+        initializeView();
+    }
+
+    public SnakeView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        configureAttributes(attrs);
+        initializeView();
+    }
+
+    @TargetApi(21)
+    public SnakeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        configureAttributes(attrs);
+        initializeView();
+    }
 
     public void setMaximumNumberOfValues(int maximumNumberOfValues) {
         if (maximumNumberOfValues < MINIMUM_NUMBER_OF_VALUES) {
@@ -95,30 +118,6 @@ public class SnakeView extends View {
     public void clear() {
         initializeCaches();
         invalidate();
-    }
-
-    public SnakeView(Context context) {
-        super(context);
-        initializeView();
-    }
-
-    public SnakeView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        configureAttributes(attrs);
-        initializeView();
-    }
-
-    public SnakeView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        configureAttributes(attrs);
-        initializeView();
-    }
-
-    @TargetApi(21)
-    public SnakeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        configureAttributes(attrs);
-        initializeView();
     }
 
     private void configureAttributes(AttributeSet attrs) {

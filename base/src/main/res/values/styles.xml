@@ -20,42 +20,12 @@
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
 
-    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:tint">@color/white</item>
-    </style>
-
     <!--UI Elements-->
-    <style name="AppTheme.Text.Title" parent="TextAppearance.MaterialComponents.Headline6" />
-
-    <style name="AppTheme.Text.Small" parent="TextAppearance.MaterialComponents.Caption" />
-
-    <style name="AppTheme.Text.SubTitle" parent="TextAppearance.MaterialComponents.Body2" />
-
-    <style name="AppTheme.Text.SubTitle.Large" parent="TextAppearance.MaterialComponents.Subtitle1" />
-
-    <style name="AppTheme.Text.SubTitle.Overline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="android:textColor">@color/color_primary_dark</item>
-    </style>
-
-    <style name="AppTheme.Text.Caption" parent="TextAppearance.MaterialComponents.Caption" />
-
-    <style name="AppTheme.Text.SubHeading" parent="TextAppearance.MaterialComponents.Subtitle1" />
 
     <style name="AppTheme.EditText.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/dim_gray</item>
         <item name="hintTextColor">@color/dim_gray</item>
     </style>
-
-    <style name="AppTheme.EditText.OutlinedBox.ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-        <item name="boxStrokeColor">@color/dim_gray</item>
-        <item name="hintTextColor">@color/dim_gray</item>
-    </style>
-
-    <style name="AppTheme.Button.Primary" parent="Widget.MaterialComponents.Button" />
-
-    <style name="AppTheme.Button.Primary.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton" />
-
-    <style name="AppTheme.Button.Primary.TextButton" parent="Widget.MaterialComponents.Button.TextButton" />
 
     <!--BottomSheet-->
     <style name="AppBottomSheetDialogTheme.Floating" parent="AppBottomSheetDialogTheme">

@@ -9,7 +9,7 @@ import java.util.*
 
 object NightModeUtil {
 
-    fun setNightMode(context: Context) {
+    fun setupNightMode(context: Context) {
         PreferenceManager.getDefaultSharedPreferences(context).getString(
             context.getString(R.string.pref_key_night),
             context.getString(R.string.pref_night_auto)
@@ -23,7 +23,7 @@ object NightModeUtil {
 }
 
 enum class NightModeType(val value: Int) {
-    AUTO(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY),
+    AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
     ON(AppCompatDelegate.MODE_NIGHT_YES),
     OFF(AppCompatDelegate.MODE_NIGHT_NO)
 }

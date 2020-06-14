@@ -1,8 +1,8 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.choosecountry.ChooseCountryState
-import dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem
+import dev.skymansandy.gocorona.presentation.main.choosecountry.ChooseCountryState
+import dev.skymansandy.gocorona.presentation.main.choosecountry.adapter.CountryItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -15,9 +15,10 @@ class GetAllCountriesUseCase @Inject constructor(
     operator fun invoke(): Flow<ChooseCountryState> {
         return flow {
             emit(ChooseCountryState.Loading)
-            goCoronaRepository.getCountries().collect {
+            goCoronaRepository.getCountries(false).collect {
                 val dataSet = it
-                val countries = arrayListOf<CountryItem>()
+                val countries =
+                    arrayListOf<CountryItem>()
                 for (countryData in dataSet) {
                     countries += CountryItem(
                         code = countryData.countryCode,
@@ -25,7 +26,11 @@ class GetAllCountriesUseCase @Inject constructor(
                         flag = countryData.flag
                     )
                 }
-                emit(ChooseCountryState.State(countries))
+                emit(
+                    ChooseCountryState.State(
+                        countries
+                    )
+                )
             }
         }
     }

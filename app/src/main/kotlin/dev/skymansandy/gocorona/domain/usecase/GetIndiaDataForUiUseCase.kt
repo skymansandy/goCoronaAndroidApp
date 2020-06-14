@@ -2,12 +2,11 @@ package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.presentation.home.HomeState
-import dev.skymansandy.gocorona.presentation.home.StatCard
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
-import kotlinx.coroutines.delay
+import dev.skymansandy.gocorona.presentation.main.india.IndiaState
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -15,77 +14,62 @@ class GetIndiaDataForUiUseCase @Inject constructor(
     private val goCoronaRepository: GoCoronaRepository
 ) {
 
-    operator fun invoke(): Flow<HomeState> {
-        return flow homeState@{
-            emit(HomeState.Loading)
-            delay(1000)
+    operator fun invoke(): Flow<IndiaState> {
+        return flow {
+            emit(IndiaState.Loading)
             val stateStat = goCoronaRepository.getStateStats()
-            stateStat
-                .collect {
-                    val dataSet = it
-
-                    lateinit var totalStat: StateEntity
-
-                    val statesDataForUi = arrayListOf<CovidStat>()
-                    for (state in dataSet) {
-                        if ("Total".equals(state.name, ignoreCase = true)) {
-                            totalStat = state
-                        } else {
-                            statesDataForUi += CovidStat(
-                                code = state.code,
-                                name = state.name,
-                                confirmed = state.cases,
-                                active = state.active,
-                                recovered = state.recovered,
-                                deceased = state.deaths
-                            )
+            val testsStat = goCoronaRepository.getLatest90DaysCovidTests()
+            stateStat.combine(testsStat) { states, tests ->
+                tests?.let {
+                    if (!states.isNullOrEmpty()) {
+                        lateinit var totalStat: StateEntity
+                        val statesDataForUi = arrayListOf<CovidStat>()
+                        for (state in states) {
+                            if ("Total".equals(state.name, ignoreCase = true)) {
+                                totalStat = state
+                            } else {
+                                statesDataForUi += CovidStat(
+                                    code = state.code,
+                                    name = state.name,
+                                    confirmed = state.cases,
+                                    active = state.active,
+                                    recovered = state.recovered,
+                                    deceased = state.deceased
+                                )
+                            }
                         }
+
+                        val trendConfirmedArr = arrayListOf<Float>()
+                        val trendRecoveredArr = arrayListOf<Float>()
+                        val trendDeceasedArr = arrayListOf<Float>()
+
+                        if (!tests.isNullOrEmpty()) {
+                            tests.reversed().map {
+                                trendConfirmedArr += it.totalConfirmed.toFloat()
+                                trendRecoveredArr += it.totalRecovered.toFloat()
+                                trendDeceasedArr += it.totalDeceased.toFloat()
+                            }
+                        }
+
+                        emit(
+                            IndiaState.IndiaStats(
+                                lastUpdated = totalStat.lastUpdatedUiStr,
+                                active = totalStat.active,
+                                confirmed = totalStat.cases,
+                                confirmedToday = totalStat.casesToday,
+                                recovered = totalStat.recovered,
+                                recoveredToday = totalStat.recoveredToday,
+                                deceased = totalStat.deceased,
+                                deceasedToday = totalStat.deceasedToday,
+                                stats = statesDataForUi,
+                                trendConfirmedCases = trendConfirmedArr,
+                                trendRecoveredCases = trendRecoveredArr,
+                                trendDeceasedCases = trendDeceasedArr
+                            )
+                        )
                     }
-
-                    val confirmedStat =
-                        StatCard(
-                            totalStat.cases,
-                            totalStat.casesToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val activeStat =
-                        StatCard(
-                            totalStat.active,
-                            0,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val recoveredStat =
-                        StatCard(
-                            totalStat.recovered,
-                            totalStat.recoveredToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val deceasedStat =
-                        StatCard(
-                            totalStat.deaths,
-                            totalStat.deathsToday,
-                            arrayListOf(0, 1, 2, 4, 56, 123, 465, 3210)
-                        )
-                    val maxScale = arrayListOf(
-                        confirmedStat.growthTrend.max()?.toFloat() ?: 1f,
-                        activeStat.growthTrend.max()?.toFloat() ?: 1f,
-                        recoveredStat.growthTrend.max()?.toFloat() ?: 1f,
-                        deceasedStat.growthTrend.max()?.toFloat() ?: 1f
-                    ).max() ?: 1f
-
-                    emit(
-                        HomeState.IndiaStats(
-                            lastUpdated = totalStat.lastUpdatedUiStr,
-                            confirmed = confirmedStat,
-                            active = activeStat,
-                            recovered = recoveredStat,
-                            deceased = deceasedStat,
-                            growthTrendMaxScale = maxScale,
-                            stats = statesDataForUi
-                        )
-                    )
                 }
+            }.collect()
         }
     }
-
 }

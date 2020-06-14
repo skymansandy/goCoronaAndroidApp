@@ -1,9 +1,8 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
-import dev.skymansandy.gocorona.presentation.statedata.StateDataState
-import kotlinx.coroutines.delay
+import dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.india.state.StateDataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
@@ -15,9 +14,8 @@ class GetStateDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(stateCode: String): Flow<StateDataState> {
-        return flow homeState@{
+        return flow {
             emit(StateDataState.Loading)
-            delay(1000)
             val stateDetails = goCoronaRepository.getStateDetail(stateCode)
             val stateStats = goCoronaRepository.getDistrictDataForState(stateCode)
             stateDetails.combine(stateStats) { details, stat ->
@@ -33,7 +31,7 @@ class GetStateDataForUiUseCase @Inject constructor(
                                 confirmed = district.cases,
                                 active = district.active,
                                 recovered = district.recovered,
-                                deceased = district.deaths
+                                deceased = district.deceased
                             )
                         }
 
@@ -46,8 +44,8 @@ class GetStateDataForUiUseCase @Inject constructor(
                                 confirmedToday = details.casesToday,
                                 recovered = details.recovered,
                                 recoveredToday = details.recoveredToday,
-                                deaths = details.deaths,
-                                deathsToday = details.deathsToday,
+                                deceased = details.deceased,
+                                deceasedToday = details.deceasedToday,
                                 stats = districtDataStatList
                             )
                         )

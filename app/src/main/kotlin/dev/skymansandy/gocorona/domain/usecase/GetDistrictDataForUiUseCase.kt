@@ -1,8 +1,7 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.districtdata.DistrictDataState
-import kotlinx.coroutines.delay
+import dev.skymansandy.gocorona.presentation.main.india.district.DistrictDataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
@@ -13,9 +12,8 @@ class GetDistrictDataForUiUseCase @Inject constructor(
 ) {
 
     operator fun invoke(districtCode: String): Flow<DistrictDataState> {
-        return flow homeState@{
+        return flow {
             emit(DistrictDataState.Loading)
-            delay(1000)
             val stateStat = goCoronaRepository.getDistrictData(districtCode)
             stateStat.collect {
                 it?.let {
@@ -28,8 +26,8 @@ class GetDistrictDataForUiUseCase @Inject constructor(
                             confirmedToday = it.casesToday,
                             recovered = it.recovered,
                             recoveredToday = it.recoveredToday,
-                            deaths = it.deaths,
-                            deathsToday = it.deathsToday
+                            deceased = it.deceased,
+                            deceasedToday = it.deceasedToday
                         )
                     )
                 }

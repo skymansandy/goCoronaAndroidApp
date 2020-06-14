@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import dagger.android.support.DaggerAppCompatActivity
 import dev.skymansandy.base.lifecycle.viewmodel.BaseViewModel
+import dev.skymansandy.base.util.location.LocaleUtils
 import dev.skymansandy.base.util.ui.KeyboardUtil
 import dev.skymansandy.base.util.ui.NightModeUtil
 import dev.skymansandy.base.util.ui.SnackBarUtil
@@ -45,6 +46,7 @@ abstract class BaseActivity<T : ViewDataBinding,
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleUtils.setupLocale(this, false)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
         with(vm) {
@@ -80,7 +82,8 @@ abstract class BaseActivity<T : ViewDataBinding,
     }
 
     private fun applyNightMode() {
-        NightModeUtil.setNightMode(this)
+        NightModeUtil.setupNightMode(this)
+        LocaleUtils.setupLocale(this)
     }
 
     abstract fun renderViewState(newState: STATE)

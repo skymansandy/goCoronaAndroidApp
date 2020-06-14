@@ -5,7 +5,7 @@
 
         <variable
             name="stat"
-            type="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
+            type="dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat" />
 
     </data>
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ಗೊಕೊರೊನಾ ಟ್ರ್ಯಾಕರ್</string>
+    <string name="confirmed">ದೃಡ</string>
+    <string name="active">ಸಕ್ರಿಯ</string>
+    <string name="recovered">ಗುಣಮುಖ</string>
+    <string name="deceased">ಮೃತ</string>
+    <string name="state_ut">ರಾಜ್ಯ/ಯುಟಿ</string>
+    <string name="last_synced">ಕೊನೆಯ ಸಿಂಕ್</string>
+    <string name="district">ಜಿಲ್ಲೆ</string>
+    <string name="worldwide">ವಿಶ್ವಾದ್ಯಂತ</string>
+    <string name="india">ಭಾರತ</string>
+    <string name="search_country">ದೇಶವನ್ನು ಹುಡುಕಿ</string>
+    <string name="choose_country">ದೇಶವನ್ನು ಆರಿಸಿ</string>
+    <string name="country">ದೇಶ</string>
+    <string name="search">ಹುಡುಕಿ</string>
+    <string name="active_cases">ಸಕ್ರಿಯ ಪ್ರಕರಣಗಳು</string>
+    <string name="press_back_again_to_exit">ನಿರ್ಗಮಿಸಲು ಮತ್ತೆ ಒತ್ತಿರಿ!</string>
+    <string name="setting_night_mode">ರಾತ್ರಿ ಮೋಡ್</string>
+    <string name="setting_night_mode_desc">ಥೀಮ್ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="setting_app_language">ಅಪ್ಲಿಕೇಶನ್ ಭಾಷೆ</string>
+    <string name="setting_app_language_desc">ಭಾಷೆಯನ್ನು ಆರಿಸಿ</string>
+    <string name="settings">ಸೇಟಿಂಗ</string>
+    <string name="about">ಅಪ್ಲಿಕೇಶನ್ ಬಗ್ಗೆ</string>
+    <string name="about_developer">ಡೆವಲಪರ್ ಬಗ್ಗೆ</string>
+    <string name="credits">ಧನ್ಯವಾದಗಳು</string>
+    <string name="visit_my_blog">ನನ್ನ ಬ್ಲಾಗ್‌ಗೆ ಭೇಟಿ ನೀಡಿ</string>
+    <string name="about_me_desc">ಸಂದೇಶ್ ಬಾಳಿಗಾ ಪಿ.\nಗೀಕ್, ಎಕ್ಸ್‌ಪ್ಲೋರರ್ ಮತ್ತು ಇನ್ನಷ್ಟು!</string>
+    <string name="india_data">ಇಂಡಿಯಾ ಡೇಟಾ</string>
+    <string name="world_data">ವಿಶ್ವ ಡೇಟಾ</string>
+    <string name="graph_library">ಗ್ರಾಫ್ ಲೈಬ್ರರಿ</string>
+    <string name="piechart_library">ಪೈಚಾರ್ಟ್ ಲೈಬ್ರರಿ</string>
+    <string name="symptoms">ಲಕ್ಷಣಗಳು</string>
+    <string name="symptoms_desc">COVID-19 ವೈರಸ್ ವಿಭಿನ್ನ ಜನರ ಮೇಲೆ ವಿಭಿನ್ನ ರೀತಿಯಲ್ಲಿ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ. ಇನ್ನಷ್ಟು ಪರಿಶೀಲಿಸಿ!</string>
+    <string name="preventive_measures">ನಿರೋಧಕ ಕ್ರಮಗಳು</string>
+    <string name="preventive_measures_desc">ಸೋಂಕನ್ನು ಹೇಗೆ ತಡೆಗಟ್ಟುವುದು ಮತ್ತು COVID-19 ರ ಪ್ರಸರಣವನ್ನು ನಿಧಾನಗೊಳಿಸುವುದು ಹೇಗೆ ಎಂದು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="advice_from_who">WHO ನಿಂದ ಸಲಹೆ</string>
+    <string name="myths">COVID-19 ಮೂಢನಂಬಿಕೆಗಳು</string>
+    <string name="myths_desc">COVID-19 ಬಗ್ಗೆ ಸಾಮಾನ್ಯ ತಪ್ಪು ಕಲ್ಪನೆಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="disclaimer_desc">ಇಲ್ಲಿ ತೋರಿಸಿರುವ ಎಲ್ಲಾ ಡೇಟಾವು COVID API ಗಳಿಂದ ಬಂದಿದೆ ಎಂಬುದನ್ನು ದಯವಿಟ್ಟು ಗಮನಿಸಿ. ಇದು ನಿಖರವಾಗಿ ನೈಜ ಸಮಯದ ಡೇಟಾ ಇಲ್ಲದಿರಬಹುದು.</string>
+    <string name="source_covid19india_org">ಮೂಲ: covid19India.org</string>
+    <string name="source_corona_ninja">ಮೂಲ: corona.ninja.lmao</string>
+</resources>
