@@ -5,7 +5,7 @@ import dagger.android.DaggerApplication
 import dev.skymansandy.base.BaseApplication
 import dev.skymansandy.base.util.location.LocaleUtils
 import dev.skymansandy.base.util.ui.NightModeUtil
-import dev.skymansandy.gocorona.dagger.component.DaggerAppComponent
+import dev.skymansandy.gocorona.di.component.DaggerAppComponent
 import timber.log.Timber
 
 class GoCoronaApp : BaseApplication() {

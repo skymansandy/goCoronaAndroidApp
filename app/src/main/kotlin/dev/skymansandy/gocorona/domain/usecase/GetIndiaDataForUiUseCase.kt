@@ -2,8 +2,8 @@ package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
 import dev.skymansandy.gocorona.data.source.db.entity.StateEntity
-import dev.skymansandy.gocorona.presentation.home.HomeState
-import dev.skymansandy.gocorona.presentation.home.adapter.CovidStat
+import dev.skymansandy.gocorona.presentation.main.home.HomeState
+import dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine

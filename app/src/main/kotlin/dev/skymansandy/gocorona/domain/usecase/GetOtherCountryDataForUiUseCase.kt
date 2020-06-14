@@ -1,7 +1,7 @@
 package dev.skymansandy.gocorona.domain.usecase
 
 import dev.skymansandy.gocorona.data.repository.GoCoronaRepository
-import dev.skymansandy.gocorona.presentation.countrydata.CountryDataState
+import dev.skymansandy.gocorona.presentation.main.countrydata.CountryDataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow

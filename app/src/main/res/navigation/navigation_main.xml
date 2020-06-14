@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@id/homeFragment"
-        android:name="dev.skymansandy.gocorona.presentation.home.HomeFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.home.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_home">
         <action
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/stateDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.statedata.StateDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.statedata.StateDataFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_state_data">
         <action
@@ -24,22 +24,22 @@
             app:destination="@id/districtDataFragment" />
         <argument
             android:name="state"
-            app:argType="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
+            app:argType="dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat" />
     </fragment>
 
     <fragment
         android:id="@+id/districtDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.districtdata.DistrictDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.districtdata.DistrictDataFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_district_data">
         <argument
             android:name="district"
-            app:argType="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
+            app:argType="dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat" />
     </fragment>
 
     <fragment
         android:id="@id/worldFragment"
-        android:name="dev.skymansandy.gocorona.presentation.world.WorldFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.world.WorldFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_world">
         <action
@@ -49,18 +49,18 @@
 
     <fragment
         android:id="@id/aboutFragment"
-        android:name="dev.skymansandy.gocorona.presentation.about.AboutFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.about.AboutFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/countryDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.countrydata.CountryDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.countrydata.CountryDataFragment"
         android:label="CountryDataFragment"
         tools:layout="@layout/fragment_country_data">
         <argument
             android:name="country"
-            app:argType="dev.skymansandy.gocorona.presentation.home.adapter.CovidStat" />
+            app:argType="dev.skymansandy.gocorona.presentation.main.home.adapter.CovidStat" />
     </fragment>
 
 </navigation>

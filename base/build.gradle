@@ -95,12 +95,6 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutines"
 
-    //Lottie
-    api "com.airbnb.android:lottie:$lottieversion"
-
-    //TextDrawable
-    api "com.amulyakhare:com.amulyakhare.textdrawable:$textdrawable"
-
     //Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit"
     api "com.squareup.retrofit2:retrofit-mock:$retrofit"

@@ -8,29 +8,27 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetAllCountriesUseCase @Inject constructor(
+class GetFilteredCountryListUseCase @Inject constructor(
     private val goCoronaRepository: GoCoronaRepository
 ) {
 
-    operator fun invoke(): Flow<ChooseCountryState> {
+    operator fun invoke(searchQuery: String): Flow<ChooseCountryState> {
         return flow {
             emit(ChooseCountryState.Loading)
-            goCoronaRepository.getCountries(false).collect {
+            goCoronaRepository.getFilteredCountries(searchQuery).collect {
                 val dataSet = it
                 val countries =
                     arrayListOf<CountryItem>()
-                for (countryData in dataSet) {
-                    countries += CountryItem(
-                        code = countryData.countryCode,
-                        name = countryData.name,
-                        flag = countryData.flag
-                    )
+                dataSet?.let { allCountries ->
+                    for (countryData in allCountries) {
+                        countries += CountryItem(
+                            code = countryData.countryCode,
+                            name = countryData.name,
+                            flag = countryData.flag
+                        )
+                    }
                 }
-                emit(
-                    ChooseCountryState.State(
-                        countries
-                    )
-                )
+                emit(ChooseCountryState.State(countries))
             }
         }
     }

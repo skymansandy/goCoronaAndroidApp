@@ -2,8 +2,6 @@ package dev.skymansandy.base.util.media.image
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
-import com.amulyakhare.textdrawable.TextDrawable
-
 
 object DrawableUtil {
 
@@ -20,15 +18,6 @@ object DrawableUtil {
             }
             initials.toString()
         }
-    }
-
-    fun getTextDrawableRound(name: String, color: Int): TextDrawable {
-        return TextDrawable.builder()
-            .beginConfig()
-            .withBorder(0)
-            .endConfig()
-            .round()
-            .build(getInitialsString(name), color)
     }
 
     fun getGradient(): GradientDrawable {

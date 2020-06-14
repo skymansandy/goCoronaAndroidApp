@@ -7,7 +7,7 @@
 
         <variable
             name="country"
-            type="dev.skymansandy.gocorona.presentation.choosecountry.adapter.CountryItem" />
+            type="dev.skymansandy.gocorona.presentation.main.choosecountry.adapter.CountryItem" />
     </data>
 
     <LinearLayout
