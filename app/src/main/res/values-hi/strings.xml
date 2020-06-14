@@ -39,4 +39,6 @@
     <string name="myths_desc">COVID-19 के बारे में आम भ्रांतियों के बारे में जानें</string>
     <string name="disclaimer">अस्वीकरण</string>
     <string name="disclaimer_desc">कृपया ध्यान दें कि यहां दिखाए गए सभी डेटा COVID API से हैं। यह बिल्कुल वास्तविक समय डेटा नहीं हो सकता है।</string>
+    <string name="source_covid19india_org">स्रोत: covid19India.org</string>
+    <string name="source_corona_ninja">स्रोत: corona.ninja.lmao</string>
 </resources>

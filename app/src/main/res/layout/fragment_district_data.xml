@@ -50,13 +50,6 @@
                 android:padding="@dimen/dp_24">
 
                 <TextView
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/white" />
-
-                <TextView
                     android:id="@+id/tv_place"
                     style="@style/TextAppearance.MaterialComponents.Headline5"
                     android:layout_width="wrap_content"
@@ -68,13 +61,23 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_last_updated"
                     style="@style/TextAppearance.MaterialComponents.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:singleLine="true"
+                    android:text="@string/source_covid19india_org"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_last_updated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:textColor="@color/white"
+                    android:textSize="@dimen/sp_10"
                     tools:text="Last updated 1 hour ago" />
 
             </LinearLayout>
