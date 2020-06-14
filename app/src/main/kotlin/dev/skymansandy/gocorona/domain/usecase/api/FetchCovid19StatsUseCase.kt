@@ -1,27 +1,42 @@
 package dev.skymansandy.gocorona.domain.usecase.api
 
 import dev.skymansandy.gocorona.presentation.main.MainState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import javax.inject.Inject
 
 class FetchCovid19StatsUseCase @Inject constructor(
-    private val fetchWorldDataUseCase: FetchWorldDataUseCase,
-    private val fetchCountryDataUseCase: FetchCountryDataUseCase,
-    private val fetchStatesDataUseCase: FetchStatesDataUseCase,
-    private val fetchDistrictsDataUseCase: FetchDistrictsDataUseCase
+    private val saveWorldDataUseCase: SaveWorldDataUseCase,
+    private val saveCountryDataUseCase: SaveCountryDataUseCase,
+    private val saveStatesDataUseCase: SaveStatesDataUseCase,
+    private val saveDistrictsDataUseCase: SaveDistrictsDataUseCase
 ) {
 
     operator fun invoke(): Flow<MainState> {
         return flow {
             emit(MainState.Loading)
-            fetchWorldDataUseCase()
-            fetchCountryDataUseCase()
-            fetchStatesDataUseCase()
-            fetchDistrictsDataUseCase()
-            delay(1000)
-            emit(MainState.Loaded)
+            try {
+                Timber.tag("Tag").d("Made World API call")
+                val worldResponse = saveWorldDataUseCase().await()
+                saveWorldDataUseCase.save(worldResponse)
+
+                Timber.tag("Tag").d("Made Countries API call")
+                val countriesResponse = saveCountryDataUseCase().await()
+                saveCountryDataUseCase.save(countriesResponse)
+
+                Timber.tag("Tag").d("Made States API call")
+                val statesResponse = saveStatesDataUseCase().await()
+                saveStatesDataUseCase.save(statesResponse)
+
+                Timber.tag("Tag").d("Made District API call")
+                val districtsResponse = saveDistrictsDataUseCase().await()
+                saveDistrictsDataUseCase.save(districtsResponse)
+
+                emit(MainState.Loaded)
+            } catch (e: Exception) {
+                emit(MainState.Error(e.message))
+            }
         }
     }
 }

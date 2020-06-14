@@ -29,14 +29,20 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+        refreshLocalData()
+
         binding.swipe.setOnRefreshListener {
-            if (NetworkUtil.checkInternetConnectivity(this)) {
-                vm.refreshStats()
-            } else {
-                vm.showSnackBar(getString(R.string.check_internet_connection))
-            }
-            binding.swipe.isRefreshing = false
+            refreshLocalData()
         }
+    }
+
+    private fun refreshLocalData() {
+        if (NetworkUtil.checkInternetConnectivity(this)) {
+            vm.refreshStats()
+        } else {
+            vm.showSnackBar(getString(R.string.check_internet_connection))
+        }
+        binding.swipe.isRefreshing = false
     }
 
     override fun onBackPressed() {
@@ -61,7 +67,7 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
                 vm.showSnackBar(getString(R.string.synced_successfully))
             }
             is MainState.Error -> {
-                vm.showSnackBar(getString(R.string.couldnt_sync_data))
+                vm.showSnackBar(newState.error ?: getString(R.string.couldnt_sync_data))
             }
         }
     }

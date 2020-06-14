@@ -13,9 +13,7 @@ class MainViewModel @Inject constructor(
 
     fun refreshStats() {
         viewModelScope.launch {
-            fetchCovid19StatsUseCase().collect {
-                viewState = it
-            }
+            fetchCovid19StatsUseCase().collect { viewState = it }
         }
     }
 }
