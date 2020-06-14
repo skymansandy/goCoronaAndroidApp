@@ -40,4 +40,8 @@
     <string name="disclaimer_desc">Please note that all data shown here are from the COVID APIs. It may not exactly be realtime data.</string>
     <string name="source_covid19india_org">Source: covid19India.org</string>
     <string name="source_corona_ninja">Source: corona.ninja.lmao</string>
+    <string name="check_internet_connection">Please check your internet connection!</string>
+    <string name="syncing_latest_data">Syncing latest data…</string>
+    <string name="synced_successfully">Synced successfully</string>
+    <string name="couldnt_sync_data">Couldn\'t sync data. Please try again!</string>
 </resources>
