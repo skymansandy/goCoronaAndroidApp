@@ -39,8 +39,8 @@ class FetchDistrictsDataUseCase @Inject constructor(
                                 active = district.active,
                                 cases = district.confirmed,
                                 casesToday = district.delta.confirmed ?: 0,
-                                deaths = district.deceased ?: 0,
-                                deathsToday = district.delta.deceased ?: 0,
+                                deceased = district.deceased ?: 0,
+                                deceasedToday = district.delta.deceased ?: 0,
                                 recovered = district.recovered ?: 0,
                                 recoveredToday = district.delta.recovered ?: 0,
                                 updated = timeMillis

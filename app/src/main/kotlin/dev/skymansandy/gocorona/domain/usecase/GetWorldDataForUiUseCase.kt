@@ -29,7 +29,7 @@ class GetWorldDataForUiUseCase @Inject constructor(
                                 confirmed = district.cases,
                                 active = district.active,
                                 recovered = district.recovered,
-                                deceased = district.deaths
+                                deceased = district.deceased
                             )
                         }
 
@@ -38,11 +38,11 @@ class GetWorldDataForUiUseCase @Inject constructor(
                                 lastUpdated = details.lastUpdatedUiStr,
                                 active = details.active,
                                 confirmed = details.cases,
-                                confirmedToday = details.todayCases,
+                                confirmedToday = details.casesToday,
                                 recovered = details.recovered,
-                                recoveredToday = details.todayRecovered,
-                                deaths = details.deaths,
-                                deathsToday = details.todayDeaths,
+                                recoveredToday = details.recoveredToday,
+                                deceased = details.deceased,
+                                deceasedToday = details.deceasedToday,
                                 stats = countryDataStats
                             )
                         )

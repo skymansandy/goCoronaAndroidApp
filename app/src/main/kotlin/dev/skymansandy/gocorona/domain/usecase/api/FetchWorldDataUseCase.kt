@@ -28,11 +28,11 @@ class FetchWorldDataUseCase @Inject constructor(
                         goCoronaRepository.insertWorldData(
                             WorldEntity(
                                 cases = worldData.cases ?: 0,
-                                todayCases = worldData.todayCases ?: 0,
-                                deaths = worldData.deaths ?: 0,
-                                todayDeaths = worldData.todayDeaths ?: 0,
+                                casesToday = worldData.todayCases ?: 0,
+                                deceased = worldData.deaths ?: 0,
+                                deceasedToday = worldData.todayDeaths ?: 0,
                                 recovered = worldData.recovered ?: 0,
-                                todayRecovered = worldData.todayRecovered ?: 0,
+                                recoveredToday = worldData.todayRecovered ?: 0,
                                 active = worldData.active ?: 0,
                                 critical = worldData.critical ?: 0,
                                 tests = worldData.tests ?: 0,

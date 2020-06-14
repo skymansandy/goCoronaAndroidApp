@@ -31,7 +31,7 @@ class GetStateDataForUiUseCase @Inject constructor(
                                 confirmed = district.cases,
                                 active = district.active,
                                 recovered = district.recovered,
-                                deceased = district.deaths
+                                deceased = district.deceased
                             )
                         }
 
@@ -44,8 +44,8 @@ class GetStateDataForUiUseCase @Inject constructor(
                                 confirmedToday = details.casesToday,
                                 recovered = details.recovered,
                                 recoveredToday = details.recoveredToday,
-                                deaths = details.deaths,
-                                deathsToday = details.deathsToday,
+                                deceased = details.deceased,
+                                deceasedToday = details.deceasedToday,
                                 stats = districtDataStatList
                             )
                         )

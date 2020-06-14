@@ -41,8 +41,8 @@ class FetchCountryDataUseCase @Inject constructor(
                             tests = it.tests ?: 0,
                             cases = it.cases ?: 0,
                             casesToday = it.todayCases ?: 0,
-                            deaths = it.deaths ?: 0,
-                            deathsToday = it.todayDeaths ?: 0,
+                            deceased = it.deaths ?: 0,
+                            deceasedToday = it.todayDeaths ?: 0,
                             recovered = it.recovered ?: 0,
                             recoveredToday = it.todayRecovered ?: 0,
                             updated = timeMillis

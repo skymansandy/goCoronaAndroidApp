@@ -47,7 +47,7 @@ class CountryDataFragment(override val layoutId: Int = R.layout.fragment_country
                     tvActiveCount.showNumber(newState.active)
                     tvConfirmedCount.showNumber(newState.confirmed)
                     tvRecoveredCount.showNumber(newState.recovered)
-                    tvDeceasedCount.showNumber(newState.deaths)
+                    tvDeceasedCount.showNumber(newState.deceased)
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
@@ -56,12 +56,12 @@ class CountryDataFragment(override val layoutId: Int = R.layout.fragment_country
 
                     showDelta(covidRes, tvConfirmedDelta, newState.confirmedToday)
                     showDelta(covidRes, tvRecoveredDelta, newState.recoveredToday)
-                    showDelta(covidRes, tvDeceasedDelta, newState.deathsToday)
+                    showDelta(covidRes, tvDeceasedDelta, newState.deceasedToday)
                     pieChart.loadData(
                         covidRes,
                         newState.active,
                         newState.recovered,
-                        newState.deaths
+                        newState.deceased
                     )
                 }
             }

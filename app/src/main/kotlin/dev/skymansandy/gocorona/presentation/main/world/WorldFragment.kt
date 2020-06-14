@@ -61,7 +61,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                     tvActiveCount.showNumber(newState.active)
                     tvConfirmedCount.showNumber(newState.confirmed)
                     tvRecoveredCount.showNumber(newState.recovered)
-                    tvDeceasedCount.showNumber(newState.deaths)
+                    tvDeceasedCount.showNumber(newState.deceased)
 
                     if (tvRecoveredCount.scanForBigTextAndWrapNextLine())
                         tvDeceasedDelta.setOrientation(LinearLayout.VERTICAL)
@@ -72,7 +72,7 @@ class WorldFragment(override val layoutId: Int = R.layout.fragment_world) :
                         covidRes,
                         newState.active,
                         newState.recovered,
-                        newState.deaths
+                        newState.deceased
                     )
                 }
 

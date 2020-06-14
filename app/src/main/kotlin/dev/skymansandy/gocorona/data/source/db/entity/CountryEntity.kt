@@ -15,8 +15,8 @@ data class CountryEntity(
     val tests: Int,
     val cases: Int,
     val casesToday: Int,
-    val deaths: Int,
-    val deathsToday: Int,
+    val deceased: Int,
+    val deceasedToday: Int,
     val recovered: Int,
     val recoveredToday: Int,
     val updated: Long

@@ -26,8 +26,8 @@ class GetDistrictDataForUiUseCase @Inject constructor(
                             confirmedToday = it.casesToday,
                             recovered = it.recovered,
                             recoveredToday = it.recoveredToday,
-                            deaths = it.deaths,
-                            deathsToday = it.deathsToday
+                            deceased = it.deceased,
+                            deceasedToday = it.deceasedToday
                         )
                     )
                 }

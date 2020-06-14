@@ -62,8 +62,8 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
                     statCardDeceased.showStatCard(
                         getString(R.string.deceased),
                         covidRes.deceasedColor,
-                        newState.deaths,
-                        newState.deathsToday,
+                        newState.deceased,
+                        newState.deceasedToday,
                         newState.trendDeceasedCases
                     )
                     layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {

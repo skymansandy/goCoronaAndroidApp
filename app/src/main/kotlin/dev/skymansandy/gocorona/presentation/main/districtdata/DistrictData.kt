@@ -9,8 +9,8 @@ sealed class DistrictDataState {
         val confirmedToday: Int,
         val recovered: Int,
         val recoveredToday: Int,
-        val deaths: Int,
-        val deathsToday: Int
+        val deceased: Int,
+        val deceasedToday: Int
     ) : DistrictDataState()
 
     object Loading : DistrictDataState()

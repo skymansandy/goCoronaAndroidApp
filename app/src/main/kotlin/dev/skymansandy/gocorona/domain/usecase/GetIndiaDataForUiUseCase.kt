@@ -34,7 +34,7 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                                     confirmed = state.cases,
                                     active = state.active,
                                     recovered = state.recovered,
-                                    deceased = state.deaths
+                                    deceased = state.deceased
                                 )
                             }
                         }
@@ -59,8 +59,8 @@ class GetIndiaDataForUiUseCase @Inject constructor(
                                 confirmedToday = totalStat.casesToday,
                                 recovered = totalStat.recovered,
                                 recoveredToday = totalStat.recoveredToday,
-                                deaths = totalStat.deaths,
-                                deathsToday = totalStat.deathsToday,
+                                deceased = totalStat.deceased,
+                                deceasedToday = totalStat.deceasedToday,
                                 stats = statesDataForUi,
                                 trendConfirmedCases = trendConfirmedArr,
                                 trendRecoveredCases = trendRecoveredArr,
