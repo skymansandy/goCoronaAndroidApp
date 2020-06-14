@@ -5,6 +5,7 @@ import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
 import dev.skymansandy.gocorona.data.source.remote.worlddata.WorldDataResponse
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 
@@ -28,8 +29,8 @@ interface GoCoronaRepository {
     suspend fun insertCovidTests(list: List<CovidTestEntity>?)
 
     //Api
-    fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>>
-    fun fetchDistrictData(): Call<List<DistrictDataResponse>>
-    fun fetchStatesData(): Call<StatesDataResponse>
-    fun fetchWorldData(): Call<WorldDataResponse>
+    fun fetchCountryWiseDataAsync(): Deferred<List<CountryWiseDataResponse>>
+    fun fetchDistrictDataAsync(): Deferred<List<DistrictDataResponse>>
+    fun fetchStatesDataAsync(): Deferred<StatesDataResponse>
+    fun fetchWorldDataAsync(): Deferred<WorldDataResponse>
 }

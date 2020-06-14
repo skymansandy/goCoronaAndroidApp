@@ -7,8 +7,8 @@ import dev.skymansandy.gocorona.data.source.remote.brief.StatesDataResponse
 import dev.skymansandy.gocorona.data.source.remote.countrywise.CountryWiseDataResponse
 import dev.skymansandy.gocorona.data.source.remote.statewise.DistrictDataResponse
 import dev.skymansandy.gocorona.data.source.remote.worlddata.WorldDataResponse
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Call
 import javax.inject.Inject
 
 class GoCoronaRepositoryImpl @Inject constructor(
@@ -79,20 +79,20 @@ class GoCoronaRepositoryImpl @Inject constructor(
         covidTestDao.insertAll(list)
     }
 
-    override fun fetchCountryWiseData(): Call<List<CountryWiseDataResponse>> {
-        return goCoronaApi.getCountryWiseData()
+    override fun fetchCountryWiseDataAsync(): Deferred<List<CountryWiseDataResponse>> {
+        return goCoronaApi.getCountryWiseDataAsync()
     }
 
-    override fun fetchDistrictData(): Call<List<DistrictDataResponse>> {
-        return goCoronaApi.getDistrictData()
+    override fun fetchDistrictDataAsync(): Deferred<List<DistrictDataResponse>> {
+        return goCoronaApi.getDistrictDataAsync()
     }
 
-    override fun fetchStatesData(): Call<StatesDataResponse> {
-        return goCoronaApi.getStatesData()
+    override fun fetchStatesDataAsync(): Deferred<StatesDataResponse> {
+        return goCoronaApi.getStatesDataAsync()
     }
 
-    override fun fetchWorldData(): Call<WorldDataResponse> {
-        return goCoronaApi.getWorldData()
+    override fun fetchWorldDataAsync(): Deferred<WorldDataResponse> {
+        return goCoronaApi.getWorldDataAsync()
     }
 
 }

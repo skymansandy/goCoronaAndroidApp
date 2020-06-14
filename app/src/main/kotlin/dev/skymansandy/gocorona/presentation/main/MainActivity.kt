@@ -6,11 +6,12 @@ import android.view.View
 import androidx.navigation.ui.NavigationUI
 import dev.skymansandy.base.extension.isEmptyBackStack
 import dev.skymansandy.base.ui.base.BaseActivity
+import dev.skymansandy.base.util.general.NetworkUtil
 import dev.skymansandy.gocorona.R
 import dev.skymansandy.gocorona.databinding.ActivityMainBinding
 
 class MainActivity(override val layoutId: Int = R.layout.activity_main) :
-    BaseActivity<ActivityMainBinding, Void, Void, MainViewModel>() {
+    BaseActivity<ActivityMainBinding, MainState, Void, MainViewModel>() {
 
     override val navControllerId = R.id.nav_host_main
     override val snackBarView: View
@@ -28,10 +29,20 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
+        refreshLocalData()
+
         binding.swipe.setOnRefreshListener {
-            vm.refreshStats()
-            binding.swipe.isRefreshing = false
+            refreshLocalData()
         }
+    }
+
+    private fun refreshLocalData() {
+        if (NetworkUtil.checkInternetConnectivity(this)) {
+            vm.refreshStats()
+        } else {
+            vm.showSnackBar(getString(R.string.check_internet_connection))
+        }
+        binding.swipe.isRefreshing = false
     }
 
     override fun onBackPressed() {
@@ -47,5 +58,17 @@ class MainActivity(override val layoutId: Int = R.layout.activity_main) :
         }
     }
 
-    override fun renderViewState(newState: Void) {}
+    override fun renderViewState(newState: MainState) {
+        when (newState) {
+            is MainState.Loading -> {
+                vm.showSnackBar(getString(R.string.syncing_latest_data))
+            }
+            is MainState.Loaded -> {
+                vm.showSnackBar(getString(R.string.synced_successfully))
+            }
+            is MainState.Error -> {
+                vm.showSnackBar(newState.error ?: getString(R.string.couldnt_sync_data))
+            }
+        }
+    }
 }

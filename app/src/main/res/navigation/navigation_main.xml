@@ -16,9 +16,9 @@
 
     <fragment
         android:id="@+id/stateDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.main.india.state.StateDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.india.state.StateFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_state_data">
+        tools:layout="@layout/fragment_state">
         <action
             android:id="@+id/action_stateDataFragment_to_districtDataFragment"
             app:destination="@id/districtDataFragment" />
@@ -29,9 +29,9 @@
 
     <fragment
         android:id="@+id/districtDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.main.india.district.DistrictDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.india.district.DistrictFragment"
         android:label="@string/app_name"
-        tools:layout="@layout/fragment_district_data">
+        tools:layout="@layout/fragment_district">
         <argument
             android:name="district"
             app:argType="dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat" />
@@ -55,9 +55,9 @@
 
     <fragment
         android:id="@+id/countryDataFragment"
-        android:name="dev.skymansandy.gocorona.presentation.main.world.country.CountryDataFragment"
+        android:name="dev.skymansandy.gocorona.presentation.main.world.country.CountryFragment"
         android:label="CountryDataFragment"
-        tools:layout="@layout/fragment_country_data">
+        tools:layout="@layout/fragment_country">
         <argument
             android:name="country"
             app:argType="dev.skymansandy.gocorona.presentation.main.india.adapter.CovidStat" />

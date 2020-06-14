@@ -41,4 +41,8 @@
     <string name="disclaimer_desc">कृपया ध्यान दें कि यहां दिखाए गए सभी डेटा COVID API से हैं। यह बिल्कुल वास्तविक समय डेटा नहीं हो सकता है।</string>
     <string name="source_covid19india_org">स्रोत: covid19India.org</string>
     <string name="source_corona_ninja">स्रोत: corona.ninja.lmao</string>
+    <string name="check_internet_connection">कृपया अपने इंटरनेट कनेक्शन की जाँच करें!</string>
+    <string name="syncing_latest_data">नवीनतम डेटा सिंक कर रहा है…</string>
+    <string name="synced_successfully">सफलतापूर्वक समन्वयित किया गया</string>
+    <string name="couldnt_sync_data">डेटा सिंक नहीं किया जा सका!</string>
 </resources>

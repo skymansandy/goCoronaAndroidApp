@@ -6,10 +6,10 @@ import dev.skymansandy.base.di.BaseModule
 import dev.skymansandy.gocorona.presentation.main.MainActivity
 import dev.skymansandy.gocorona.presentation.main.about.AboutFragment
 import dev.skymansandy.gocorona.presentation.main.choosecountry.ChooseCountryBottomSheet
-import dev.skymansandy.gocorona.presentation.main.world.country.CountryDataFragment
-import dev.skymansandy.gocorona.presentation.main.india.district.DistrictDataFragment
+import dev.skymansandy.gocorona.presentation.main.world.country.CountryFragment
+import dev.skymansandy.gocorona.presentation.main.india.district.DistrictFragment
 import dev.skymansandy.gocorona.presentation.main.india.IndiaFragment
-import dev.skymansandy.gocorona.presentation.main.india.state.StateDataFragment
+import dev.skymansandy.gocorona.presentation.main.india.state.StateFragment
 import dev.skymansandy.gocorona.presentation.main.world.WorldFragment
 import dev.skymansandy.gocorona.presentation.splash.SplashActivity
 
@@ -32,13 +32,13 @@ abstract class UiInjectorModule {
     abstract fun contributeHomeFragment(): IndiaFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeStateDataFragment(): StateDataFragment
+    abstract fun contributeStateDataFragment(): StateFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeDistrictDataFragment(): DistrictDataFragment
+    abstract fun contributeDistrictDataFragment(): DistrictFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeCountryDataFragment(): CountryDataFragment
+    abstract fun contributeCountryDataFragment(): CountryFragment
 
     @ContributesAndroidInjector
     abstract fun contributeNewsFragment(): WorldFragment

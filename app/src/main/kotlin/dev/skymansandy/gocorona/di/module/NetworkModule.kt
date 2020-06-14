@@ -1,5 +1,6 @@
 package dev.skymansandy.gocorona.di.module
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dev.skymansandy.gocorona.data.source.remote.GoCoronaApi
@@ -48,6 +49,7 @@ class NetworkModule {
             .baseUrl(baseUrl)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 

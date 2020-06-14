@@ -1,55 +1,44 @@
-package dev.skymansandy.gocorona.presentation.main.india.state
+package dev.skymansandy.gocorona.presentation.main.world.country
 
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
-import androidx.paging.PagedList
 import dev.skymansandy.base.ui.base.BaseFragment
 import dev.skymansandy.gocorona.R
-import dev.skymansandy.gocorona.databinding.FragmentStateDataBinding
-import dev.skymansandy.gocorona.presentation.main.india.adapter.*
+import dev.skymansandy.gocorona.databinding.FragmentCountryBinding
+import dev.skymansandy.gocorona.presentation.main.india.adapter.showDelta
 import dev.skymansandy.gocorona.tools.coviduitools.covidcolor.CovidResImpl
 import dev.skymansandy.gocorona.tools.coviduitools.extension.loadData
 import dev.skymansandy.gocorona.tools.coviduitools.extension.scanForBigTextAndWrapNextLine
 import dev.skymansandy.gocorona.tools.coviduitools.extension.setOrientation
 import dev.skymansandy.gocorona.tools.coviduitools.extension.showNumber
-import javax.inject.Inject
 
-class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_data) :
-    BaseFragment<FragmentStateDataBinding, StateDataState, StateDataEvent, StateDataViewModel>(),
-    CovidStatClickListener {
+class CountryFragment(override val layoutId: Int = R.layout.fragment_country) :
+    BaseFragment<FragmentCountryBinding, CountryDataState, CountryDataEvent, CountryDataViewModel>() {
 
     private val covidRes by lazy { CovidResImpl(requireContext()) }
-    private val statAdapter = CovidStatListAdapter(this, CovidStatListType.DISTRICT)
-    private val args by navArgs<StateDataFragmentArgs>()
-
-    @Inject
-    lateinit var pageConfig: PagedList.Config
+    private val args by navArgs<CountryFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getStateData(args.state.code)
+        vm.getDistrictData(args.country.code)
 
-        binding.tvPlace.text = args.state.name
+        binding.tvPlace.text = args.country.name
     }
 
-    override fun renderViewState(newState: StateDataState) {
+    override fun renderViewState(newState: CountryDataState) {
         binding.statsNonIndia.root.visibility = View.GONE
-        binding.layoutStatList.root.visibility = View.GONE
 
         when (newState) {
-            is StateDataState.Loading -> {
+            is CountryDataState.Loading -> {
                 //TODO
             }
-            is StateDataState.StateStats -> {
+            is CountryDataState.CountryStats -> {
                 binding.statsNonIndia.root.visibility = View.VISIBLE
-                binding.layoutStatList.root.visibility = View.VISIBLE
                 binding.tvPlace.text = newState.placeName
                 binding.tvLastUpdated.text =
                     String.format("%s %s", getString(R.string.last_synced), newState.lastUpdated)
-                binding.layoutStatList.setup(covidRes, statAdapter, getString(R.string.district))
-
                 with(binding.statsNonIndia) {
                     tvActiveCount.showNumber(newState.active)
                     tvConfirmedCount.showNumber(newState.confirmed)
@@ -71,24 +60,7 @@ class StateDataFragment(override val layoutId: Int = R.layout.fragment_state_dat
                         newState.deceased
                     )
                 }
-                binding.layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
-                    View.GONE
-                } else {
-                    val pagedStrings = getPagedList(newState.stats, pageConfig)
-                    statAdapter.submitList(pagedStrings)
-                    View.VISIBLE
-                }
             }
         }
-    }
-
-    override fun onCountryClicked(covidStat: CovidStat) = TODO()
-    override fun onStateClicked(covidStat: CovidStat) = TODO()
-    override fun onDistrictClicked(covidStat: CovidStat) {
-        navController.navigate(
-            StateDataFragmentDirections.actionStateDataFragmentToDistrictDataFragment(
-                covidStat
-            )
-        )
     }
 }

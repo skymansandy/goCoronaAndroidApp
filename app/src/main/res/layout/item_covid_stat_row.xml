@@ -13,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
-        android:background="?selectableItemBackground"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_2"
+        android:paddingEnd="@dimen/dp_2">
 
         <Space
             android:layout_width="@dimen/dp_2"
@@ -43,6 +44,7 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="C"
+            android:textColor="@color/color_row_text"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -58,6 +60,7 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="A"
+            android:textColor="@color/color_row_text"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -73,6 +76,7 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="R"
+            android:textColor="@color/color_row_text"
             android:textSize="@dimen/sp_10" />
 
         <Space
@@ -88,6 +92,7 @@
             android:gravity="center_vertical|end"
             android:padding="@dimen/dp_4"
             android:text="D"
+            android:textColor="@color/color_row_text"
             android:textSize="@dimen/sp_10" />
 
         <Space

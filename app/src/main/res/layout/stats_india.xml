@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_banner"
-        android:layout_marginTop="-135dp"
         android:orientation="vertical"
         android:visibility="gone"
         tools:ignore="ObsoleteLayoutParam"
@@ -102,7 +101,9 @@
             layout="@layout/layout_stat_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_16" />
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_16" />
 
     </LinearLayout>
 </layout>

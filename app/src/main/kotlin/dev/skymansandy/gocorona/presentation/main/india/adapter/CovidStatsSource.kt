@@ -14,7 +14,7 @@ class CovidStatDataSource(val provider: CovidStatListProvider) :
         callback: LoadInitialCallback<Int, CovidStat>
     ) {
         val list = provider.getStringList(0, params.requestedLoadSize)
-        callback.onResult(list, 1, 2)
+        callback.onResult(list, null, 1)
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, CovidStat>) {
@@ -29,7 +29,8 @@ class CovidStatDataSource(val provider: CovidStatListProvider) :
     }
 
     companion object {
-        const val PAGE_SIZE = 20
+        const val PAGE_SIZE = 10
+        const val INITIAL_LOAD_SIZE = 20
     }
 }
 

@@ -9,45 +9,40 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/activity_background">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/snack_bar_container"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/activity_background">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <fragment
+                android:id="@+id/nav_host_main"
+                android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_above="@id/bottom_nav_view"
+                app:defaultNavHost="true"
+                app:layout_behavior="dev.skymansandy.base.ui.behaviour.MoveUpwardBehavior"
+                app:navGraph="@navigation/navigation_main" />
 
-                <androidx.core.widget.NestedScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:fillViewport="true">
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/snack_bar_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottom_nav_view" />
 
-                    <fragment
-                        android:id="@+id/nav_host_main"
-                        android:name="androidx.navigation.fragment.NavHostFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:defaultNavHost="true"
-                        app:layout_behavior="dev.skymansandy.base.ui.behaviour.MoveUpwardBehavior"
-                        app:navGraph="@navigation/navigation_main" />
-                </androidx.core.widget.NestedScrollView>
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav_view"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_appbar"
+                app:itemIconTint="@drawable/state_color"
+                app:itemTextColor="@drawable/state_color"
+                app:menu="@menu/menu_home_bottom" />
+        </RelativeLayout>
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottom_nav_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize"
-                    android:background="@color/color_appbar"
-                    app:itemIconTint="@drawable/state_color"
-                    app:itemTextColor="@drawable/state_color"
-                    app:menu="@menu/menu_home_bottom" />
-            </LinearLayout>
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

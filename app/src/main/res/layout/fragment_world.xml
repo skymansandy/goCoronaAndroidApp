@@ -10,9 +10,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:background="@color/activity_background">
 
         <RelativeLayout
             android:id="@+id/layout_banner"
@@ -102,34 +101,48 @@
 
         </RelativeLayout>
 
-        <include
-            android:id="@+id/statsWorld"
-            layout="@layout/stats_non_india" />
-
-        <include
-            android:id="@+id/layout_stat_list"
-            layout="@layout/layout_stat_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/statsWorld"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_16" />
-
-        <RelativeLayout
-            android:id="@+id/layout_loading"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/layout_banner"
-            android:visibility="gone"
-            tools:visibility="gone">
+            android:layout_marginTop="135dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-            <ProgressBar
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:orientation="vertical">
 
-        </RelativeLayout>
+                <include
+                    android:id="@+id/statsWorld"
+                    layout="@layout/stats_non_india" />
+
+                <include
+                    android:id="@+id/layout_stat_list"
+                    layout="@layout/layout_stat_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_16" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    tools:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 
