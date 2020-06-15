@@ -26,6 +26,8 @@ This app loads data from 2 API providers (covid19india.org for India data, coron
 | India Overview Dark | World Overview Dark |  Settings Dark |
 | ![4](media/screen_dark_1.jpg?raw=true) | ![5](media/screen_dark_2.jpg?raw=true) | ![6](media/screen_dark_3.jpg?raw=true) |
 
+## Download APK [Here](https://github.com/skymansandy/goCoronaAndroidApp/blob/master/media/GoCorona.apk)
+
 ## Tech Stack
 - Kotlin
 - MVVM with a touch of MVI
