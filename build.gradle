@@ -7,10 +7,12 @@ buildscript {
     }
 
     dependencies {
+        classpath "com.google.gms:google-services:$googleservices"
         classpath "com.android.tools.build:gradle:$buildgradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinversion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$safeargs"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinversion"
+        classpath "com.google.firebase:firebase-crashlytics-gradle:$crashlyticsplugin"
     }
 }
 

@@ -3,6 +3,8 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "com.google.gms.google-services"
+apply plugin: "com.google.firebase.crashlytics"
 
 apply from: "../deps.gradle"
 
@@ -61,4 +63,6 @@ dependencies {
     implementation "io.coil-kt:coil:$coil"
     implementation "com.github.blackfizz:eazegraph:$easegraph"
     implementation "androidx.paging:paging-runtime-ktx:$paging"
+    implementation "com.google.firebase:firebase-analytics:$analytics"
+    implementation "com.google.firebase:firebase-crashlytics:$crashlytics"
 }
