@@ -26,7 +26,7 @@ This app loads data from 2 API providers (covid19india.org for India data, coron
 | India Overview Dark | World Overview Dark |  Settings Dark |
 | ![4](media/screen_dark_1.jpg?raw=true) | ![5](media/screen_dark_2.jpg?raw=true) | ![6](media/screen_dark_3.jpg?raw=true) |
 
-## Download APK [Here](https://github.com/skymansandy/goCoronaAndroidApp/blob/master/media/GoCorona.apk)
+## Download APK [Here](https://github.com/skymansandy/goCoronaAndroidApp/blob/master/media/GoCorona.apk?raw=true)
 
 ## Tech Stack
 - Kotlin
@@ -50,7 +50,7 @@ See [LICENSE](./LICENSE) for details.
 ```
 MIT License
 
-Copyright (c) 2020 Hari Choudhary
+Copyright (c) 2020 P Sandesh Baliga
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
