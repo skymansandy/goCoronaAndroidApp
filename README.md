@@ -50,7 +50,7 @@ See [LICENSE](./LICENSE) for details.
 ```
 MIT License
 
-Copyright (c) 2020 Hari Choudhary
+Copyright (c) 2020 P Sandesh Baliga
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
