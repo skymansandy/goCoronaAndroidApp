@@ -3,8 +3,8 @@ package dev.skymansandy.gocorona.presentation.main.india.adapter
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import dev.skymansandy.gocorona.databinding.ItemCovidStatRowBinding
 import kotlinx.android.parcel.Parcelize
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class CovidStatListAdapter(
     private val covidStatClickListener: CovidStatClickListener,
     private val covidStatListType: CovidStatListType
-) : PagedListAdapter<CovidStat, StatRowViewHolder>(StatRowDiffCallback()) {
+) : ListAdapter<CovidStat, StatRowViewHolder>(StatRowDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatRowViewHolder {
         val inflater = LayoutInflater.from(parent.context)

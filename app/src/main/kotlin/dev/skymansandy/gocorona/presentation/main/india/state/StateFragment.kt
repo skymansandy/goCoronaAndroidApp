@@ -74,8 +74,9 @@ class StateFragment(override val layoutId: Int = R.layout.fragment_state) :
                 binding.layoutStatList.root.visibility = if (newState.stats.isNullOrEmpty()) {
                     View.GONE
                 } else {
-                    val pagedStrings = getPagedList(newState.stats, pageConfig)
-                    statAdapter.submitList(pagedStrings)
+                  /*  val pagedStrings = getPagedList(newState.stats, pageConfig)
+                    statAdapter.submitList(pagedStrings)*/
+                    statAdapter.submitList(newState.stats)
                     View.VISIBLE
                 }
             }
