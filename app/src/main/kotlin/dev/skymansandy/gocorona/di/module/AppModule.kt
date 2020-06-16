@@ -37,7 +37,7 @@ class AppModule {
     fun providePagingConfig(): PagedList.Config {
         return PagedList.Config.Builder()
 //            .setInitialLoadSizeHint(300)
-            .setInitialLoadSizeHint(CovidStatDataSource.INITIAL_LOAD_SIZE)
+            .setInitialLoadSizeHint(CovidStatDataSource.PAGE_SIZE)
             .setPageSize(CovidStatDataSource.PAGE_SIZE)
             .setEnablePlaceholders(true)
             .build()
